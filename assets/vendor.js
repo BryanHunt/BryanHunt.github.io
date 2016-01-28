@@ -99307,7 +99307,10 @@ define('ember-paper/utils/promise-proxies', ['exports', 'ember'], function (expo
 define('ember-resize/mixins/resize-aware', ['exports', 'ember'], function (exports, _ember) {
   'use strict';
 
-  exports['default'] = _ember['default'].Mixin.create({
+  var Mixin = _ember['default'].Mixin;
+  var floor = Math.floor;
+
+  exports['default'] = Mixin.create({
     resizeEventsEnabled: true,
     resizeDebouncedEventsEnabled: true,
 
@@ -99346,8 +99349,8 @@ define('ember-resize/mixins/resize-aware', ['exports', 'ember'], function (expor
     },
 
     _handleResizeEvent: function _handleResizeEvent(evt) {
-      var w = Math.floor(this._getComponentSize().width);
-      var h = Math.floor(this._getComponentSize().height);
+      var w = floor(this._getComponentSize().width);
+      var h = floor(this._getComponentSize().height);
       if (this.get('resizeWidthSensitive') && this.get('_oldViewWidth') !== w || this.get('resizeHeightSensitive') && this.get('_oldViewHeight') !== h) {
         this.didResize(w, h, evt);
         this.setProperties({
@@ -99358,8 +99361,8 @@ define('ember-resize/mixins/resize-aware', ['exports', 'ember'], function (expor
     },
 
     _handleDebouncedResizeEvent: function _handleDebouncedResizeEvent(evt) {
-      var w = Math.floor(this._getComponentSize().width);
-      var h = Math.floor(this._getComponentSize().height);
+      var w = floor(this._getComponentSize().width);
+      var h = floor(this._getComponentSize().height);
       if (this.get('resizeWidthSensitive') && this.get('_oldViewWidthDebounced') !== w || this.get('resizeHeightSensitive') && this.get('_oldViewHeightDebounced') !== h) {
         this.debouncedDidResize(w, h, evt);
         this.setProperties({
@@ -99373,27 +99376,23 @@ define('ember-resize/mixins/resize-aware', ['exports', 'ember'], function (expor
 define('ember-resize/services/resize', ['exports', 'ember'], function (exports, _ember) {
   'use strict';
 
-  function _defineProperty(obj, key, value) {
-    if (key in obj) {
-      Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
-    } else {
-      obj[key] = value;
-    }return obj;
-  }
-
   var Base = _ember['default'].Service || _ember['default'].Object;
   var keys = Object.keys || _ember['default'].keys;
-  var classify = _ember['default'].String.classify;
 
-  exports['default'] = Base.extend(_ember['default'].Evented, {
+  var Evented = _ember['default'].Evented;
+  var classify = _ember['default'].String.classify;
+  var oneWay = _ember['default'].computed.oneWay;
+  var debounce = _ember['default'].run.debounce;
+
+  exports['default'] = Base.extend(Evented, {
     _oldWidth: null,
     _oldHeight: null,
     _oldWidthDebounced: null,
     _oldHeightDebounced: null,
 
-    debounceTimeout: _ember['default'].computed.oneWay('defaultDebounceTimeout'),
-    widthSensitive: _ember['default'].computed.oneWay('defaultWidthSensitive'),
-    heightSensitive: _ember['default'].computed.oneWay('defaultHeightSensitive'),
+    debounceTimeout: oneWay('defaultDebounceTimeout'),
+    widthSensitive: oneWay('defaultWidthSensitive'),
+    heightSensitive: oneWay('defaultHeightSensitive'),
 
     init: function init() {
       var _this = this;
@@ -99402,7 +99401,7 @@ define('ember-resize/services/resize', ['exports', 'ember'], function (exports, 
       this._setDefaults();
       this._onResizeHandler = function (evt) {
         _this._fireResizeNotification(evt);
-        _ember['default'].run.debounce(_this, _this._fireDebouncedResizeNotification, evt, _this.get('debounceTimeout'));
+        debounce(_this, _this._fireDebouncedResizeNotification, evt, _this.get('debounceTimeout'));
       };
       this._installResizeListener();
     },
@@ -99431,11 +99430,14 @@ define('ember-resize/services/resize', ['exports', 'ember'], function (exports, 
     },
 
     _updateCachedWindowSize: function _updateCachedWindowSize(w, h) {
-      var _setProperties;
-
       var debounced = arguments.length <= 2 || arguments[2] === undefined ? false : arguments[2];
 
-      this.setProperties((_setProperties = {}, _defineProperty(_setProperties, '_oldWidth' + (debounced ? 'Debounced' : ''), w), _defineProperty(_setProperties, '_oldHeight' + (debounced ? 'Debounced' : ''), h), _setProperties));
+      var wKey = '_oldWidth' + (debounced ? 'Debounced' : '');
+      var hKey = '_oldHeight' + (debounced ? 'Debounced' : '');
+      var props = {};
+      props[wKey] = w;
+      props[hKey] = h;
+      this.setProperties(props);
     },
 
     _installResizeListener: function _installResizeListener() {

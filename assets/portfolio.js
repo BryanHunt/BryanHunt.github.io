@@ -29,6 +29,38 @@ define('portfolio/components/app-version', ['exports', 'ember-cli-app-version/co
     name: name
   });
 });
+define('portfolio/components/axis-sandbox', ['exports', 'ember', 'portfolio/utils/scales/d3-linear-scale'], function (exports, _ember, _portfolioUtilsScalesD3LinearScale) {
+  var Component = _ember['default'].Component;
+  var on = _ember['default'].on;
+  var computed = _ember['default'].computed;
+  var observer = _ember['default'].observer;
+  exports['default'] = Component.extend({
+    init: function init() {
+      this._super.apply(this, arguments);
+      this.set('translateX', 25);
+      this.set('translateY', 20);
+      this.set('orientation', "bottom");
+      this.set('domainMin', 0);
+      this.set('domainMax', 100);
+      this.set('rangeMin', 0);
+      this.set('rangeMax', 450);
+      this.set('grid', _ember['default'].Object.create({ x1: 0, y1: 0, x2: 0, y2: -450 }));
+      this.set('scale', _portfolioUtilsScalesD3LinearScale['default'].create());
+    },
+
+    axisTransform: computed('translateX', 'translateY', function () {
+      return 'translate(' + this.get('translateX') + ', ' + this.get('translateY') + ')';
+    }),
+
+    domainChanged: on('init', observer('domainMin', 'domainMax', function () {
+      this.set('scale.domain', [this.get('domainMin'), this.get('domainMax')]);
+    })),
+
+    rangeChanged: on('init', observer('rangeMin', 'rangeMax', function () {
+      this.set('scale.range', [this.get('rangeMin'), this.get('rangeMax')]);
+    }))
+  });
+});
 define('portfolio/components/base-focusable', ['exports', 'ember-paper/components/base-focusable'], function (exports, _emberPaperComponentsBaseFocusable) {
   exports['default'] = _emberPaperComponentsBaseFocusable['default'];
 });
@@ -468,7 +500,9 @@ define('portfolio/initializers/injectStore', ['exports', 'ember'], function (exp
 define('portfolio/initializers/resize', ['exports', 'ember-resize/services/resize', 'portfolio/config/environment'], function (exports, _emberResizeServicesResize, _portfolioConfigEnvironment) {
   exports.initialize = initialize;
 
-  function initialize(_container, application) {
+  function initialize() {
+    var application = arguments[1] || arguments[0];
+
     var resizeServiceDefaults = _portfolioConfigEnvironment['default'].resizeServiceDefaults;
     var injectionFactories = resizeServiceDefaults.injectionFactories;
 
@@ -554,6 +588,7 @@ define('portfolio/router', ['exports', 'ember', 'portfolio/config/environment'],
       this.route('scales', function () {
         this.route('linear');
       });
+      this.route('axis');
     });
   });
 
@@ -567,6 +602,9 @@ define('portfolio/routes/application', ['exports', 'ember'], function (exports, 
       }
     }
   });
+});
+define('portfolio/routes/d3/axis', ['exports', 'ember'], function (exports, _ember) {
+  exports['default'] = _ember['default'].Route.extend({});
 });
 define('portfolio/routes/d3/scales/linear', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Route.extend({});
@@ -1320,6 +1358,586 @@ define("portfolio/templates/application", ["exports"], function (exports) {
     };
   })());
 });
+define("portfolio/templates/components/axis-sandbox", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    var child0 = (function () {
+      var child0 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.3.0",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 2,
+                "column": 2
+              },
+              "end": {
+                "line": 6,
+                "column": 2
+              }
+            },
+            "moduleName": "portfolio/templates/components/axis-sandbox.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("    ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createElement("h3");
+            var el2 = dom.createTextNode("Domain");
+            dom.appendChild(el1, el2);
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n    ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n    ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var morphs = new Array(2);
+            morphs[0] = dom.createMorphAt(fragment, 3, 3, contextualElement);
+            morphs[1] = dom.createMorphAt(fragment, 5, 5, contextualElement);
+            return morphs;
+          },
+          statements: [["inline", "paper-input", [], ["label", "Domain Min", "value", ["subexpr", "@mut", [["get", "domainMin", ["loc", [null, [4, 43], [4, 52]]]]], [], []]], ["loc", [null, [4, 4], [4, 54]]]], ["inline", "paper-input", [], ["label", "Domain Max", "value", ["subexpr", "@mut", [["get", "domainMax", ["loc", [null, [5, 43], [5, 52]]]]], [], []]], ["loc", [null, [5, 4], [5, 54]]]]],
+          locals: [],
+          templates: []
+        };
+      })();
+      return {
+        meta: {
+          "fragmentReason": {
+            "name": "missing-wrapper",
+            "problems": ["wrong-type"]
+          },
+          "revision": "Ember@2.3.0",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 7,
+              "column": 0
+            }
+          },
+          "moduleName": "portfolio/templates/components/axis-sandbox.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+          dom.insertBoundary(fragment, 0);
+          dom.insertBoundary(fragment, null);
+          return morphs;
+        },
+        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [2, 2], [6, 25]]]]],
+        locals: [],
+        templates: [child0]
+      };
+    })();
+    var child1 = (function () {
+      var child0 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.3.0",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 10,
+                "column": 2
+              },
+              "end": {
+                "line": 14,
+                "column": 2
+              }
+            },
+            "moduleName": "portfolio/templates/components/axis-sandbox.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("    ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createElement("h3");
+            var el2 = dom.createTextNode("Range");
+            dom.appendChild(el1, el2);
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n    ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n    ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var morphs = new Array(2);
+            morphs[0] = dom.createMorphAt(fragment, 3, 3, contextualElement);
+            morphs[1] = dom.createMorphAt(fragment, 5, 5, contextualElement);
+            return morphs;
+          },
+          statements: [["inline", "paper-input", [], ["label", "Range Min", "value", ["subexpr", "@mut", [["get", "rangeMin", ["loc", [null, [12, 42], [12, 50]]]]], [], []]], ["loc", [null, [12, 4], [12, 52]]]], ["inline", "paper-input", [], ["label", "Range Max", "value", ["subexpr", "@mut", [["get", "rangeMax", ["loc", [null, [13, 42], [13, 50]]]]], [], []]], ["loc", [null, [13, 4], [13, 52]]]]],
+          locals: [],
+          templates: []
+        };
+      })();
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.3.0",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 9,
+              "column": 0
+            },
+            "end": {
+              "line": 15,
+              "column": 0
+            }
+          },
+          "moduleName": "portfolio/templates/components/axis-sandbox.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+          dom.insertBoundary(fragment, 0);
+          dom.insertBoundary(fragment, null);
+          return morphs;
+        },
+        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [10, 2], [14, 25]]]]],
+        locals: [],
+        templates: [child0]
+      };
+    })();
+    var child2 = (function () {
+      var child0 = (function () {
+        var child0 = (function () {
+          var child0 = (function () {
+            return {
+              meta: {
+                "fragmentReason": false,
+                "revision": "Ember@2.3.0",
+                "loc": {
+                  "source": null,
+                  "start": {
+                    "line": 21,
+                    "column": 6
+                  },
+                  "end": {
+                    "line": 21,
+                    "column": 44
+                  }
+                },
+                "moduleName": "portfolio/templates/components/axis-sandbox.hbs"
+              },
+              isEmpty: false,
+              arity: 0,
+              cachedFragment: null,
+              hasRendered: false,
+              buildFragment: function buildFragment(dom) {
+                var el0 = dom.createDocumentFragment();
+                var el1 = dom.createTextNode("bottom");
+                dom.appendChild(el0, el1);
+                return el0;
+              },
+              buildRenderNodes: function buildRenderNodes() {
+                return [];
+              },
+              statements: [],
+              locals: [],
+              templates: []
+            };
+          })();
+          var child1 = (function () {
+            return {
+              meta: {
+                "fragmentReason": false,
+                "revision": "Ember@2.3.0",
+                "loc": {
+                  "source": null,
+                  "start": {
+                    "line": 22,
+                    "column": 6
+                  },
+                  "end": {
+                    "line": 22,
+                    "column": 38
+                  }
+                },
+                "moduleName": "portfolio/templates/components/axis-sandbox.hbs"
+              },
+              isEmpty: false,
+              arity: 0,
+              cachedFragment: null,
+              hasRendered: false,
+              buildFragment: function buildFragment(dom) {
+                var el0 = dom.createDocumentFragment();
+                var el1 = dom.createTextNode("top");
+                dom.appendChild(el0, el1);
+                return el0;
+              },
+              buildRenderNodes: function buildRenderNodes() {
+                return [];
+              },
+              statements: [],
+              locals: [],
+              templates: []
+            };
+          })();
+          var child2 = (function () {
+            return {
+              meta: {
+                "fragmentReason": false,
+                "revision": "Ember@2.3.0",
+                "loc": {
+                  "source": null,
+                  "start": {
+                    "line": 23,
+                    "column": 6
+                  },
+                  "end": {
+                    "line": 23,
+                    "column": 40
+                  }
+                },
+                "moduleName": "portfolio/templates/components/axis-sandbox.hbs"
+              },
+              isEmpty: false,
+              arity: 0,
+              cachedFragment: null,
+              hasRendered: false,
+              buildFragment: function buildFragment(dom) {
+                var el0 = dom.createDocumentFragment();
+                var el1 = dom.createTextNode("left");
+                dom.appendChild(el0, el1);
+                return el0;
+              },
+              buildRenderNodes: function buildRenderNodes() {
+                return [];
+              },
+              statements: [],
+              locals: [],
+              templates: []
+            };
+          })();
+          var child3 = (function () {
+            return {
+              meta: {
+                "fragmentReason": false,
+                "revision": "Ember@2.3.0",
+                "loc": {
+                  "source": null,
+                  "start": {
+                    "line": 24,
+                    "column": 6
+                  },
+                  "end": {
+                    "line": 24,
+                    "column": 42
+                  }
+                },
+                "moduleName": "portfolio/templates/components/axis-sandbox.hbs"
+              },
+              isEmpty: false,
+              arity: 0,
+              cachedFragment: null,
+              hasRendered: false,
+              buildFragment: function buildFragment(dom) {
+                var el0 = dom.createDocumentFragment();
+                var el1 = dom.createTextNode("right");
+                dom.appendChild(el0, el1);
+                return el0;
+              },
+              buildRenderNodes: function buildRenderNodes() {
+                return [];
+              },
+              statements: [],
+              locals: [],
+              templates: []
+            };
+          })();
+          return {
+            meta: {
+              "fragmentReason": false,
+              "revision": "Ember@2.3.0",
+              "loc": {
+                "source": null,
+                "start": {
+                  "line": 20,
+                  "column": 4
+                },
+                "end": {
+                  "line": 25,
+                  "column": 4
+                }
+              },
+              "moduleName": "portfolio/templates/components/axis-sandbox.hbs"
+            },
+            isEmpty: false,
+            arity: 0,
+            cachedFragment: null,
+            hasRendered: false,
+            buildFragment: function buildFragment(dom) {
+              var el0 = dom.createDocumentFragment();
+              var el1 = dom.createTextNode("      ");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createComment("");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createTextNode("\n      ");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createComment("");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createTextNode("\n      ");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createComment("");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createTextNode("\n      ");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createComment("");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createTextNode("\n");
+              dom.appendChild(el0, el1);
+              return el0;
+            },
+            buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+              var morphs = new Array(4);
+              morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+              morphs[1] = dom.createMorphAt(fragment, 3, 3, contextualElement);
+              morphs[2] = dom.createMorphAt(fragment, 5, 5, contextualElement);
+              morphs[3] = dom.createMorphAt(fragment, 7, 7, contextualElement);
+              return morphs;
+            },
+            statements: [["block", "paper-option", [], ["value", "bottom"], 0, null, ["loc", [null, [21, 6], [21, 61]]]], ["block", "paper-option", [], ["value", "top"], 1, null, ["loc", [null, [22, 6], [22, 55]]]], ["block", "paper-option", [], ["value", "left"], 2, null, ["loc", [null, [23, 6], [23, 57]]]], ["block", "paper-option", [], ["value", "right"], 3, null, ["loc", [null, [24, 6], [24, 59]]]]],
+            locals: [],
+            templates: [child0, child1, child2, child3]
+          };
+        })();
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.3.0",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 18,
+                "column": 2
+              },
+              "end": {
+                "line": 29,
+                "column": 0
+              }
+            },
+            "moduleName": "portfolio/templates/components/axis-sandbox.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("    ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createElement("h3");
+            var el2 = dom.createTextNode("Options");
+            dom.appendChild(el1, el2);
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n    Translate X: ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n    Translate Y: ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var morphs = new Array(3);
+            morphs[0] = dom.createMorphAt(fragment, 3, 3, contextualElement);
+            morphs[1] = dom.createMorphAt(fragment, 5, 5, contextualElement);
+            morphs[2] = dom.createMorphAt(fragment, 7, 7, contextualElement);
+            return morphs;
+          },
+          statements: [["block", "paper-select", [], ["placeholder", "Orientation", "model", ["subexpr", "@mut", [["get", "orientation", ["loc", [null, [20, 52], [20, 63]]]]], [], []]], 0, null, ["loc", [null, [20, 4], [25, 21]]]], ["inline", "paper-slider", [], ["flex", true, "min", "10", "max", "400", "value", ["subexpr", "@mut", [["get", "translateX", ["loc", [null, [27, 67], [27, 77]]]]], [], []]], ["loc", [null, [27, 17], [27, 79]]]], ["inline", "paper-slider", [], ["flex", true, "min", "20", "max", "400", "value", ["subexpr", "@mut", [["get", "translateY", ["loc", [null, [28, 67], [28, 77]]]]], [], []]], ["loc", [null, [28, 17], [28, 79]]]]],
+          locals: [],
+          templates: [child0]
+        };
+      })();
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.3.0",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 17,
+              "column": 0
+            },
+            "end": {
+              "line": 30,
+              "column": 0
+            }
+          },
+          "moduleName": "portfolio/templates/components/axis-sandbox.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+          dom.insertBoundary(fragment, 0);
+          dom.insertBoundary(fragment, null);
+          return morphs;
+        },
+        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [18, 2], [29, 23]]]]],
+        locals: [],
+        templates: [child0]
+      };
+    })();
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["wrong-type", "multiple-nodes"]
+        },
+        "revision": "Ember@2.3.0",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 40,
+            "column": 0
+          }
+        },
+        "moduleName": "portfolio/templates/components/axis-sandbox.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        dom.setNamespace("http://www.w3.org/2000/svg");
+        var el1 = dom.createElement("svg");
+        dom.setAttribute(el1, "class", "axis");
+        dom.setAttribute(el1, "width", "1000");
+        dom.setAttribute(el1, "height", "1000");
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("defs");
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("clippath");
+        dom.setAttribute(el3, "id", "clip-body");
+        var el4 = dom.createTextNode("\n      ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("rect");
+        dom.setAttribute(el4, "x", "-5");
+        dom.setAttribute(el4, "y", "0");
+        dom.setAttribute(el4, "width", "1000");
+        dom.setAttribute(el4, "height", "1000");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n    ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n  ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(4);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        morphs[1] = dom.createMorphAt(fragment, 2, 2, contextualElement);
+        morphs[2] = dom.createMorphAt(fragment, 4, 4, contextualElement);
+        morphs[3] = dom.createMorphAt(dom.childAt(fragment, [6]), 3, 3);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [["block", "paper-card", [], [], 0, null, ["loc", [null, [1, 0], [7, 15]]]], ["block", "paper-card", [], [], 1, null, ["loc", [null, [9, 0], [15, 15]]]], ["block", "paper-card", [], [], 2, null, ["loc", [null, [17, 0], [30, 15]]]], ["inline", "d3-axis", [], ["class", "x-axis", "orientation", ["subexpr", "@mut", [["get", "orientation", ["loc", [null, [38, 39], [38, 50]]]]], [], []], "scale", ["subexpr", "@mut", [["get", "scale", ["loc", [null, [38, 57], [38, 62]]]]], [], []], "transform", ["subexpr", "@mut", [["get", "axisTransform", ["loc", [null, [38, 73], [38, 86]]]]], [], []], "grid", ["subexpr", "@mut", [["get", "grid", ["loc", [null, [38, 92], [38, 96]]]]], [], []]], ["loc", [null, [38, 2], [38, 98]]]]],
+      locals: [],
+      templates: [child0, child1, child2]
+    };
+  })());
+});
 define("portfolio/templates/components/base-focusable", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     return {
@@ -1474,11 +2092,11 @@ define("portfolio/templates/components/linear-scale-sandbox", ["exports"], funct
               "loc": {
                 "source": null,
                 "start": {
-                  "line": 15,
+                  "line": 14,
                   "column": 4
                 },
                 "end": {
-                  "line": 15,
+                  "line": 14,
                   "column": 52
                 }
               },
@@ -1509,11 +2127,11 @@ define("portfolio/templates/components/linear-scale-sandbox", ["exports"], funct
             "loc": {
               "source": null,
               "start": {
-                "line": 11,
+                "line": 10,
                 "column": 2
               },
               "end": {
-                "line": 16,
+                "line": 15,
                 "column": 2
               }
             },
@@ -1554,7 +2172,7 @@ define("portfolio/templates/components/linear-scale-sandbox", ["exports"], funct
             morphs[2] = dom.createMorphAt(fragment, 7, 7, contextualElement);
             return morphs;
           },
-          statements: [["inline", "paper-input", [], ["label", "Range Min", "value", ["subexpr", "@mut", [["get", "rangeMin", ["loc", [null, [13, 42], [13, 50]]]]], [], []]], ["loc", [null, [13, 4], [13, 52]]]], ["inline", "paper-input", [], ["label", "Range Max", "value", ["subexpr", "@mut", [["get", "rangeMax", ["loc", [null, [14, 42], [14, 50]]]]], [], []]], ["loc", [null, [14, 4], [14, 52]]]], ["block", "paper-checkbox", [], ["checked", ["subexpr", "@mut", [["get", "rangeRound", ["loc", [null, [15, 30], [15, 40]]]]], [], []]], 0, null, ["loc", [null, [15, 4], [15, 71]]]]],
+          statements: [["inline", "paper-input", [], ["label", "Range Min", "value", ["subexpr", "@mut", [["get", "rangeMin", ["loc", [null, [12, 42], [12, 50]]]]], [], []]], ["loc", [null, [12, 4], [12, 52]]]], ["inline", "paper-input", [], ["label", "Range Max", "value", ["subexpr", "@mut", [["get", "rangeMax", ["loc", [null, [13, 42], [13, 50]]]]], [], []]], ["loc", [null, [13, 4], [13, 52]]]], ["block", "paper-checkbox", [], ["checked", ["subexpr", "@mut", [["get", "rangeRound", ["loc", [null, [14, 30], [14, 40]]]]], [], []]], 0, null, ["loc", [null, [14, 4], [14, 71]]]]],
           locals: [],
           templates: [child0]
         };
@@ -1566,11 +2184,11 @@ define("portfolio/templates/components/linear-scale-sandbox", ["exports"], funct
           "loc": {
             "source": null,
             "start": {
-              "line": 10,
+              "line": 9,
               "column": 0
             },
             "end": {
-              "line": 17,
+              "line": 16,
               "column": 0
             }
           },
@@ -1593,7 +2211,7 @@ define("portfolio/templates/components/linear-scale-sandbox", ["exports"], funct
           dom.insertBoundary(fragment, null);
           return morphs;
         },
-        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [11, 2], [16, 25]]]]],
+        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [10, 2], [15, 25]]]]],
         locals: [],
         templates: [child0]
       };
@@ -1608,11 +2226,11 @@ define("portfolio/templates/components/linear-scale-sandbox", ["exports"], funct
               "loc": {
                 "source": null,
                 "start": {
-                  "line": 22,
+                  "line": 21,
                   "column": 4
                 },
                 "end": {
-                  "line": 22,
+                  "line": 21,
                   "column": 48
                 }
               },
@@ -1643,11 +2261,11 @@ define("portfolio/templates/components/linear-scale-sandbox", ["exports"], funct
             "loc": {
               "source": null,
               "start": {
-                "line": 20,
+                "line": 19,
                 "column": 2
               },
               "end": {
-                "line": 23,
+                "line": 22,
                 "column": 2
               }
             },
@@ -1678,7 +2296,7 @@ define("portfolio/templates/components/linear-scale-sandbox", ["exports"], funct
             morphs[0] = dom.createMorphAt(fragment, 3, 3, contextualElement);
             return morphs;
           },
-          statements: [["block", "paper-checkbox", [], ["checked", ["subexpr", "@mut", [["get", "scale.clamp", ["loc", [null, [22, 30], [22, 41]]]]], [], []]], 0, null, ["loc", [null, [22, 4], [22, 67]]]]],
+          statements: [["block", "paper-checkbox", [], ["checked", ["subexpr", "@mut", [["get", "scale.clamp", ["loc", [null, [21, 30], [21, 41]]]]], [], []]], 0, null, ["loc", [null, [21, 4], [21, 67]]]]],
           locals: [],
           templates: [child0]
         };
@@ -1690,11 +2308,11 @@ define("portfolio/templates/components/linear-scale-sandbox", ["exports"], funct
           "loc": {
             "source": null,
             "start": {
-              "line": 19,
+              "line": 18,
               "column": 0
             },
             "end": {
-              "line": 24,
+              "line": 23,
               "column": 0
             }
           },
@@ -1717,7 +2335,7 @@ define("portfolio/templates/components/linear-scale-sandbox", ["exports"], funct
           dom.insertBoundary(fragment, null);
           return morphs;
         },
-        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [20, 2], [23, 25]]]]],
+        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [19, 2], [22, 25]]]]],
         locals: [],
         templates: [child0]
       };
@@ -1731,11 +2349,11 @@ define("portfolio/templates/components/linear-scale-sandbox", ["exports"], funct
             "loc": {
               "source": null,
               "start": {
-                "line": 27,
+                "line": 26,
                 "column": 2
               },
               "end": {
-                "line": 31,
+                "line": 30,
                 "column": 2
               }
             },
@@ -1771,7 +2389,7 @@ define("portfolio/templates/components/linear-scale-sandbox", ["exports"], funct
             morphs[1] = dom.createMorphAt(fragment, 5, 5, contextualElement);
             return morphs;
           },
-          statements: [["inline", "paper-input", [], ["label", "Input Value", "value", ["subexpr", "@mut", [["get", "input", ["loc", [null, [29, 44], [29, 49]]]]], [], []]], ["loc", [null, [29, 4], [29, 51]]]], ["content", "scaledValue", ["loc", [null, [30, 19], [30, 34]]]]],
+          statements: [["inline", "paper-input", [], ["label", "Input Value", "value", ["subexpr", "@mut", [["get", "input", ["loc", [null, [28, 44], [28, 49]]]]], [], []]], ["loc", [null, [28, 4], [28, 51]]]], ["content", "scaledValue", ["loc", [null, [29, 19], [29, 34]]]]],
           locals: [],
           templates: []
         };
@@ -1783,11 +2401,11 @@ define("portfolio/templates/components/linear-scale-sandbox", ["exports"], funct
           "loc": {
             "source": null,
             "start": {
-              "line": 26,
+              "line": 25,
               "column": 0
             },
             "end": {
-              "line": 32,
+              "line": 31,
               "column": 0
             }
           },
@@ -1810,7 +2428,7 @@ define("portfolio/templates/components/linear-scale-sandbox", ["exports"], funct
           dom.insertBoundary(fragment, null);
           return morphs;
         },
-        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [27, 2], [31, 25]]]]],
+        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [26, 2], [30, 25]]]]],
         locals: [],
         templates: [child0]
       };
@@ -1823,11 +2441,11 @@ define("portfolio/templates/components/linear-scale-sandbox", ["exports"], funct
           "loc": {
             "source": null,
             "start": {
-              "line": 37,
+              "line": 36,
               "column": 98
             },
             "end": {
-              "line": 37,
+              "line": 36,
               "column": 130
             }
           },
@@ -1865,7 +2483,7 @@ define("portfolio/templates/components/linear-scale-sandbox", ["exports"], funct
             "column": 0
           },
           "end": {
-            "line": 39,
+            "line": 38,
             "column": 0
           }
         },
@@ -1879,7 +2497,7 @@ define("portfolio/templates/components/linear-scale-sandbox", ["exports"], funct
         var el0 = dom.createDocumentFragment();
         var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n\n");
+        var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
@@ -1946,7 +2564,7 @@ define("portfolio/templates/components/linear-scale-sandbox", ["exports"], funct
         dom.insertBoundary(fragment, 0);
         return morphs;
       },
-      statements: [["block", "paper-card", [], [], 0, null, ["loc", [null, [1, 0], [7, 15]]]], ["block", "paper-card", [], [], 1, null, ["loc", [null, [10, 0], [17, 15]]]], ["block", "paper-card", [], [], 2, null, ["loc", [null, [19, 0], [24, 15]]]], ["block", "paper-card", [], [], 3, null, ["loc", [null, [26, 0], [32, 15]]]], ["content", "domainMin", ["loc", [null, [37, 32], [37, 45]]]], ["content", "domainMax", ["loc", [null, [37, 47], [37, 60]]]], ["content", "rangeMin", ["loc", [null, [37, 71], [37, 83]]]], ["content", "rangeMax", ["loc", [null, [37, 85], [37, 97]]]], ["block", "if", [["get", "scale.clamp", ["loc", [null, [37, 104], [37, 115]]]]], [], 4, null, ["loc", [null, [37, 98], [37, 137]]]]],
+      statements: [["block", "paper-card", [], [], 0, null, ["loc", [null, [1, 0], [7, 15]]]], ["block", "paper-card", [], [], 1, null, ["loc", [null, [9, 0], [16, 15]]]], ["block", "paper-card", [], [], 2, null, ["loc", [null, [18, 0], [23, 15]]]], ["block", "paper-card", [], [], 3, null, ["loc", [null, [25, 0], [31, 15]]]], ["content", "domainMin", ["loc", [null, [36, 32], [36, 45]]]], ["content", "domainMax", ["loc", [null, [36, 47], [36, 60]]]], ["content", "rangeMin", ["loc", [null, [36, 71], [36, 83]]]], ["content", "rangeMax", ["loc", [null, [36, 85], [36, 97]]]], ["block", "if", [["get", "scale.clamp", ["loc", [null, [36, 104], [36, 115]]]]], [], 4, null, ["loc", [null, [36, 98], [36, 137]]]]],
       locals: [],
       templates: [child0, child1, child2, child3, child4]
     };
@@ -6314,6 +6932,96 @@ define("portfolio/templates/components/transition-group", ["exports"], function 
     };
   })());
 });
+define("portfolio/templates/d3/axis", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    var child0 = (function () {
+      return {
+        meta: {
+          "fragmentReason": {
+            "name": "missing-wrapper",
+            "problems": ["wrong-type"]
+          },
+          "revision": "Ember@2.3.0",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 3,
+              "column": 0
+            }
+          },
+          "moduleName": "portfolio/templates/d3/axis.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          return morphs;
+        },
+        statements: [["content", "axis-sandbox", ["loc", [null, [2, 2], [2, 18]]]]],
+        locals: [],
+        templates: []
+      };
+    })();
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["wrong-type"]
+        },
+        "revision": "Ember@2.3.0",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 4,
+            "column": 0
+          }
+        },
+        "moduleName": "portfolio/templates/d3/axis.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        dom.insertBoundary(fragment, 0);
+        dom.insertBoundary(fragment, null);
+        return morphs;
+      },
+      statements: [["block", "paper-content", [], ["classNames", "md-padding"], 0, null, ["loc", [null, [1, 0], [3, 18]]]]],
+      locals: [],
+      templates: [child0]
+    };
+  })());
+});
 define("portfolio/templates/d3/index", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
@@ -6353,6 +7061,42 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
           templates: []
         };
       })();
+      var child1 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.3.0",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 15,
+                "column": 10
+              },
+              "end": {
+                "line": 15,
+                "column": 38
+              }
+            },
+            "moduleName": "portfolio/templates/d3/index.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode(" Axis ");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
       return {
         meta: {
           "fragmentReason": {
@@ -6367,7 +7111,7 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
               "column": 0
             },
             "end": {
-              "line": 17,
+              "line": 18,
               "column": 0
             }
           },
@@ -6410,6 +7154,12 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
           var el4 = dom.createComment("");
           dom.appendChild(el3, el4);
           dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n      ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("li");
+          var el4 = dom.createComment("");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
           var el3 = dom.createTextNode("\n    ");
           dom.appendChild(el2, el3);
           dom.appendChild(el1, el2);
@@ -6421,13 +7171,15 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
           return el0;
         },
         buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var morphs = new Array(1);
-          morphs[0] = dom.createMorphAt(dom.childAt(fragment, [5, 1, 1]), 0, 0);
+          var element0 = dom.childAt(fragment, [5, 1]);
+          var morphs = new Array(2);
+          morphs[0] = dom.createMorphAt(dom.childAt(element0, [1]), 0, 0);
+          morphs[1] = dom.createMorphAt(dom.childAt(element0, [3]), 0, 0);
           return morphs;
         },
-        statements: [["block", "link-to", ["d3.scales"], [], 0, null, ["loc", [null, [14, 10], [14, 54]]]]],
+        statements: [["block", "link-to", ["d3.scales"], [], 0, null, ["loc", [null, [14, 10], [14, 54]]]], ["block", "link-to", ["d3.axis"], [], 1, null, ["loc", [null, [15, 10], [15, 50]]]]],
         locals: [],
-        templates: [child0]
+        templates: [child0, child1]
       };
     })();
     return {
@@ -6444,7 +7196,7 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 18,
+            "line": 19,
             "column": 0
           }
         },
@@ -6467,7 +7219,7 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
         dom.insertBoundary(fragment, null);
         return morphs;
       },
-      statements: [["block", "paper-content", [], ["classNames", "md-padding"], 0, null, ["loc", [null, [1, 0], [17, 18]]]]],
+      statements: [["block", "paper-content", [], ["classNames", "md-padding"], 0, null, ["loc", [null, [1, 0], [18, 18]]]]],
       locals: [],
       templates: [child0]
     };
@@ -6776,6 +7528,42 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
           templates: []
         };
       })();
+      var child2 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.3.0",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 5,
+                "column": 4
+              },
+              "end": {
+                "line": 5,
+                "column": 55
+              }
+            },
+            "moduleName": "portfolio/templates/d3.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode(" Axis ");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
       return {
         meta: {
           "fragmentReason": {
@@ -6789,7 +7577,7 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
               "column": 0
             },
             "end": {
-              "line": 6,
+              "line": 7,
               "column": 0
             }
           },
@@ -6813,6 +7601,10 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
           dom.appendChild(el1, el2);
           var el2 = dom.createComment("");
           dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n    ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
           var el2 = dom.createTextNode("\n  ");
           dom.appendChild(el1, el2);
           dom.appendChild(el0, el1);
@@ -6822,14 +7614,15 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
         },
         buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
           var element0 = dom.childAt(fragment, [1]);
-          var morphs = new Array(2);
+          var morphs = new Array(3);
           morphs[0] = dom.createMorphAt(element0, 1, 1);
           morphs[1] = dom.createMorphAt(element0, 3, 3);
+          morphs[2] = dom.createMorphAt(element0, 5, 5);
           return morphs;
         },
-        statements: [["block", "link-to", ["d3"], [], 0, null, ["loc", [null, [3, 4], [3, 52]]]], ["block", "link-to", ["d3.scales"], ["class", "toolbar-button"], 1, null, ["loc", [null, [4, 4], [4, 71]]]]],
+        statements: [["block", "link-to", ["d3"], [], 0, null, ["loc", [null, [3, 4], [3, 52]]]], ["block", "link-to", ["d3.scales"], ["class", "toolbar-button"], 1, null, ["loc", [null, [4, 4], [4, 71]]]], ["block", "link-to", ["d3.axis"], ["class", "toolbar-button"], 2, null, ["loc", [null, [5, 4], [5, 67]]]]],
         locals: [],
-        templates: [child0, child1]
+        templates: [child0, child1, child2]
       };
     })();
     return {
@@ -6846,7 +7639,7 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 9,
+            "line": 10,
             "column": 0
           }
         },
@@ -6875,7 +7668,7 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
         dom.insertBoundary(fragment, 0);
         return morphs;
       },
-      statements: [["block", "paper-toolbar", [], [], 0, null, ["loc", [null, [1, 0], [6, 18]]]], ["content", "outlet", ["loc", [null, [8, 0], [8, 10]]]]],
+      statements: [["block", "paper-toolbar", [], [], 0, null, ["loc", [null, [1, 0], [7, 18]]]], ["content", "outlet", ["loc", [null, [9, 0], [9, 10]]]]],
       locals: [],
       templates: [child0]
     };
@@ -7557,7 +8350,7 @@ catch(err) {
 
 /* jshint ignore:start */
 if (!runningTests) {
-  require("portfolio/app")["default"].create({"name":"portfolio","version":"0.0.0+a7baef80"});
+  require("portfolio/app")["default"].create({"name":"portfolio","version":"0.0.0+f6cb3932"});
 }
 /* jshint ignore:end */
 //# sourceMappingURL=portfolio.map
