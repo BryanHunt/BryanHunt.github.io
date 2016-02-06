@@ -2694,12 +2694,12 @@ define("portfolio/templates/components/linear-scale", ["exports"], function (exp
               "loc": {
                 "source": null,
                 "start": {
-                  "line": 7,
-                  "column": 4
+                  "line": 8,
+                  "column": 6
                 },
                 "end": {
-                  "line": 7,
-                  "column": 52
+                  "line": 8,
+                  "column": 54
                 }
               },
               "moduleName": "portfolio/templates/components/linear-scale.hbs"
@@ -2730,12 +2730,12 @@ define("portfolio/templates/components/linear-scale", ["exports"], function (exp
               "loc": {
                 "source": null,
                 "start": {
-                  "line": 8,
-                  "column": 4
+                  "line": 9,
+                  "column": 6
                 },
                 "end": {
-                  "line": 8,
-                  "column": 48
+                  "line": 9,
+                  "column": 50
                 }
               },
               "moduleName": "portfolio/templates/components/linear-scale.hbs"
@@ -2765,12 +2765,12 @@ define("portfolio/templates/components/linear-scale", ["exports"], function (exp
             "loc": {
               "source": null,
               "start": {
-                "line": 5,
-                "column": 2
+                "line": 6,
+                "column": 4
               },
               "end": {
-                "line": 9,
-                "column": 2
+                "line": 10,
+                "column": 4
               }
             },
             "moduleName": "portfolio/templates/components/linear-scale.hbs"
@@ -2781,17 +2781,17 @@ define("portfolio/templates/components/linear-scale", ["exports"], function (exp
           hasRendered: false,
           buildFragment: function buildFragment(dom) {
             var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("    ");
+            var el1 = dom.createTextNode("      ");
             dom.appendChild(el0, el1);
             var el1 = dom.createElement("h3");
             var el2 = dom.createTextNode("Scale Options");
             dom.appendChild(el1, el2);
             dom.appendChild(el0, el1);
-            var el1 = dom.createTextNode("\n    ");
+            var el1 = dom.createTextNode("\n      ");
             dom.appendChild(el0, el1);
             var el1 = dom.createComment("");
             dom.appendChild(el0, el1);
-            var el1 = dom.createTextNode("\n    ");
+            var el1 = dom.createTextNode("\n      ");
             dom.appendChild(el0, el1);
             var el1 = dom.createComment("");
             dom.appendChild(el0, el1);
@@ -2805,7 +2805,7 @@ define("portfolio/templates/components/linear-scale", ["exports"], function (exp
             morphs[1] = dom.createMorphAt(fragment, 5, 5, contextualElement);
             return morphs;
           },
-          statements: [["block", "paper-checkbox", [], ["checked", ["subexpr", "@mut", [["get", "rangeRound", ["loc", [null, [7, 30], [7, 40]]]]], [], []]], 0, null, ["loc", [null, [7, 4], [7, 71]]]], ["block", "paper-checkbox", [], ["checked", ["subexpr", "@mut", [["get", "scale.clamp", ["loc", [null, [8, 30], [8, 41]]]]], [], []]], 1, null, ["loc", [null, [8, 4], [8, 67]]]]],
+          statements: [["block", "paper-checkbox", [], ["checked", ["subexpr", "@mut", [["get", "rangeRound", ["loc", [null, [8, 32], [8, 42]]]]], [], []]], 0, null, ["loc", [null, [8, 6], [8, 73]]]], ["block", "paper-checkbox", [], ["checked", ["subexpr", "@mut", [["get", "scale.clamp", ["loc", [null, [9, 32], [9, 43]]]]], [], []]], 1, null, ["loc", [null, [9, 6], [9, 69]]]]],
           locals: [],
           templates: [child0, child1]
         };
@@ -2817,12 +2817,12 @@ define("portfolio/templates/components/linear-scale", ["exports"], function (exp
           "loc": {
             "source": null,
             "start": {
-              "line": 4,
-              "column": 0
+              "line": 5,
+              "column": 2
             },
             "end": {
-              "line": 10,
-              "column": 0
+              "line": 11,
+              "column": 2
             }
           },
           "moduleName": "portfolio/templates/components/linear-scale.hbs"
@@ -2844,7 +2844,7 @@ define("portfolio/templates/components/linear-scale", ["exports"], function (exp
           dom.insertBoundary(fragment, null);
           return morphs;
         },
-        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [5, 2], [9, 25]]]]],
+        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [6, 4], [10, 27]]]]],
         locals: [],
         templates: [child0]
       };
@@ -2857,11 +2857,11 @@ define("portfolio/templates/components/linear-scale", ["exports"], function (exp
           "loc": {
             "source": null,
             "start": {
-              "line": 14,
+              "line": 16,
               "column": 98
             },
             "end": {
-              "line": 14,
+              "line": 16,
               "column": 130
             }
           },
@@ -2889,7 +2889,7 @@ define("portfolio/templates/components/linear-scale", ["exports"], function (exp
       meta: {
         "fragmentReason": {
           "name": "missing-wrapper",
-          "problems": ["wrong-type", "multiple-nodes"]
+          "problems": ["multiple-nodes"]
         },
         "revision": "Ember@2.3.0",
         "loc": {
@@ -2899,7 +2899,7 @@ define("portfolio/templates/components/linear-scale", ["exports"], function (exp
             "column": 0
           },
           "end": {
-            "line": 16,
+            "line": 18,
             "column": 0
           }
         },
@@ -2911,17 +2911,23 @@ define("portfolio/templates/components/linear-scale", ["exports"], function (exp
       hasRendered: false,
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "layout", "row");
+        dom.setAttribute(el1, "layout-sm", "column");
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("h3");
         var el2 = dom.createTextNode("Code");
@@ -2958,20 +2964,20 @@ define("portfolio/templates/components/linear-scale", ["exports"], function (exp
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element0 = dom.childAt(fragment, [8]);
+        var element0 = dom.childAt(fragment, [0]);
+        var element1 = dom.childAt(fragment, [4]);
         var morphs = new Array(8);
-        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
-        morphs[1] = dom.createMorphAt(fragment, 2, 2, contextualElement);
-        morphs[2] = dom.createMorphAt(fragment, 4, 4, contextualElement);
-        morphs[3] = dom.createMorphAt(element0, 1, 1);
-        morphs[4] = dom.createMorphAt(element0, 3, 3);
-        morphs[5] = dom.createMorphAt(element0, 5, 5);
-        morphs[6] = dom.createMorphAt(element0, 7, 7);
-        morphs[7] = dom.createMorphAt(element0, 9, 9);
-        dom.insertBoundary(fragment, 0);
+        morphs[0] = dom.createMorphAt(element0, 1, 1);
+        morphs[1] = dom.createMorphAt(element0, 3, 3);
+        morphs[2] = dom.createMorphAt(element0, 5, 5);
+        morphs[3] = dom.createMorphAt(element1, 1, 1);
+        morphs[4] = dom.createMorphAt(element1, 3, 3);
+        morphs[5] = dom.createMorphAt(element1, 5, 5);
+        morphs[6] = dom.createMorphAt(element1, 7, 7);
+        morphs[7] = dom.createMorphAt(element1, 9, 9);
         return morphs;
       },
-      statements: [["inline", "domain-range-input", [], ["domainMin", ["subexpr", "@mut", [["get", "domainMin", ["loc", [null, [1, 31], [1, 40]]]]], [], []], "domainMax", ["subexpr", "@mut", [["get", "domainMax", ["loc", [null, [1, 51], [1, 60]]]]], [], []]], ["loc", [null, [1, 0], [1, 62]]]], ["inline", "range-input", [], ["rangeMin", ["subexpr", "@mut", [["get", "rangeMin", ["loc", [null, [2, 23], [2, 31]]]]], [], []], "rangeMax", ["subexpr", "@mut", [["get", "rangeMax", ["loc", [null, [2, 41], [2, 49]]]]], [], []]], ["loc", [null, [2, 0], [2, 51]]]], ["block", "paper-card", [], [], 0, null, ["loc", [null, [4, 0], [10, 15]]]], ["content", "domainMin", ["loc", [null, [14, 32], [14, 45]]]], ["content", "domainMax", ["loc", [null, [14, 47], [14, 60]]]], ["content", "rangeMin", ["loc", [null, [14, 71], [14, 83]]]], ["content", "rangeMax", ["loc", [null, [14, 85], [14, 97]]]], ["block", "if", [["get", "scale.clamp", ["loc", [null, [14, 104], [14, 115]]]]], [], 1, null, ["loc", [null, [14, 98], [14, 137]]]]],
+      statements: [["inline", "domain-range-input", [], ["domainMin", ["subexpr", "@mut", [["get", "domainMin", ["loc", [null, [2, 33], [2, 42]]]]], [], []], "domainMax", ["subexpr", "@mut", [["get", "domainMax", ["loc", [null, [2, 53], [2, 62]]]]], [], []]], ["loc", [null, [2, 2], [2, 64]]]], ["inline", "range-input", [], ["rangeMin", ["subexpr", "@mut", [["get", "rangeMin", ["loc", [null, [3, 25], [3, 33]]]]], [], []], "rangeMax", ["subexpr", "@mut", [["get", "rangeMax", ["loc", [null, [3, 43], [3, 51]]]]], [], []]], ["loc", [null, [3, 2], [3, 53]]]], ["block", "paper-card", [], [], 0, null, ["loc", [null, [5, 2], [11, 17]]]], ["content", "domainMin", ["loc", [null, [16, 32], [16, 45]]]], ["content", "domainMax", ["loc", [null, [16, 47], [16, 60]]]], ["content", "rangeMin", ["loc", [null, [16, 71], [16, 83]]]], ["content", "rangeMax", ["loc", [null, [16, 85], [16, 97]]]], ["block", "if", [["get", "scale.clamp", ["loc", [null, [16, 104], [16, 115]]]]], [], 1, null, ["loc", [null, [16, 98], [16, 137]]]]],
       locals: [],
       templates: [child0, child1]
     };
@@ -3040,12 +3046,12 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
               "loc": {
                 "source": null,
                 "start": {
-                  "line": 7,
-                  "column": 4
+                  "line": 8,
+                  "column": 6
                 },
                 "end": {
-                  "line": 7,
-                  "column": 52
+                  "line": 8,
+                  "column": 54
                 }
               },
               "moduleName": "portfolio/templates/components/log-scale.hbs"
@@ -3076,12 +3082,12 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
               "loc": {
                 "source": null,
                 "start": {
-                  "line": 8,
-                  "column": 4
+                  "line": 9,
+                  "column": 6
                 },
                 "end": {
-                  "line": 8,
-                  "column": 48
+                  "line": 9,
+                  "column": 50
                 }
               },
               "moduleName": "portfolio/templates/components/log-scale.hbs"
@@ -3111,12 +3117,12 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
             "loc": {
               "source": null,
               "start": {
-                "line": 5,
-                "column": 2
+                "line": 6,
+                "column": 4
               },
               "end": {
-                "line": 9,
-                "column": 2
+                "line": 10,
+                "column": 4
               }
             },
             "moduleName": "portfolio/templates/components/log-scale.hbs"
@@ -3127,17 +3133,17 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
           hasRendered: false,
           buildFragment: function buildFragment(dom) {
             var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("    ");
+            var el1 = dom.createTextNode("      ");
             dom.appendChild(el0, el1);
             var el1 = dom.createElement("h3");
             var el2 = dom.createTextNode("Options");
             dom.appendChild(el1, el2);
             dom.appendChild(el0, el1);
-            var el1 = dom.createTextNode("\n    ");
+            var el1 = dom.createTextNode("\n      ");
             dom.appendChild(el0, el1);
             var el1 = dom.createComment("");
             dom.appendChild(el0, el1);
-            var el1 = dom.createTextNode("\n    ");
+            var el1 = dom.createTextNode("\n      ");
             dom.appendChild(el0, el1);
             var el1 = dom.createComment("");
             dom.appendChild(el0, el1);
@@ -3151,7 +3157,7 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
             morphs[1] = dom.createMorphAt(fragment, 5, 5, contextualElement);
             return morphs;
           },
-          statements: [["block", "paper-checkbox", [], ["checked", ["subexpr", "@mut", [["get", "rangeRound", ["loc", [null, [7, 30], [7, 40]]]]], [], []]], 0, null, ["loc", [null, [7, 4], [7, 71]]]], ["block", "paper-checkbox", [], ["checked", ["subexpr", "@mut", [["get", "scale.clamp", ["loc", [null, [8, 30], [8, 41]]]]], [], []]], 1, null, ["loc", [null, [8, 4], [8, 67]]]]],
+          statements: [["block", "paper-checkbox", [], ["checked", ["subexpr", "@mut", [["get", "rangeRound", ["loc", [null, [8, 32], [8, 42]]]]], [], []]], 0, null, ["loc", [null, [8, 6], [8, 73]]]], ["block", "paper-checkbox", [], ["checked", ["subexpr", "@mut", [["get", "scale.clamp", ["loc", [null, [9, 32], [9, 43]]]]], [], []]], 1, null, ["loc", [null, [9, 6], [9, 69]]]]],
           locals: [],
           templates: [child0, child1]
         };
@@ -3163,12 +3169,12 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
           "loc": {
             "source": null,
             "start": {
-              "line": 4,
-              "column": 0
+              "line": 5,
+              "column": 2
             },
             "end": {
-              "line": 10,
-              "column": 0
+              "line": 11,
+              "column": 2
             }
           },
           "moduleName": "portfolio/templates/components/log-scale.hbs"
@@ -3190,7 +3196,7 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
           dom.insertBoundary(fragment, null);
           return morphs;
         },
-        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [5, 2], [9, 25]]]]],
+        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [6, 4], [10, 27]]]]],
         locals: [],
         templates: [child0]
       };
@@ -3203,11 +3209,11 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
           "loc": {
             "source": null,
             "start": {
-              "line": 14,
+              "line": 16,
               "column": 95
             },
             "end": {
-              "line": 14,
+              "line": 16,
               "column": 127
             }
           },
@@ -3235,7 +3241,7 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
       meta: {
         "fragmentReason": {
           "name": "missing-wrapper",
-          "problems": ["wrong-type", "multiple-nodes"]
+          "problems": ["multiple-nodes"]
         },
         "revision": "Ember@2.3.0",
         "loc": {
@@ -3245,7 +3251,7 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
             "column": 0
           },
           "end": {
-            "line": 16,
+            "line": 18,
             "column": 0
           }
         },
@@ -3257,17 +3263,23 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
       hasRendered: false,
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "layout", "row");
+        dom.setAttribute(el1, "layout-sm", "column");
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("h3");
         var el2 = dom.createTextNode("Code");
@@ -3304,20 +3316,20 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element0 = dom.childAt(fragment, [8]);
+        var element0 = dom.childAt(fragment, [0]);
+        var element1 = dom.childAt(fragment, [4]);
         var morphs = new Array(8);
-        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
-        morphs[1] = dom.createMorphAt(fragment, 2, 2, contextualElement);
-        morphs[2] = dom.createMorphAt(fragment, 4, 4, contextualElement);
-        morphs[3] = dom.createMorphAt(element0, 1, 1);
-        morphs[4] = dom.createMorphAt(element0, 3, 3);
-        morphs[5] = dom.createMorphAt(element0, 5, 5);
-        morphs[6] = dom.createMorphAt(element0, 7, 7);
-        morphs[7] = dom.createMorphAt(element0, 9, 9);
-        dom.insertBoundary(fragment, 0);
+        morphs[0] = dom.createMorphAt(element0, 1, 1);
+        morphs[1] = dom.createMorphAt(element0, 3, 3);
+        morphs[2] = dom.createMorphAt(element0, 5, 5);
+        morphs[3] = dom.createMorphAt(element1, 1, 1);
+        morphs[4] = dom.createMorphAt(element1, 3, 3);
+        morphs[5] = dom.createMorphAt(element1, 5, 5);
+        morphs[6] = dom.createMorphAt(element1, 7, 7);
+        morphs[7] = dom.createMorphAt(element1, 9, 9);
         return morphs;
       },
-      statements: [["inline", "domain-range-input", [], ["domainMin", ["subexpr", "@mut", [["get", "domainMin", ["loc", [null, [1, 31], [1, 40]]]]], [], []], "domainMax", ["subexpr", "@mut", [["get", "domainMax", ["loc", [null, [1, 51], [1, 60]]]]], [], []]], ["loc", [null, [1, 0], [1, 62]]]], ["inline", "range-input", [], ["rangeMin", ["subexpr", "@mut", [["get", "rangeMin", ["loc", [null, [2, 24], [2, 32]]]]], [], []], "rangeMax", ["subexpr", "@mut", [["get", "rangeMax", ["loc", [null, [2, 42], [2, 50]]]]], [], []]], ["loc", [null, [2, 0], [2, 52]]]], ["block", "paper-card", [], [], 0, null, ["loc", [null, [4, 0], [10, 15]]]], ["content", "domainMin", ["loc", [null, [14, 29], [14, 42]]]], ["content", "domainMax", ["loc", [null, [14, 44], [14, 57]]]], ["content", "rangeMin", ["loc", [null, [14, 68], [14, 80]]]], ["content", "rangeMax", ["loc", [null, [14, 82], [14, 94]]]], ["block", "if", [["get", "scale.clamp", ["loc", [null, [14, 101], [14, 112]]]]], [], 1, null, ["loc", [null, [14, 95], [14, 134]]]]],
+      statements: [["inline", "domain-range-input", [], ["domainMin", ["subexpr", "@mut", [["get", "domainMin", ["loc", [null, [2, 33], [2, 42]]]]], [], []], "domainMax", ["subexpr", "@mut", [["get", "domainMax", ["loc", [null, [2, 53], [2, 62]]]]], [], []]], ["loc", [null, [2, 2], [2, 64]]]], ["inline", "range-input", [], ["rangeMin", ["subexpr", "@mut", [["get", "rangeMin", ["loc", [null, [3, 26], [3, 34]]]]], [], []], "rangeMax", ["subexpr", "@mut", [["get", "rangeMax", ["loc", [null, [3, 44], [3, 52]]]]], [], []]], ["loc", [null, [3, 2], [3, 54]]]], ["block", "paper-card", [], [], 0, null, ["loc", [null, [5, 2], [11, 17]]]], ["content", "domainMin", ["loc", [null, [16, 29], [16, 42]]]], ["content", "domainMax", ["loc", [null, [16, 44], [16, 57]]]], ["content", "rangeMin", ["loc", [null, [16, 68], [16, 80]]]], ["content", "rangeMax", ["loc", [null, [16, 82], [16, 94]]]], ["block", "if", [["get", "scale.clamp", ["loc", [null, [16, 101], [16, 112]]]]], [], 1, null, ["loc", [null, [16, 95], [16, 134]]]]],
       locals: [],
       templates: [child0, child1]
     };
@@ -3386,12 +3398,12 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
               "loc": {
                 "source": null,
                 "start": {
-                  "line": 7,
-                  "column": 4
+                  "line": 8,
+                  "column": 6
                 },
                 "end": {
-                  "line": 7,
-                  "column": 52
+                  "line": 8,
+                  "column": 54
                 }
               },
               "moduleName": "portfolio/templates/components/ordinal-scale.hbs"
@@ -3422,12 +3434,12 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
               "loc": {
                 "source": null,
                 "start": {
-                  "line": 8,
-                  "column": 4
+                  "line": 9,
+                  "column": 6
                 },
                 "end": {
-                  "line": 8,
-                  "column": 48
+                  "line": 9,
+                  "column": 50
                 }
               },
               "moduleName": "portfolio/templates/components/ordinal-scale.hbs"
@@ -3457,12 +3469,12 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
             "loc": {
               "source": null,
               "start": {
-                "line": 5,
-                "column": 2
+                "line": 6,
+                "column": 4
               },
               "end": {
-                "line": 9,
-                "column": 2
+                "line": 10,
+                "column": 4
               }
             },
             "moduleName": "portfolio/templates/components/ordinal-scale.hbs"
@@ -3473,17 +3485,17 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
           hasRendered: false,
           buildFragment: function buildFragment(dom) {
             var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("    ");
+            var el1 = dom.createTextNode("      ");
             dom.appendChild(el0, el1);
             var el1 = dom.createElement("h3");
             var el2 = dom.createTextNode("Options");
             dom.appendChild(el1, el2);
             dom.appendChild(el0, el1);
-            var el1 = dom.createTextNode("\n    ");
+            var el1 = dom.createTextNode("\n      ");
             dom.appendChild(el0, el1);
             var el1 = dom.createComment("");
             dom.appendChild(el0, el1);
-            var el1 = dom.createTextNode("\n    ");
+            var el1 = dom.createTextNode("\n      ");
             dom.appendChild(el0, el1);
             var el1 = dom.createComment("");
             dom.appendChild(el0, el1);
@@ -3497,7 +3509,7 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
             morphs[1] = dom.createMorphAt(fragment, 5, 5, contextualElement);
             return morphs;
           },
-          statements: [["block", "paper-checkbox", [], ["checked", ["subexpr", "@mut", [["get", "rangeRound", ["loc", [null, [7, 30], [7, 40]]]]], [], []]], 0, null, ["loc", [null, [7, 4], [7, 71]]]], ["block", "paper-checkbox", [], ["checked", ["subexpr", "@mut", [["get", "scale.clamp", ["loc", [null, [8, 30], [8, 41]]]]], [], []]], 1, null, ["loc", [null, [8, 4], [8, 67]]]]],
+          statements: [["block", "paper-checkbox", [], ["checked", ["subexpr", "@mut", [["get", "rangeRound", ["loc", [null, [8, 32], [8, 42]]]]], [], []]], 0, null, ["loc", [null, [8, 6], [8, 73]]]], ["block", "paper-checkbox", [], ["checked", ["subexpr", "@mut", [["get", "scale.clamp", ["loc", [null, [9, 32], [9, 43]]]]], [], []]], 1, null, ["loc", [null, [9, 6], [9, 69]]]]],
           locals: [],
           templates: [child0, child1]
         };
@@ -3509,12 +3521,12 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
           "loc": {
             "source": null,
             "start": {
-              "line": 4,
-              "column": 0
+              "line": 5,
+              "column": 2
             },
             "end": {
-              "line": 10,
-              "column": 0
+              "line": 11,
+              "column": 2
             }
           },
           "moduleName": "portfolio/templates/components/ordinal-scale.hbs"
@@ -3536,7 +3548,7 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
           dom.insertBoundary(fragment, null);
           return morphs;
         },
-        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [5, 2], [9, 25]]]]],
+        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [6, 4], [10, 27]]]]],
         locals: [],
         templates: [child0]
       };
@@ -3550,11 +3562,11 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
             "loc": {
               "source": null,
               "start": {
-                "line": 14,
+                "line": 16,
                 "column": 78
               },
               "end": {
-                "line": 14,
+                "line": 16,
                 "column": 121
               }
             },
@@ -3585,11 +3597,11 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
           "loc": {
             "source": null,
             "start": {
-              "line": 14,
+              "line": 16,
               "column": 33
             },
             "end": {
-              "line": 14,
+              "line": 16,
               "column": 132
             }
           },
@@ -3615,7 +3627,7 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
           dom.insertBoundary(fragment, null);
           return morphs;
         },
-        statements: [["content", "item", ["loc", [null, [14, 70], [14, 78]]]], ["block", "unless", [["subexpr", "last-item", [["get", "domainItems", ["loc", [null, [14, 99], [14, 110]]]], ["get", "index", ["loc", [null, [14, 111], [14, 116]]]]], [], ["loc", [null, [14, 88], [14, 117]]]]], [], 0, null, ["loc", [null, [14, 78], [14, 132]]]]],
+        statements: [["content", "item", ["loc", [null, [16, 70], [16, 78]]]], ["block", "unless", [["subexpr", "last-item", [["get", "domainItems", ["loc", [null, [16, 99], [16, 110]]]], ["get", "index", ["loc", [null, [16, 111], [16, 116]]]]], [], ["loc", [null, [16, 88], [16, 117]]]]], [], 0, null, ["loc", [null, [16, 78], [16, 132]]]]],
         locals: ["item", "index"],
         templates: [child0]
       };
@@ -3628,11 +3640,11 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
           "loc": {
             "source": null,
             "start": {
-              "line": 14,
+              "line": 16,
               "column": 185
             },
             "end": {
-              "line": 14,
+              "line": 16,
               "column": 217
             }
           },
@@ -3660,7 +3672,7 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
       meta: {
         "fragmentReason": {
           "name": "missing-wrapper",
-          "problems": ["wrong-type", "multiple-nodes"]
+          "problems": ["multiple-nodes"]
         },
         "revision": "Ember@2.3.0",
         "loc": {
@@ -3670,7 +3682,7 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
             "column": 0
           },
           "end": {
-            "line": 16,
+            "line": 18,
             "column": 0
           }
         },
@@ -3682,17 +3694,23 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
       hasRendered: false,
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "layout", "row");
+        dom.setAttribute(el1, "layout-sm", "column");
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("h3");
         var el2 = dom.createTextNode("Code");
@@ -3725,19 +3743,19 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element0 = dom.childAt(fragment, [8]);
+        var element0 = dom.childAt(fragment, [0]);
+        var element1 = dom.childAt(fragment, [4]);
         var morphs = new Array(7);
-        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
-        morphs[1] = dom.createMorphAt(fragment, 2, 2, contextualElement);
-        morphs[2] = dom.createMorphAt(fragment, 4, 4, contextualElement);
-        morphs[3] = dom.createMorphAt(element0, 1, 1);
-        morphs[4] = dom.createMorphAt(element0, 3, 3);
-        morphs[5] = dom.createMorphAt(element0, 5, 5);
-        morphs[6] = dom.createMorphAt(element0, 7, 7);
-        dom.insertBoundary(fragment, 0);
+        morphs[0] = dom.createMorphAt(element0, 1, 1);
+        morphs[1] = dom.createMorphAt(element0, 3, 3);
+        morphs[2] = dom.createMorphAt(element0, 5, 5);
+        morphs[3] = dom.createMorphAt(element1, 1, 1);
+        morphs[4] = dom.createMorphAt(element1, 3, 3);
+        morphs[5] = dom.createMorphAt(element1, 5, 5);
+        morphs[6] = dom.createMorphAt(element1, 7, 7);
         return morphs;
       },
-      statements: [["inline", "domain-list-input", [], ["domainItems", ["subexpr", "@mut", [["get", "domainItems", ["loc", [null, [1, 32], [1, 43]]]]], [], []]], ["loc", [null, [1, 0], [1, 45]]]], ["inline", "range-input", [], ["rangeMin", ["subexpr", "@mut", [["get", "rangeMin", ["loc", [null, [2, 24], [2, 32]]]]], [], []], "rangeMax", ["subexpr", "@mut", [["get", "rangeMax", ["loc", [null, [2, 42], [2, 50]]]]], [], []]], ["loc", [null, [2, 0], [2, 52]]]], ["block", "paper-card", [], [], 0, null, ["loc", [null, [4, 0], [10, 15]]]], ["block", "each", [["get", "domainItems", ["loc", [null, [14, 41], [14, 52]]]]], [], 1, null, ["loc", [null, [14, 33], [14, 141]]]], ["content", "rangeMin", ["loc", [null, [14, 158], [14, 170]]]], ["content", "rangeMax", ["loc", [null, [14, 172], [14, 184]]]], ["block", "if", [["get", "scale.clamp", ["loc", [null, [14, 191], [14, 202]]]]], [], 2, null, ["loc", [null, [14, 185], [14, 224]]]]],
+      statements: [["inline", "domain-list-input", [], ["domainItems", ["subexpr", "@mut", [["get", "domainItems", ["loc", [null, [2, 34], [2, 45]]]]], [], []]], ["loc", [null, [2, 2], [2, 47]]]], ["inline", "range-input", [], ["rangeMin", ["subexpr", "@mut", [["get", "rangeMin", ["loc", [null, [3, 26], [3, 34]]]]], [], []], "rangeMax", ["subexpr", "@mut", [["get", "rangeMax", ["loc", [null, [3, 44], [3, 52]]]]], [], []]], ["loc", [null, [3, 2], [3, 54]]]], ["block", "paper-card", [], [], 0, null, ["loc", [null, [5, 2], [11, 17]]]], ["block", "each", [["get", "domainItems", ["loc", [null, [16, 41], [16, 52]]]]], [], 1, null, ["loc", [null, [16, 33], [16, 141]]]], ["content", "rangeMin", ["loc", [null, [16, 158], [16, 170]]]], ["content", "rangeMax", ["loc", [null, [16, 172], [16, 184]]]], ["block", "if", [["get", "scale.clamp", ["loc", [null, [16, 191], [16, 202]]]]], [], 2, null, ["loc", [null, [16, 185], [16, 224]]]]],
       locals: [],
       templates: [child0, child1, child2]
     };
@@ -8121,12 +8139,12 @@ define("portfolio/templates/components/pow-scale", ["exports"], function (export
             "loc": {
               "source": null,
               "start": {
-                "line": 5,
-                "column": 2
+                "line": 6,
+                "column": 4
               },
               "end": {
-                "line": 8,
-                "column": 2
+                "line": 9,
+                "column": 4
               }
             },
             "moduleName": "portfolio/templates/components/pow-scale.hbs"
@@ -8137,13 +8155,13 @@ define("portfolio/templates/components/pow-scale", ["exports"], function (export
           hasRendered: false,
           buildFragment: function buildFragment(dom) {
             var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("    ");
+            var el1 = dom.createTextNode("      ");
             dom.appendChild(el0, el1);
             var el1 = dom.createElement("h3");
             var el2 = dom.createTextNode("Options");
             dom.appendChild(el1, el2);
             dom.appendChild(el0, el1);
-            var el1 = dom.createTextNode("\n    ");
+            var el1 = dom.createTextNode("\n      ");
             dom.appendChild(el0, el1);
             var el1 = dom.createComment("");
             dom.appendChild(el0, el1);
@@ -8156,7 +8174,7 @@ define("portfolio/templates/components/pow-scale", ["exports"], function (export
             morphs[0] = dom.createMorphAt(fragment, 3, 3, contextualElement);
             return morphs;
           },
-          statements: [["inline", "paper-input", [], ["value", ["subexpr", "@mut", [["get", "scale.exponent", ["loc", [null, [7, 24], [7, 38]]]]], [], []], "label", "Exponent"], ["loc", [null, [7, 4], [7, 57]]]]],
+          statements: [["inline", "paper-input", [], ["value", ["subexpr", "@mut", [["get", "scale.exponent", ["loc", [null, [8, 26], [8, 40]]]]], [], []], "label", "Exponent"], ["loc", [null, [8, 6], [8, 59]]]]],
           locals: [],
           templates: []
         };
@@ -8168,12 +8186,12 @@ define("portfolio/templates/components/pow-scale", ["exports"], function (export
           "loc": {
             "source": null,
             "start": {
-              "line": 4,
-              "column": 0
+              "line": 5,
+              "column": 2
             },
             "end": {
-              "line": 9,
-              "column": 0
+              "line": 10,
+              "column": 2
             }
           },
           "moduleName": "portfolio/templates/components/pow-scale.hbs"
@@ -8195,7 +8213,7 @@ define("portfolio/templates/components/pow-scale", ["exports"], function (export
           dom.insertBoundary(fragment, null);
           return morphs;
         },
-        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [5, 2], [8, 25]]]]],
+        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [6, 4], [9, 27]]]]],
         locals: [],
         templates: [child0]
       };
@@ -8208,11 +8226,11 @@ define("portfolio/templates/components/pow-scale", ["exports"], function (export
           "loc": {
             "source": null,
             "start": {
-              "line": 13,
+              "line": 15,
               "column": 125
             },
             "end": {
-              "line": 13,
+              "line": 15,
               "column": 157
             }
           },
@@ -8240,7 +8258,7 @@ define("portfolio/templates/components/pow-scale", ["exports"], function (export
       meta: {
         "fragmentReason": {
           "name": "missing-wrapper",
-          "problems": ["wrong-type", "multiple-nodes"]
+          "problems": ["multiple-nodes"]
         },
         "revision": "Ember@2.3.0",
         "loc": {
@@ -8250,7 +8268,7 @@ define("portfolio/templates/components/pow-scale", ["exports"], function (export
             "column": 0
           },
           "end": {
-            "line": 15,
+            "line": 17,
             "column": 0
           }
         },
@@ -8262,17 +8280,23 @@ define("portfolio/templates/components/pow-scale", ["exports"], function (export
       hasRendered: false,
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "layout", "row");
+        dom.setAttribute(el1, "layout-sm", "column");
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("h3");
         var el2 = dom.createTextNode("Code");
@@ -8311,21 +8335,21 @@ define("portfolio/templates/components/pow-scale", ["exports"], function (export
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element0 = dom.childAt(fragment, [8]);
+        var element0 = dom.childAt(fragment, [0]);
+        var element1 = dom.childAt(fragment, [4]);
         var morphs = new Array(9);
-        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
-        morphs[1] = dom.createMorphAt(fragment, 2, 2, contextualElement);
-        morphs[2] = dom.createMorphAt(fragment, 4, 4, contextualElement);
-        morphs[3] = dom.createMorphAt(element0, 1, 1);
-        morphs[4] = dom.createMorphAt(element0, 3, 3);
-        morphs[5] = dom.createMorphAt(element0, 5, 5);
-        morphs[6] = dom.createMorphAt(element0, 7, 7);
-        morphs[7] = dom.createMorphAt(element0, 9, 9);
-        morphs[8] = dom.createMorphAt(element0, 10, 10);
-        dom.insertBoundary(fragment, 0);
+        morphs[0] = dom.createMorphAt(element0, 1, 1);
+        morphs[1] = dom.createMorphAt(element0, 3, 3);
+        morphs[2] = dom.createMorphAt(element0, 5, 5);
+        morphs[3] = dom.createMorphAt(element1, 1, 1);
+        morphs[4] = dom.createMorphAt(element1, 3, 3);
+        morphs[5] = dom.createMorphAt(element1, 5, 5);
+        morphs[6] = dom.createMorphAt(element1, 7, 7);
+        morphs[7] = dom.createMorphAt(element1, 9, 9);
+        morphs[8] = dom.createMorphAt(element1, 10, 10);
         return morphs;
       },
-      statements: [["inline", "domain-range-input", [], ["domainMin", ["subexpr", "@mut", [["get", "domainMin", ["loc", [null, [1, 31], [1, 40]]]]], [], []], "domainMax", ["subexpr", "@mut", [["get", "domainMax", ["loc", [null, [1, 51], [1, 60]]]]], [], []]], ["loc", [null, [1, 0], [1, 62]]]], ["inline", "range-input", [], ["rangeMin", ["subexpr", "@mut", [["get", "rangeMin", ["loc", [null, [2, 23], [2, 31]]]]], [], []], "rangeMax", ["subexpr", "@mut", [["get", "rangeMax", ["loc", [null, [2, 41], [2, 49]]]]], [], []]], ["loc", [null, [2, 0], [2, 51]]]], ["block", "paper-card", [], [], 0, null, ["loc", [null, [4, 0], [9, 15]]]], ["content", "domainMin", ["loc", [null, [13, 29], [13, 42]]]], ["content", "domainMax", ["loc", [null, [13, 44], [13, 57]]]], ["content", "rangeMin", ["loc", [null, [13, 68], [13, 80]]]], ["content", "rangeMax", ["loc", [null, [13, 82], [13, 94]]]], ["content", "scale.exponent", ["loc", [null, [13, 107], [13, 125]]]], ["block", "if", [["get", "scale.clamp", ["loc", [null, [13, 131], [13, 142]]]]], [], 1, null, ["loc", [null, [13, 125], [13, 164]]]]],
+      statements: [["inline", "domain-range-input", [], ["domainMin", ["subexpr", "@mut", [["get", "domainMin", ["loc", [null, [2, 33], [2, 42]]]]], [], []], "domainMax", ["subexpr", "@mut", [["get", "domainMax", ["loc", [null, [2, 53], [2, 62]]]]], [], []]], ["loc", [null, [2, 2], [2, 64]]]], ["inline", "range-input", [], ["rangeMin", ["subexpr", "@mut", [["get", "rangeMin", ["loc", [null, [3, 25], [3, 33]]]]], [], []], "rangeMax", ["subexpr", "@mut", [["get", "rangeMax", ["loc", [null, [3, 43], [3, 51]]]]], [], []]], ["loc", [null, [3, 2], [3, 53]]]], ["block", "paper-card", [], [], 0, null, ["loc", [null, [5, 2], [10, 17]]]], ["content", "domainMin", ["loc", [null, [15, 29], [15, 42]]]], ["content", "domainMax", ["loc", [null, [15, 44], [15, 57]]]], ["content", "rangeMin", ["loc", [null, [15, 68], [15, 80]]]], ["content", "rangeMax", ["loc", [null, [15, 82], [15, 94]]]], ["content", "scale.exponent", ["loc", [null, [15, 107], [15, 125]]]], ["block", "if", [["get", "scale.clamp", ["loc", [null, [15, 131], [15, 142]]]]], [], 1, null, ["loc", [null, [15, 125], [15, 164]]]]],
       locals: [],
       templates: [child0, child1]
     };
@@ -8667,48 +8691,6 @@ define("portfolio/templates/components/sqrt-scale-sandbox", ["exports"], functio
 define("portfolio/templates/components/sqrt-scale", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
-      var child0 = (function () {
-        return {
-          meta: {
-            "fragmentReason": false,
-            "revision": "Ember@2.3.0",
-            "loc": {
-              "source": null,
-              "start": {
-                "line": 5,
-                "column": 2
-              },
-              "end": {
-                "line": 7,
-                "column": 2
-              }
-            },
-            "moduleName": "portfolio/templates/components/sqrt-scale.hbs"
-          },
-          isEmpty: false,
-          arity: 0,
-          cachedFragment: null,
-          hasRendered: false,
-          buildFragment: function buildFragment(dom) {
-            var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("    ");
-            dom.appendChild(el0, el1);
-            var el1 = dom.createElement("h3");
-            var el2 = dom.createTextNode("Options");
-            dom.appendChild(el1, el2);
-            dom.appendChild(el0, el1);
-            var el1 = dom.createTextNode("\n");
-            dom.appendChild(el0, el1);
-            return el0;
-          },
-          buildRenderNodes: function buildRenderNodes() {
-            return [];
-          },
-          statements: [],
-          locals: [],
-          templates: []
-        };
-      })();
       return {
         meta: {
           "fragmentReason": false,
@@ -8716,51 +8698,11 @@ define("portfolio/templates/components/sqrt-scale", ["exports"], function (expor
           "loc": {
             "source": null,
             "start": {
-              "line": 4,
-              "column": 0
-            },
-            "end": {
               "line": 8,
-              "column": 0
-            }
-          },
-          "moduleName": "portfolio/templates/components/sqrt-scale.hbs"
-        },
-        isEmpty: false,
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createComment("");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var morphs = new Array(1);
-          morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
-          dom.insertBoundary(fragment, 0);
-          dom.insertBoundary(fragment, null);
-          return morphs;
-        },
-        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [5, 2], [7, 25]]]]],
-        locals: [],
-        templates: [child0]
-      };
-    })();
-    var child1 = (function () {
-      return {
-        meta: {
-          "fragmentReason": false,
-          "revision": "Ember@2.3.0",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 12,
               "column": 96
             },
             "end": {
-              "line": 12,
+              "line": 8,
               "column": 128
             }
           },
@@ -8788,7 +8730,7 @@ define("portfolio/templates/components/sqrt-scale", ["exports"], function (expor
       meta: {
         "fragmentReason": {
           "name": "missing-wrapper",
-          "problems": ["wrong-type", "multiple-nodes"]
+          "problems": ["multiple-nodes"]
         },
         "revision": "Ember@2.3.0",
         "loc": {
@@ -8798,7 +8740,7 @@ define("portfolio/templates/components/sqrt-scale", ["exports"], function (expor
             "column": 0
           },
           "end": {
-            "line": 14,
+            "line": 10,
             "column": 0
           }
         },
@@ -8810,17 +8752,21 @@ define("portfolio/templates/components/sqrt-scale", ["exports"], function (expor
       hasRendered: false,
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "layout", "row");
+        dom.setAttribute(el1, "layout-sm", "column");
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("h3");
         var el2 = dom.createTextNode("Code");
@@ -8857,22 +8803,21 @@ define("portfolio/templates/components/sqrt-scale", ["exports"], function (expor
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element0 = dom.childAt(fragment, [8]);
-        var morphs = new Array(8);
-        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
-        morphs[1] = dom.createMorphAt(fragment, 2, 2, contextualElement);
-        morphs[2] = dom.createMorphAt(fragment, 4, 4, contextualElement);
-        morphs[3] = dom.createMorphAt(element0, 1, 1);
-        morphs[4] = dom.createMorphAt(element0, 3, 3);
-        morphs[5] = dom.createMorphAt(element0, 5, 5);
-        morphs[6] = dom.createMorphAt(element0, 7, 7);
-        morphs[7] = dom.createMorphAt(element0, 9, 9);
-        dom.insertBoundary(fragment, 0);
+        var element0 = dom.childAt(fragment, [0]);
+        var element1 = dom.childAt(fragment, [4]);
+        var morphs = new Array(7);
+        morphs[0] = dom.createMorphAt(element0, 1, 1);
+        morphs[1] = dom.createMorphAt(element0, 3, 3);
+        morphs[2] = dom.createMorphAt(element1, 1, 1);
+        morphs[3] = dom.createMorphAt(element1, 3, 3);
+        morphs[4] = dom.createMorphAt(element1, 5, 5);
+        morphs[5] = dom.createMorphAt(element1, 7, 7);
+        morphs[6] = dom.createMorphAt(element1, 9, 9);
         return morphs;
       },
-      statements: [["inline", "domain-range-input", [], ["domainMin", ["subexpr", "@mut", [["get", "domainMin", ["loc", [null, [1, 31], [1, 40]]]]], [], []], "domainMax", ["subexpr", "@mut", [["get", "domainMax", ["loc", [null, [1, 51], [1, 60]]]]], [], []]], ["loc", [null, [1, 0], [1, 62]]]], ["inline", "range-input", [], ["rangeMin", ["subexpr", "@mut", [["get", "rangeMin", ["loc", [null, [2, 24], [2, 32]]]]], [], []], "rangeMax", ["subexpr", "@mut", [["get", "rangeMax", ["loc", [null, [2, 42], [2, 50]]]]], [], []]], ["loc", [null, [2, 0], [2, 52]]]], ["block", "paper-card", [], [], 0, null, ["loc", [null, [4, 0], [8, 15]]]], ["content", "domainMin", ["loc", [null, [12, 30], [12, 43]]]], ["content", "domainMax", ["loc", [null, [12, 45], [12, 58]]]], ["content", "rangeMin", ["loc", [null, [12, 69], [12, 81]]]], ["content", "rangeMax", ["loc", [null, [12, 83], [12, 95]]]], ["block", "if", [["get", "scale.clamp", ["loc", [null, [12, 102], [12, 113]]]]], [], 1, null, ["loc", [null, [12, 96], [12, 135]]]]],
+      statements: [["inline", "domain-range-input", [], ["domainMin", ["subexpr", "@mut", [["get", "domainMin", ["loc", [null, [2, 33], [2, 42]]]]], [], []], "domainMax", ["subexpr", "@mut", [["get", "domainMax", ["loc", [null, [2, 53], [2, 62]]]]], [], []]], ["loc", [null, [2, 2], [2, 64]]]], ["inline", "range-input", [], ["rangeMin", ["subexpr", "@mut", [["get", "rangeMin", ["loc", [null, [3, 26], [3, 34]]]]], [], []], "rangeMax", ["subexpr", "@mut", [["get", "rangeMax", ["loc", [null, [3, 44], [3, 52]]]]], [], []]], ["loc", [null, [3, 2], [3, 54]]]], ["content", "domainMin", ["loc", [null, [8, 30], [8, 43]]]], ["content", "domainMax", ["loc", [null, [8, 45], [8, 58]]]], ["content", "rangeMin", ["loc", [null, [8, 69], [8, 81]]]], ["content", "rangeMax", ["loc", [null, [8, 83], [8, 95]]]], ["block", "if", [["get", "scale.clamp", ["loc", [null, [8, 102], [8, 113]]]]], [], 0, null, ["loc", [null, [8, 96], [8, 135]]]]],
       locals: [],
-      templates: [child0, child1]
+      templates: [child0]
     };
   })());
 });
@@ -10944,7 +10889,7 @@ catch(err) {
 
 /* jshint ignore:start */
 if (!runningTests) {
-  require("portfolio/app")["default"].create({"name":"portfolio","version":"0.0.0+0ffee6b7"});
+  require("portfolio/app")["default"].create({"name":"portfolio","version":"0.0.0+d4fa972b"});
 }
 /* jshint ignore:end */
 //# sourceMappingURL=portfolio.map
