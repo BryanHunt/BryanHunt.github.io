@@ -40,7 +40,7 @@ define('portfolio/tests/components/linear-scale-sandbox.jshint', ['exports'], fu
   QUnit.module('JSHint - components');
   QUnit.test('components/linear-scale-sandbox.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'components/linear-scale-sandbox.js should pass jshint.\ncomponents/linear-scale-sandbox.js: line 1, col 8, \'Ember\' is defined but never used.\ncomponents/linear-scale-sandbox.js: line 3, col 8, \'LinearScale\' is defined but never used.\n\n2 errors');
+    assert.ok(true, 'components/linear-scale-sandbox.js should pass jshint.');
   });
 });
 define('portfolio/tests/components/linear-scale.jshint', ['exports'], function (exports) {
@@ -58,7 +58,7 @@ define('portfolio/tests/components/log-scale-sandbox.jshint', ['exports'], funct
   QUnit.module('JSHint - components');
   QUnit.test('components/log-scale-sandbox.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'components/log-scale-sandbox.js should pass jshint.\ncomponents/log-scale-sandbox.js: line 1, col 8, \'Ember\' is defined but never used.\ncomponents/log-scale-sandbox.js: line 3, col 8, \'LogScale\' is defined but never used.\n\n2 errors');
+    assert.ok(true, 'components/log-scale-sandbox.js should pass jshint.');
   });
 });
 define('portfolio/tests/components/log-scale.jshint', ['exports'], function (exports) {
@@ -76,7 +76,7 @@ define('portfolio/tests/components/ordinal-scale-sandbox.jshint', ['exports'], f
   QUnit.module('JSHint - components');
   QUnit.test('components/ordinal-scale-sandbox.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'components/ordinal-scale-sandbox.js should pass jshint.\ncomponents/ordinal-scale-sandbox.js: line 1, col 8, \'Ember\' is defined but never used.\ncomponents/ordinal-scale-sandbox.js: line 3, col 8, \'OrdinalScale\' is defined but never used.\n\n2 errors');
+    assert.ok(true, 'components/ordinal-scale-sandbox.js should pass jshint.');
   });
 });
 define('portfolio/tests/components/ordinal-scale.jshint', ['exports'], function (exports) {
@@ -94,7 +94,7 @@ define('portfolio/tests/components/pow-scale-sandbox.jshint', ['exports'], funct
   QUnit.module('JSHint - components');
   QUnit.test('components/pow-scale-sandbox.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'components/pow-scale-sandbox.js should pass jshint.\ncomponents/pow-scale-sandbox.js: line 1, col 8, \'Ember\' is defined but never used.\ncomponents/pow-scale-sandbox.js: line 3, col 8, \'PowScale\' is defined but never used.\n\n2 errors');
+    assert.ok(true, 'components/pow-scale-sandbox.js should pass jshint.');
   });
 });
 define('portfolio/tests/components/pow-scale.jshint', ['exports'], function (exports) {
@@ -139,7 +139,7 @@ define('portfolio/tests/components/sqrt-scale-sandbox.jshint', ['exports'], func
   QUnit.module('JSHint - components');
   QUnit.test('components/sqrt-scale-sandbox.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'components/sqrt-scale-sandbox.js should pass jshint.\ncomponents/sqrt-scale-sandbox.js: line 1, col 8, \'Ember\' is defined but never used.\ncomponents/sqrt-scale-sandbox.js: line 3, col 8, \'SqrtScale\' is defined but never used.\n\n2 errors');
+    assert.ok(true, 'components/sqrt-scale-sandbox.js should pass jshint.');
   });
 });
 define('portfolio/tests/components/sqrt-scale.jshint', ['exports'], function (exports) {

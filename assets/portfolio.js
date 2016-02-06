@@ -119,7 +119,7 @@ define('portfolio/components/ember-wormhole', ['exports', 'ember-wormhole/compon
     }
   });
 });
-define('portfolio/components/linear-scale-sandbox', ['exports', 'ember', 'portfolio/components/scale-sandbox', 'portfolio/utils/scales/d3-linear-scale'], function (exports, _ember, _portfolioComponentsScaleSandbox, _portfolioUtilsScalesD3LinearScale) {
+define('portfolio/components/linear-scale-sandbox', ['exports', 'portfolio/components/scale-sandbox'], function (exports, _portfolioComponentsScaleSandbox) {
   exports['default'] = _portfolioComponentsScaleSandbox['default'].extend({
     input: 50
   });
@@ -155,7 +155,7 @@ define('portfolio/components/linear-scale', ['exports', 'ember', 'portfolio/util
     }))
   });
 });
-define('portfolio/components/log-scale-sandbox', ['exports', 'ember', 'portfolio/components/scale-sandbox', 'portfolio/utils/scales/d3-log-scale'], function (exports, _ember, _portfolioComponentsScaleSandbox, _portfolioUtilsScalesD3LogScale) {
+define('portfolio/components/log-scale-sandbox', ['exports', 'portfolio/components/scale-sandbox'], function (exports, _portfolioComponentsScaleSandbox) {
   exports['default'] = _portfolioComponentsScaleSandbox['default'].extend({
     input: 50
   });
@@ -191,7 +191,7 @@ define('portfolio/components/log-scale', ['exports', 'ember', 'portfolio/utils/s
     }))
   });
 });
-define('portfolio/components/ordinal-scale-sandbox', ['exports', 'ember', 'portfolio/components/scale-sandbox', 'portfolio/utils/scales/d3-ordinal-scale'], function (exports, _ember, _portfolioComponentsScaleSandbox, _portfolioUtilsScalesD3OrdinalScale) {
+define('portfolio/components/ordinal-scale-sandbox', ['exports', 'portfolio/components/scale-sandbox'], function (exports, _portfolioComponentsScaleSandbox) {
   exports['default'] = _portfolioComponentsScaleSandbox['default'].extend({
     init: function init() {
       this._super.apply(this, arguments);
@@ -455,7 +455,7 @@ define('portfolio/components/paper-switch', ['exports', 'ember-paper/components/
 define('portfolio/components/paper-toolbar', ['exports', 'ember-paper/components/paper-toolbar'], function (exports, _emberPaperComponentsPaperToolbar) {
   exports['default'] = _emberPaperComponentsPaperToolbar['default'];
 });
-define('portfolio/components/pow-scale-sandbox', ['exports', 'ember', 'portfolio/components/scale-sandbox', 'portfolio/utils/scales/d3-pow-scale'], function (exports, _ember, _portfolioComponentsScaleSandbox, _portfolioUtilsScalesD3PowScale) {
+define('portfolio/components/pow-scale-sandbox', ['exports', 'portfolio/components/scale-sandbox'], function (exports, _portfolioComponentsScaleSandbox) {
   exports['default'] = _portfolioComponentsScaleSandbox['default'].extend({
     input: 50
   });
@@ -516,7 +516,7 @@ define('portfolio/components/split-sash', ['exports', 'ember-split-view/componen
 define('portfolio/components/split-view', ['exports', 'ember-split-view/components/split-view'], function (exports, _emberSplitViewComponentsSplitView) {
   exports['default'] = _emberSplitViewComponentsSplitView['default'];
 });
-define('portfolio/components/sqrt-scale-sandbox', ['exports', 'ember', 'portfolio/components/scale-sandbox', 'portfolio/utils/scales/d3-sqrt-scale'], function (exports, _ember, _portfolioComponentsScaleSandbox, _portfolioUtilsScalesD3SqrtScale) {
+define('portfolio/components/sqrt-scale-sandbox', ['exports', 'portfolio/components/scale-sandbox'], function (exports, _portfolioComponentsScaleSandbox) {
   exports['default'] = _portfolioComponentsScaleSandbox['default'].extend({
     input: 50
   });
@@ -3203,11 +3203,11 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
           "loc": {
             "source": null,
             "start": {
-              "line": 16,
+              "line": 14,
               "column": 95
             },
             "end": {
-              "line": 16,
+              "line": 14,
               "column": 127
             }
           },
@@ -3245,7 +3245,7 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
             "column": 0
           },
           "end": {
-            "line": 18,
+            "line": 16,
             "column": 0
           }
         },
@@ -3268,10 +3268,6 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
         var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("h3");
         var el2 = dom.createTextNode("Code");
@@ -3308,21 +3304,20 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element0 = dom.childAt(fragment, [10]);
-        var morphs = new Array(9);
+        var element0 = dom.childAt(fragment, [8]);
+        var morphs = new Array(8);
         morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
         morphs[1] = dom.createMorphAt(fragment, 2, 2, contextualElement);
         morphs[2] = dom.createMorphAt(fragment, 4, 4, contextualElement);
-        morphs[3] = dom.createMorphAt(fragment, 6, 6, contextualElement);
-        morphs[4] = dom.createMorphAt(element0, 1, 1);
-        morphs[5] = dom.createMorphAt(element0, 3, 3);
-        morphs[6] = dom.createMorphAt(element0, 5, 5);
-        morphs[7] = dom.createMorphAt(element0, 7, 7);
-        morphs[8] = dom.createMorphAt(element0, 9, 9);
+        morphs[3] = dom.createMorphAt(element0, 1, 1);
+        morphs[4] = dom.createMorphAt(element0, 3, 3);
+        morphs[5] = dom.createMorphAt(element0, 5, 5);
+        morphs[6] = dom.createMorphAt(element0, 7, 7);
+        morphs[7] = dom.createMorphAt(element0, 9, 9);
         dom.insertBoundary(fragment, 0);
         return morphs;
       },
-      statements: [["inline", "domain-range-input", [], ["domainMin", ["subexpr", "@mut", [["get", "domainMin", ["loc", [null, [1, 31], [1, 40]]]]], [], []], "domainMax", ["subexpr", "@mut", [["get", "domainMax", ["loc", [null, [1, 51], [1, 60]]]]], [], []]], ["loc", [null, [1, 0], [1, 62]]]], ["inline", "range-input", [], ["rangeMin", ["subexpr", "@mut", [["get", "rangeMin", ["loc", [null, [2, 24], [2, 32]]]]], [], []], "rangeMax", ["subexpr", "@mut", [["get", "rangeMax", ["loc", [null, [2, 42], [2, 50]]]]], [], []]], ["loc", [null, [2, 0], [2, 52]]]], ["block", "paper-card", [], [], 0, null, ["loc", [null, [4, 0], [10, 15]]]], ["inline", "scale-input", [], ["input", ["subexpr", "@mut", [["get", "input", ["loc", [null, [12, 20], [12, 25]]]]], [], []], "scaledValue", ["subexpr", "@mut", [["get", "scaledValue", ["loc", [null, [12, 38], [12, 49]]]]], [], []]], ["loc", [null, [12, 0], [12, 51]]]], ["content", "domainMin", ["loc", [null, [16, 29], [16, 42]]]], ["content", "domainMax", ["loc", [null, [16, 44], [16, 57]]]], ["content", "rangeMin", ["loc", [null, [16, 68], [16, 80]]]], ["content", "rangeMax", ["loc", [null, [16, 82], [16, 94]]]], ["block", "if", [["get", "scale.clamp", ["loc", [null, [16, 101], [16, 112]]]]], [], 1, null, ["loc", [null, [16, 95], [16, 134]]]]],
+      statements: [["inline", "domain-range-input", [], ["domainMin", ["subexpr", "@mut", [["get", "domainMin", ["loc", [null, [1, 31], [1, 40]]]]], [], []], "domainMax", ["subexpr", "@mut", [["get", "domainMax", ["loc", [null, [1, 51], [1, 60]]]]], [], []]], ["loc", [null, [1, 0], [1, 62]]]], ["inline", "range-input", [], ["rangeMin", ["subexpr", "@mut", [["get", "rangeMin", ["loc", [null, [2, 24], [2, 32]]]]], [], []], "rangeMax", ["subexpr", "@mut", [["get", "rangeMax", ["loc", [null, [2, 42], [2, 50]]]]], [], []]], ["loc", [null, [2, 0], [2, 52]]]], ["block", "paper-card", [], [], 0, null, ["loc", [null, [4, 0], [10, 15]]]], ["content", "domainMin", ["loc", [null, [14, 29], [14, 42]]]], ["content", "domainMax", ["loc", [null, [14, 44], [14, 57]]]], ["content", "rangeMin", ["loc", [null, [14, 68], [14, 80]]]], ["content", "rangeMax", ["loc", [null, [14, 82], [14, 94]]]], ["block", "if", [["get", "scale.clamp", ["loc", [null, [14, 101], [14, 112]]]]], [], 1, null, ["loc", [null, [14, 95], [14, 134]]]]],
       locals: [],
       templates: [child0, child1]
     };
