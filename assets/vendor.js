@@ -79744,25 +79744,16 @@ define('ember-d3-components/components/d3-grid', ['exports', 'ember', 'ember-d3-
       this.set('tickFormat', "");
     },
 
-    updateTransform: on('init', observer('width', 'height', 'orientation', function () {
+    parametersChanged: on('init', observer('width', 'height', 'orientation', function () {
       _ember['default'].run.once(this, this.updateGrid);
     })),
 
     updateGrid: function updateGrid() {
       var orientation = this.get('orientation');
-      var translateY = 0;
-      var yOffset = this.get('yOffset');
-
-      if (yOffset !== undefined) {
-        translateY += yOffset;
-      }
 
       if (orientation === 'top' || orientation === 'bottom') {
-        translateY += this.get('height');
-        this.set('translateY', translateY);
         this.set('innerTickSize', -this.get('height'));
       } else {
-        this.set('translateY', translateY);
         this.set('innerTickSize', -this.get('width'));
       }
     }

@@ -13,7 +13,7 @@ define('portfolio/tests/components/axis-sandbox.jshint', ['exports'], function (
   QUnit.module('JSHint - components');
   QUnit.test('components/axis-sandbox.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'components/axis-sandbox.js should pass jshint.\ncomponents/axis-sandbox.js: line 2, col 8, \'LinearScale\' is defined but never used.\ncomponents/axis-sandbox.js: line 4, col 20, \'on\' is defined but never used.\ncomponents/axis-sandbox.js: line 4, col 34, \'observer\' is defined but never used.\n\n3 errors');
+    assert.ok(true, 'components/axis-sandbox.js should pass jshint.');
   });
 });
 define('portfolio/tests/components/domain-list-input.jshint', ['exports'], function (exports) {
@@ -32,6 +32,15 @@ define('portfolio/tests/components/domain-range-input.jshint', ['exports'], func
   QUnit.test('components/domain-range-input.js should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'components/domain-range-input.js should pass jshint.');
+  });
+});
+define('portfolio/tests/components/grid-sandbox.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - components');
+  QUnit.test('components/grid-sandbox.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(false, 'components/grid-sandbox.js should pass jshint.\ncomponents/grid-sandbox.js: line 16, col 18, Missing semicolon.\ncomponents/grid-sandbox.js: line 31, col 18, Missing semicolon.\n\n2 errors');
   });
 });
 define('portfolio/tests/components/linear-scale-sandbox.jshint', ['exports'], function (exports) {
@@ -700,6 +709,155 @@ define('portfolio/tests/integration/components/domain-range-input-test.jshint', 
   QUnit.test('integration/components/domain-range-input-test.js should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'integration/components/domain-range-input-test.js should pass jshint.');
+  });
+});
+define('portfolio/tests/integration/components/grid-sandbox-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForComponent)('grid-sandbox', 'Integration | Component | grid sandbox', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });"
+
+    this.render(Ember.HTMLBars.template((function () {
+      return {
+        meta: {
+          'fragmentReason': {
+            'name': 'missing-wrapper',
+            'problems': ['wrong-type']
+          },
+          'revision': 'Ember@2.3.0',
+          'loc': {
+            'source': null,
+            'start': {
+              'line': 1,
+              'column': 0
+            },
+            'end': {
+              'line': 1,
+              'column': 16
+            }
+          }
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createComment('');
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+          dom.insertBoundary(fragment, 0);
+          dom.insertBoundary(fragment, null);
+          return morphs;
+        },
+        statements: [['content', 'grid-sandbox', ['loc', [null, [1, 0], [1, 16]]]]],
+        locals: [],
+        templates: []
+      };
+    })()));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:"
+    this.render(Ember.HTMLBars.template((function () {
+      var child0 = (function () {
+        return {
+          meta: {
+            'fragmentReason': false,
+            'revision': 'Ember@2.3.0',
+            'loc': {
+              'source': null,
+              'start': {
+                'line': 2,
+                'column': 4
+              },
+              'end': {
+                'line': 4,
+                'column': 4
+              }
+            }
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode('      template block text\n');
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+
+      return {
+        meta: {
+          'fragmentReason': {
+            'name': 'missing-wrapper',
+            'problems': ['wrong-type']
+          },
+          'revision': 'Ember@2.3.0',
+          'loc': {
+            'source': null,
+            'start': {
+              'line': 1,
+              'column': 0
+            },
+            'end': {
+              'line': 5,
+              'column': 2
+            }
+          }
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode('\n');
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment('');
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode('  ');
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          return morphs;
+        },
+        statements: [['block', 'grid-sandbox', [], [], 0, null, ['loc', [null, [2, 4], [4, 21]]]]],
+        locals: [],
+        templates: [child0]
+      };
+    })()));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
+define('portfolio/tests/integration/components/grid-sandbox-test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - integration/components');
+  QUnit.test('integration/components/grid-sandbox-test.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/grid-sandbox-test.js should pass jshint.');
   });
 });
 define('portfolio/tests/integration/components/linear-scale-form-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
@@ -2675,6 +2833,15 @@ define('portfolio/tests/routes/d3/axis.jshint', ['exports'], function (exports) 
     assert.ok(true, 'routes/d3/axis.js should pass jshint.');
   });
 });
+define('portfolio/tests/routes/d3/grid.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - routes/d3');
+  QUnit.test('routes/d3/grid.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'routes/d3/grid.js should pass jshint.');
+  });
+});
 define('portfolio/tests/routes/d3/scales/linear.jshint', ['exports'], function (exports) {
   'use strict';
 
@@ -2798,6 +2965,27 @@ define('portfolio/tests/unit/routes/d3/axis-test.jshint', ['exports'], function 
   QUnit.test('unit/routes/d3/axis-test.js should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/routes/d3/axis-test.js should pass jshint.');
+  });
+});
+define('portfolio/tests/unit/routes/d3/grid-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleFor)('route:d3/grid', 'Unit | Route | d3/grid', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var route = this.subject();
+    assert.ok(route);
+  });
+});
+define('portfolio/tests/unit/routes/d3/grid-test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - unit/routes/d3');
+  QUnit.test('unit/routes/d3/grid-test.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/routes/d3/grid-test.js should pass jshint.');
   });
 });
 define('portfolio/tests/unit/routes/d3/scales/linear-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
