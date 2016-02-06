@@ -66259,23 +66259,6 @@ define('ember/load-initializers', ['exports', 'ember-load-initializers', 'ember'
   exports['default'] = loadInitializers['default'];
 });
 
-;/* globals define */
-
-function createDeprecatedModule(moduleId) {
-  define(moduleId, ['exports', 'ember-resolver/resolver', 'ember'], function(exports, Resolver, Ember) {
-    Ember['default'].deprecate(
-      'Usage of `' + moduleId + '` module is deprecated, please update to `ember-resolver`.',
-      false,
-      { id: 'ember-resolver.legacy-shims', until: '3.0.0' }
-    );
-
-    exports['default'] = Resolver['default'];
-  });
-}
-
-createDeprecatedModule('ember/resolver');
-createDeprecatedModule('resolver');
-
 ;/*! Hammer.JS - v2.0.6 - 2015-12-23
  * http://hammerjs.github.io/
  *
@@ -69123,6 +69106,23 @@ window.matchMedia || (window.matchMedia = function() {
     return wrapper;
   };
 }));
+
+;/* globals define */
+
+function createDeprecatedModule(moduleId) {
+  define(moduleId, ['exports', 'ember-resolver/resolver', 'ember'], function(exports, Resolver, Ember) {
+    Ember['default'].deprecate(
+      'Usage of `' + moduleId + '` module is deprecated, please update to `ember-resolver`.',
+      false,
+      { id: 'ember-resolver.legacy-shims', until: '3.0.0' }
+    );
+
+    exports['default'] = Resolver['default'];
+  });
+}
+
+createDeprecatedModule('ember/resolver');
+createDeprecatedModule('resolver');
 
 ;!function() {
   var d3 = {
@@ -80075,7 +80075,7 @@ define('ember-d3-components/utils/scales/d3-linear-scale', ['exports', 'ember', 
       this.set('scale', d3.scale.linear());
     },
 
-    rangeRoundChanged: on('init', observer('rangeRound', function () {
+    rangeRoundChanged: on('init', observer('rangeRound.[]', function () {
       var rangeRound = this.get('rangeRound');
 
       if (rangeRound) {
@@ -80114,7 +80114,7 @@ define('ember-d3-components/utils/scales/d3-log-scale', ['exports', 'ember', 'em
       this.set('scale', d3.scale.log());
     },
 
-    rangeRoundChanged: on('init', observer('rangeRound', function () {
+    rangeRoundChanged: on('init', observer('rangeRound.[]', function () {
       var rangeRound = this.get('rangeRound');
 
       if (rangeRound) {
@@ -80162,7 +80162,7 @@ define('ember-d3-components/utils/scales/d3-ordinal-scale', ['exports', 'ember',
       this.set('scale', d3.scale.ordinal());
     },
 
-    rangePointsChanged: on('init', observer('rangePoints', 'padding', function () {
+    rangePointsChanged: on('init', observer('rangePoints.[]', 'padding', function () {
       var rangePoints = this.get('rangePoints');
       var padding = this.get('padding');
 
@@ -80177,7 +80177,7 @@ define('ember-d3-components/utils/scales/d3-ordinal-scale', ['exports', 'ember',
       }
     })),
 
-    rangeRoundPointsChanged: on('init', observer('rangeRoundPoints', 'padding', function () {
+    rangeRoundPointsChanged: on('init', observer('rangeRoundPoints.[]', 'padding', function () {
       var rangeRoundPoints = this.get('rangeRoundPoints');
       var padding = this.get('padding');
 
@@ -80192,7 +80192,7 @@ define('ember-d3-components/utils/scales/d3-ordinal-scale', ['exports', 'ember',
       }
     })),
 
-    rangeBandsChanged: on('init', observer('rangeBands', 'padding', 'outerPadding', function () {
+    rangeBandsChanged: on('init', observer('rangeBands.[]', 'padding', 'outerPadding', function () {
       var rangeBands = this.get('rangeBands');
       var padding = this.get('padding');
       var outerPadding = this.get('outerPadding');
@@ -80212,7 +80212,7 @@ define('ember-d3-components/utils/scales/d3-ordinal-scale', ['exports', 'ember',
       }
     })),
 
-    rangeRoundBandsChanged: on('init', observer('rangeRoundBands', 'padding', 'outerPadding', function () {
+    rangeRoundBandsChanged: on('init', observer('rangeRoundBands.[]', 'padding', 'outerPadding', function () {
       var rangeRoundBands = this.get('rangeRoundBands');
       var padding = this.get('padding');
       var outerPadding = this.get('outerPadding');
@@ -80244,7 +80244,7 @@ define('ember-d3-components/utils/scales/d3-pow-scale', ['exports', 'ember', 'em
       this.set('scale', d3.scale.pow());
     },
 
-    rangeRoundChanged: on('init', observer('rangeRound', function () {
+    rangeRoundChanged: on('init', observer('rangeRound.[]', function () {
       var rangeRound = this.get('rangeRound');
 
       if (rangeRound) {
@@ -80306,7 +80306,7 @@ define('ember-d3-components/utils/scales/d3-scale', ['exports', 'ember'], functi
   var observer = _ember['default'].observer;
 
   exports['default'] = _ember['default'].Object.extend({
-    domainChanged: on('init', observer('domain', function () {
+    domainChanged: on('init', observer('domain.[]', function () {
       var domain = this.get('domain');
 
       if (domain) {
@@ -80315,7 +80315,7 @@ define('ember-d3-components/utils/scales/d3-scale', ['exports', 'ember'], functi
       }
     })),
 
-    rangeChanged: on('init', observer('range', function () {
+    rangeChanged: on('init', observer('range.[]', function () {
       var range = this.get('range');
 
       if (range) {
@@ -80354,7 +80354,7 @@ define('ember-d3-components/utils/scales/d3-time-scale', ['exports', 'ember', 'e
       this.set('scale', d3.time.scale());
     },
 
-    rangeRoundChanged: on('init', observer('rangeRound', function () {
+    rangeRoundChanged: on('init', observer('rangeRound.[]', function () {
       var rangeRound = this.get('rangeRound');
 
       if (rangeRound) {
