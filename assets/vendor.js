@@ -66248,48 +66248,33 @@ requireModule("ember");
   generateModule('rsvp', { 'default': Ember.RSVP });
 })();
 
-;(function() {
-define("ember/load-initializers",
-  [],
-  function() {
-    "use strict";
+;/* globals define */
+define('ember/load-initializers', ['exports', 'ember-load-initializers', 'ember'], function(exports, loadInitializers, Ember) {
+  Ember['default'].deprecate(
+    'Usage of `' + 'ember/load-initializers' + '` module is deprecated, please update to `ember-load-initializers`.',
+    false,
+    { id: 'ember-load-initializers.legacy-shims', until: '3.0.0' }
+  );
 
-    return {
-      'default': function(app, prefix) {
-        var regex = new RegExp('^' + prefix + '\/((?:instance-)?initializers)\/');
-        var getKeys = (Object.keys || Ember.keys);
+  exports['default'] = loadInitializers['default'];
+});
 
-        getKeys(requirejs._eak_seen).map(function (moduleName) {
-            return {
-              moduleName: moduleName,
-              matches: regex.exec(moduleName)
-            };
-          })
-          .filter(function(dep) {
-            return dep.matches && dep.matches.length === 2;
-          })
-          .forEach(function(dep) {
-            var moduleName = dep.moduleName;
+;/* globals define */
 
-            var module = require(moduleName, null, null, true);
-            if (!module) { throw new Error(moduleName + ' must export an initializer.'); }
+function createDeprecatedModule(moduleId) {
+  define(moduleId, ['exports', 'ember-resolver/resolver', 'ember'], function(exports, Resolver, Ember) {
+    Ember['default'].deprecate(
+      'Usage of `' + moduleId + '` module is deprecated, please update to `ember-resolver`.',
+      false,
+      { id: 'ember-resolver.legacy-shims', until: '3.0.0' }
+    );
 
-            var initializerType = Ember.String.camelize(dep.matches[1].substring(0, dep.matches[1].length - 1));
-            var initializer = module['default'];
-            if (!initializer.name) {
-              var initializerName = moduleName.match(/[^\/]+\/?$/)[0];
-              initializer.name = initializerName;
-            }
+    exports['default'] = Resolver['default'];
+  });
+}
 
-            if (app[initializerType]) {
-              app[initializerType](initializer);
-            }
-          });
-      }
-    };
-  }
-);
-})();
+createDeprecatedModule('ember/resolver');
+createDeprecatedModule('resolver');
 
 ;/*! Hammer.JS - v2.0.6 - 2015-12-23
  * http://hammerjs.github.io/
@@ -69139,26 +69124,9 @@ window.matchMedia || (window.matchMedia = function() {
   };
 }));
 
-;/* globals define */
-
-function createDeprecatedModule(moduleId) {
-  define(moduleId, ['exports', 'ember-resolver/resolver', 'ember'], function(exports, Resolver, Ember) {
-    Ember['default'].deprecate(
-      'Usage of `' + moduleId + '` module is deprecated, please update to `ember-resolver`.',
-      false,
-      { id: 'ember-resolver.legacy-shims', until: '3.0.0' }
-    );
-
-    exports['default'] = Resolver['default'];
-  });
-}
-
-createDeprecatedModule('ember/resolver');
-createDeprecatedModule('resolver');
-
 ;!function() {
   var d3 = {
-    version: "3.5.13"
+    version: "3.5.14"
   };
   var d3_arraySlice = [].slice, d3_array = function(list) {
     return d3_arraySlice.call(list);
@@ -69963,7 +69931,7 @@ createDeprecatedModule('resolver');
   function d3_selection_creator(name) {
     function create() {
       var document = this.ownerDocument, namespace = this.namespaceURI;
-      return namespace ? document.createElementNS(namespace, name) : document.createElement(name);
+      return namespace && namespace !== document.documentElement.namespaceURI ? document.createElementNS(namespace, name) : document.createElement(name);
     }
     function createNS() {
       return this.ownerDocument.createElementNS(name.space, name.local);
@@ -79634,14 +79602,15 @@ define('ember-css-transitions/utils/execution-environment', ['exports'], functio
     }
   };
 });
-define('ember-d3/components/d3-axis', ['exports', 'ember'], function (exports, _ember) {
+define('ember-d3-components/components/d3-axis', ['exports', 'ember', 'ember-d3-components/mixins/translatable'], function (exports, _ember, _emberD3ComponentsMixinsTranslatable) {
   'use strict';
 
   var Component = _ember['default'].Component;
   var on = _ember['default'].on;
   var observer = _ember['default'].observer;
+  var computed = _ember['default'].computed;
 
-  exports['default'] = Component.extend({
+  exports['default'] = Component.extend(_emberD3ComponentsMixinsTranslatable['default'], {
     tagName: 'g',
     attributeBindings: ['transform'],
 
@@ -79653,7 +79622,7 @@ define('ember-d3/components/d3-axis', ['exports', 'ember'], function (exports, _
     oritntationChanged: on('init', observer('orientation', function () {
       var orientation = this.get('orientation');
 
-      if (orientation) {
+      if (orientation !== undefined) {
         this.get('axis').orient(orientation);
         _ember['default'].run.once(this, this.updateAxis);
       }
@@ -79662,7 +79631,7 @@ define('ember-d3/components/d3-axis', ['exports', 'ember'], function (exports, _
     scaleChanged: on('init', observer('scale.scale', function () {
       var scale = this.get('scale.scale');
 
-      if (scale) {
+      if (scale !== undefined) {
         this.get('axis').scale(scale);
         _ember['default'].run.once(this, this.updateAxis);
       }
@@ -79671,7 +79640,7 @@ define('ember-d3/components/d3-axis', ['exports', 'ember'], function (exports, _
     ticksChanged: on('init', observer('ticks', function () {
       var ticks = this.get('ticks');
 
-      if (ticks) {
+      if (ticks !== undefined) {
         this.get('axis').ticks(ticks);
         _ember['default'].run.once(this, this.updateAxis);
       }
@@ -79680,7 +79649,7 @@ define('ember-d3/components/d3-axis', ['exports', 'ember'], function (exports, _
     tickValuesChanged: on('init', observer('tickValues', function () {
       var tickValues = this.get('tickValues');
 
-      if (tickValues) {
+      if (tickValues !== undefined) {
         this.get('axis').tickValues(tickValues);
         _ember['default'].run.once(this, this.updateAxis);
       }
@@ -79689,7 +79658,7 @@ define('ember-d3/components/d3-axis', ['exports', 'ember'], function (exports, _
     tickSizeChanged: on('init', observer('tickSize', function () {
       var tickSize = this.get('tickSize');
 
-      if (tickSize) {
+      if (tickSize !== undefined) {
         this.get('axis').tickSize(tickSize);
         _ember['default'].run.once(this, this.updateAxis);
       }
@@ -79698,7 +79667,7 @@ define('ember-d3/components/d3-axis', ['exports', 'ember'], function (exports, _
     innerTickSizeChanged: on('init', observer('innerTickSize', function () {
       var innerTickSize = this.get('innerTickSize');
 
-      if (innerTickSize) {
+      if (innerTickSize !== undefined) {
         this.get('axis').innerTickSize(innerTickSize);
         _ember['default'].run.once(this, this.updateAxis);
       }
@@ -79707,7 +79676,7 @@ define('ember-d3/components/d3-axis', ['exports', 'ember'], function (exports, _
     outerTickSizeChanged: on('init', observer('outerTickSize', function () {
       var outerTickSize = this.get('outerTickSize');
 
-      if (outerTickSize) {
+      if (outerTickSize !== undefined) {
         this.get('axis').outerTickSize(outerTickSize);
         _ember['default'].run.once(this, this.updateAxis);
       }
@@ -79716,7 +79685,7 @@ define('ember-d3/components/d3-axis', ['exports', 'ember'], function (exports, _
     tickFormatChanged: on('init', observer('tickFormat', function () {
       var tickFormat = this.get('tickFormat');
 
-      if (tickFormat) {
+      if (tickFormat !== undefined) {
         this.get('axis').tickFormat(tickFormat);
         _ember['default'].run.once(this, this.updateAxis);
       }
@@ -79725,46 +79694,122 @@ define('ember-d3/components/d3-axis', ['exports', 'ember'], function (exports, _
     tickPaddingChanged: on('init', observer('tickPadding', function () {
       var tickPadding = this.get('tickPadding');
 
-      if (tickPadding) {
+      if (tickPadding !== undefined) {
         this.get('axis').tickPadding(tickPadding);
         _ember['default'].run.once(this, this.updateAxis);
       }
     })),
 
-    gridChanged: on('init', observer('grid', function () {
-      _ember['default'].run.once(this, this.updateAxis);
-    })),
+    translation: computed('translateX', 'translateY', function () {
+      var translateX = this.get('translateX');
+      var translateY = this.get('translateY');
+
+      if (translateX !== undefined && translateY !== undefined) {
+        return 'translate(' + translateX + ', ' + translateY + ')';
+      }
+    }),
+
+    transform: computed.alias('translation'),
 
     updateAxis: function updateAxis() {
       var id = "#" + this.elementId;
       d3.select(id).transition().call(this.get('axis'));
-
-      if (this.get('grid')) {
-        d3.selectAll(id + " g.tick").select("line.grid-line").remove();
-        var x1 = this.get('grid.x1');
-        var x2 = this.get('grid.x2');
-        var y1 = this.get('grid.y1');
-        var y2 = this.get('grid.y2');
-        d3.selectAll(id + " g.tick").append("line").classed("grid-line", true).attr("x1", x1).attr("y1", y1).attr("x2", x2).attr("y2", y2);
-      }
     }
   });
 });
-define('ember-d3/components/d3-plot', ['exports', 'ember'], function (exports, _ember) {
+define('ember-d3-components/components/d3-clip-path', ['exports', 'ember'], function (exports, _ember) {
   'use strict';
 
   var Component = _ember['default'].Component;
 
   exports['default'] = Component.extend({
+    tagName: 'clipPath',
+
+    didInsertElement: function didInsertElement() {
+      _ember['default'].run.next(this, function () {
+        this.set('parentView.clipPath', "#" + this.elementId);
+      });
+    }
+  });
+});
+define('ember-d3-components/components/d3-grid', ['exports', 'ember', 'ember-d3-components/components/d3-axis'], function (exports, _ember, _emberD3ComponentsComponentsD3Axis) {
+  'use strict';
+
+  var on = _ember['default'].on;
+  var observer = _ember['default'].observer;
+
+  exports['default'] = _emberD3ComponentsComponentsD3Axis['default'].extend({
+    init: function init() {
+      this._super.apply(this, arguments);
+      this.set('tickFormat', "");
+    },
+
+    updateTransform: on('init', observer('width', 'height', 'orientation', function () {
+      _ember['default'].run.once(this, this.updateGrid);
+    })),
+
+    updateGrid: function updateGrid() {
+      var orientation = this.get('orientation');
+      var translateY = 0;
+      var yOffset = this.get('yOffset');
+
+      if (yOffset !== undefined) {
+        translateY += yOffset;
+      }
+
+      if (orientation === 'top' || orientation === 'bottom') {
+        translateY += this.get('height');
+        this.set('translateY', translateY);
+        this.set('innerTickSize', -this.get('height'));
+      } else {
+        this.set('translateY', translateY);
+        this.set('innerTickSize', -this.get('width'));
+      }
+    }
+  });
+});
+define('ember-d3-components/components/d3-plot', ['exports', 'ember', 'ember-d3-components/mixins/translatable'], function (exports, _ember, _emberD3ComponentsMixinsTranslatable) {
+  'use strict';
+
+  var Component = _ember['default'].Component;
+  var computed = _ember['default'].computed;
+
+  exports['default'] = Component.extend(_emberD3ComponentsMixinsTranslatable['default'], {
     tagName: 'g',
     attributeBindings: ['transform', 'clip-path'],
 
     didInsertElement: function didInsertElement() {
       this.get('plotter').set('svg', d3.select("#" + this.elementId));
-    }
+    },
+
+    transform: computed.alias('translation'),
+
+    'clip-path': computed('parentView.clipPath', function () {
+      return 'url(' + this.get('parentView.clipPath') + ')';
+    })
   });
 });
-define("ember-d3/templates/components/d3-axis", ["exports"], function (exports) {
+define('ember-d3-components/components/d3-svg', ['exports', 'ember'], function (exports, _ember) {
+  'use strict';
+
+  exports['default'] = _ember['default'].Component.extend({
+    tagName: 'svg',
+    attributeBindings: ['width', 'height']
+  });
+});
+define('ember-d3-components/mixins/translatable', ['exports', 'ember'], function (exports, _ember) {
+  'use strict';
+
+  var Mixin = _ember['default'].Mixin;
+  var computed = _ember['default'].computed;
+
+  exports['default'] = Mixin.create({
+    translation: computed('translateX', 'translateY', function () {
+      return 'translate(' + this.get('translateX') + ', ' + this.get('translateY') + ')';
+    })
+  });
+});
+define("ember-d3-components/templates/components/d3-clip-path", ["exports"], function (exports) {
   "use strict";
 
   exports["default"] = Ember.HTMLBars.template((function () {
@@ -79786,7 +79831,7 @@ define("ember-d3/templates/components/d3-axis", ["exports"], function (exports) 
             "column": 0
           }
         },
-        "moduleName": "modules/ember-d3/templates/components/d3-axis.hbs"
+        "moduleName": "modules/ember-d3-components/templates/components/d3-clip-path.hbs"
       },
       isEmpty: false,
       arity: 0,
@@ -79812,7 +79857,7 @@ define("ember-d3/templates/components/d3-axis", ["exports"], function (exports) 
     };
   })());
 });
-define("ember-d3/templates/components/d3-plot", ["exports"], function (exports) {
+define("ember-d3-components/templates/components/d3-svg", ["exports"], function (exports) {
   "use strict";
 
   exports["default"] = Ember.HTMLBars.template((function () {
@@ -79834,7 +79879,7 @@ define("ember-d3/templates/components/d3-plot", ["exports"], function (exports) 
             "column": 0
           }
         },
-        "moduleName": "modules/ember-d3/templates/components/d3-plot.hbs"
+        "moduleName": "modules/ember-d3-components/templates/components/d3-svg.hbs"
       },
       isEmpty: false,
       arity: 0,
@@ -79860,7 +79905,7 @@ define("ember-d3/templates/components/d3-plot", ["exports"], function (exports) 
     };
   })());
 });
-define('ember-d3/utils/plotters/d3-bar-plotter', ['exports', 'ember'], function (exports, _ember) {
+define('ember-d3-components/utils/plotters/d3-bar-plotter', ['exports', 'ember'], function (exports, _ember) {
   'use strict';
 
   var observer = _ember['default'].observer;
@@ -79897,7 +79942,7 @@ define('ember-d3/utils/plotters/d3-bar-plotter', ['exports', 'ember'], function 
     }
   });
 });
-define('ember-d3/utils/plotters/d3-composite-plotter', ['exports', 'ember'], function (exports, _ember) {
+define('ember-d3-components/utils/plotters/d3-composite-plotter', ['exports', 'ember'], function (exports, _ember) {
   'use strict';
 
   var observer = _ember['default'].observer;
@@ -79960,7 +80005,7 @@ define('ember-d3/utils/plotters/d3-composite-plotter', ['exports', 'ember'], fun
     }))
   });
 });
-define('ember-d3/utils/plotters/d3-xy-line-plotter', ['exports', 'ember'], function (exports, _ember) {
+define('ember-d3-components/utils/plotters/d3-xy-line-plotter', ['exports', 'ember'], function (exports, _ember) {
   'use strict';
 
   var on = _ember['default'].on;
@@ -80019,34 +80064,16 @@ define('ember-d3/utils/plotters/d3-xy-line-plotter', ['exports', 'ember'], funct
     }
   });
 });
-define('ember-d3/utils/scales/d3-linear-scale', ['exports', 'ember'], function (exports, _ember) {
+define('ember-d3-components/utils/scales/d3-linear-scale', ['exports', 'ember', 'ember-d3-components/utils/scales/d3-scale'], function (exports, _ember, _emberD3ComponentsUtilsScalesD3Scale) {
   'use strict';
 
   var on = _ember['default'].on;
   var observer = _ember['default'].observer;
 
-  exports['default'] = _ember['default'].Object.extend({
+  exports['default'] = _emberD3ComponentsUtilsScalesD3Scale['default'].extend({
     init: function init() {
       this.set('scale', d3.scale.linear());
     },
-
-    domainChanged: on('init', observer('domain', function () {
-      var domain = this.get('domain');
-
-      if (domain) {
-        this.get('scale').domain(domain);
-        _ember['default'].run.once(this, 'notifyPropertyChange', 'scale');
-      }
-    })),
-
-    rangeChanged: on('init', observer('range', function () {
-      var range = this.get('range');
-
-      if (range) {
-        this.get('scale').range(range);
-        _ember['default'].run.once(this, 'notifyPropertyChange', 'scale');
-      }
-    })),
 
     rangeRoundChanged: on('init', observer('rangeRound', function () {
       var rangeRound = this.get('rangeRound');
@@ -80069,53 +80096,75 @@ define('ember-d3/utils/scales/d3-linear-scale', ['exports', 'ember'], function (
     clampChanged: on('init', observer('clamp', function () {
       var clamp = this.get('clamp');
 
-      if (clamp != null) {
+      if (clamp !== undefined && clamp !== null) {
         this.get('scale').clamp(clamp);
-        _ember['default'].run.once(this, 'notifyPropertyChange', 'scale');
-      }
-    })),
-
-    niceChanged: on('init', observer('nice', function () {
-      var nice = this.get('nice');
-
-      if (nice != null) {
-        this.get('scale').nice(nice);
         _ember['default'].run.once(this, 'notifyPropertyChange', 'scale');
       }
     }))
   });
 });
-define('ember-d3/utils/scales/d3-ordinal-scale', ['exports', 'ember'], function (exports, _ember) {
+define('ember-d3-components/utils/scales/d3-log-scale', ['exports', 'ember', 'ember-d3-components/utils/scales/d3-scale'], function (exports, _ember, _emberD3ComponentsUtilsScalesD3Scale) {
   'use strict';
 
   var on = _ember['default'].on;
   var observer = _ember['default'].observer;
 
-  exports['default'] = _ember['default'].Object.extend({
+  exports['default'] = _emberD3ComponentsUtilsScalesD3Scale['default'].extend({
+    init: function init() {
+      this.set('scale', d3.scale.log());
+    },
+
+    rangeRoundChanged: on('init', observer('rangeRound', function () {
+      var rangeRound = this.get('rangeRound');
+
+      if (rangeRound) {
+        this.get('scale').rangeRound(rangeRound);
+        _ember['default'].run.once(this, 'notifyPropertyChange', 'scale');
+      }
+    })),
+
+    baseChanged: on('init', observer('base', function () {
+      var base = this.get('base');
+
+      if (base) {
+        this.get('scale').base(base);
+        _ember['default'].run.once(this, 'notifyPropertyChange', 'scale');
+      }
+    })),
+
+    interpolateChanged: on('init', observer('interpolate', function () {
+      var interpolate = this.get('interpolate');
+
+      if (interpolate) {
+        this.get('scale').interpolate(interpolate);
+        _ember['default'].run.once(this, 'notifyPropertyChange', 'scale');
+      }
+    })),
+
+    clampChanged: on('init', observer('clamp', function () {
+      var clamp = this.get('clamp');
+
+      if (clamp !== undefined && clamp !== null) {
+        this.get('scale').clamp(clamp);
+        _ember['default'].run.once(this, 'notifyPropertyChange', 'scale');
+      }
+    }))
+  });
+});
+define('ember-d3-components/utils/scales/d3-ordinal-scale', ['exports', 'ember', 'ember-d3-components/utils/scales/d3-scale'], function (exports, _ember, _emberD3ComponentsUtilsScalesD3Scale) {
+  'use strict';
+
+  var on = _ember['default'].on;
+  var observer = _ember['default'].observer;
+
+  exports['default'] = _emberD3ComponentsUtilsScalesD3Scale['default'].extend({
     init: function init() {
       this.set('scale', d3.scale.ordinal());
     },
 
-    domainChanged: on('init', observer('domain', function () {
-      var domain = this.get('domain');
-
-      if (domain) {
-        this.get('scale').domain(domain);
-        _ember['default'].run.once(this, 'notifyPropertyChange', 'scale');
-      }
-    })),
-
-    rangeChanged: on('init', observer('range', function () {
-      var range = this.get('range');
-
-      if (range) {
-        this.get('scale').range(range);
-        _ember['default'].run.once(this, 'notifyPropertyChange', 'scale');
-      }
-    })),
-
     rangePointsChanged: on('init', observer('rangePoints', 'padding', function () {
       var rangePoints = this.get('rangePoints');
+      var padding = this.get('padding');
 
       if (rangePoints) {
         if (padding) {
@@ -80136,7 +80185,7 @@ define('ember-d3/utils/scales/d3-ordinal-scale', ['exports', 'ember'], function 
         if (padding) {
           this.get('scale').rangeRoundPoints(rangeRoundPoints, padding);
         } else {
-          this.get('scale').rangeRoundPoints(rangePoints);
+          this.get('scale').rangeRoundPoints(rangeRoundPoints);
         }
 
         _ember['default'].run.once(this, 'notifyPropertyChange', 'scale');
@@ -80184,17 +80233,79 @@ define('ember-d3/utils/scales/d3-ordinal-scale', ['exports', 'ember'], function 
     }))
   });
 });
-define('ember-d3/utils/scales/d3-time-scale', ['exports', 'ember'], function (exports, _ember) {
+define('ember-d3-components/utils/scales/d3-pow-scale', ['exports', 'ember', 'ember-d3-components/utils/scales/d3-scale'], function (exports, _ember, _emberD3ComponentsUtilsScalesD3Scale) {
+  'use strict';
+
+  var on = _ember['default'].on;
+  var observer = _ember['default'].observer;
+
+  exports['default'] = _emberD3ComponentsUtilsScalesD3Scale['default'].extend({
+    init: function init() {
+      this.set('scale', d3.scale.pow());
+    },
+
+    rangeRoundChanged: on('init', observer('rangeRound', function () {
+      var rangeRound = this.get('rangeRound');
+
+      if (rangeRound) {
+        this.get('scale').rangeRound(rangeRound);
+        _ember['default'].run.once(this, 'notifyPropertyChange', 'scale');
+      }
+    })),
+
+    exponentChanged: on('init', observer('exponent', function () {
+      var exponent = this.get('exponent');
+
+      if (exponent) {
+        this.get('scale').exponent(exponent);
+        _ember['default'].run.once(this, 'notifyPropertyChange', 'scale');
+      }
+    })),
+
+    interpolateChanged: on('init', observer('interpolate', function () {
+      var interpolate = this.get('interpolate');
+
+      if (interpolate) {
+        this.get('scale').interpolate(interpolate);
+        _ember['default'].run.once(this, 'notifyPropertyChange', 'scale');
+      }
+    })),
+
+    clampChanged: on('init', observer('clamp', function () {
+      var clamp = this.get('clamp');
+
+      if (clamp !== undefined && clamp !== null) {
+        this.get('scale').clamp(clamp);
+        _ember['default'].run.once(this, 'notifyPropertyChange', 'scale');
+      }
+    }))
+  });
+});
+define('ember-d3-components/utils/scales/d3-quantile-scale', ['exports', 'ember-d3-components/utils/scales/d3-scale'], function (exports, _emberD3ComponentsUtilsScalesD3Scale) {
+  'use strict';
+
+  exports['default'] = _emberD3ComponentsUtilsScalesD3Scale['default'].extend({
+    init: function init() {
+      this.set('scale', d3.scale.quantile());
+    }
+  });
+});
+define('ember-d3-components/utils/scales/d3-quantize-scale', ['exports', 'ember-d3-components/utils/scales/d3-scale'], function (exports, _emberD3ComponentsUtilsScalesD3Scale) {
+  'use strict';
+
+  exports['default'] = _emberD3ComponentsUtilsScalesD3Scale['default'].extend({
+    init: function init() {
+      this.set('scale', d3.scale.quantize());
+    }
+  });
+});
+define('ember-d3-components/utils/scales/d3-scale', ['exports', 'ember'], function (exports, _ember) {
   'use strict';
 
   var on = _ember['default'].on;
   var observer = _ember['default'].observer;
 
   exports['default'] = _ember['default'].Object.extend({
-    init: function init() {
-      this.set('scale', d3.time.scale());
-    },
-
     domainChanged: on('init', observer('domain', function () {
       var domain = this.get('domain');
 
@@ -80211,7 +80322,37 @@ define('ember-d3/utils/scales/d3-time-scale', ['exports', 'ember'], function (ex
         this.get('scale').range(range);
         _ember['default'].run.once(this, 'notifyPropertyChange', 'scale');
       }
-    })),
+    }))
+  });
+});
+define('ember-d3-components/utils/scales/d3-sqrt-scale', ['exports', 'ember-d3-components/utils/scales/d3-scale'], function (exports, _emberD3ComponentsUtilsScalesD3Scale) {
+  'use strict';
+
+  exports['default'] = _emberD3ComponentsUtilsScalesD3Scale['default'].extend({
+    init: function init() {
+      this.set('scale', d3.scale.sqrt());
+    }
+  });
+});
+define('ember-d3-components/utils/scales/d3-threshold-scale', ['exports', 'ember-d3-components/utils/scales/d3-scale'], function (exports, _emberD3ComponentsUtilsScalesD3Scale) {
+  'use strict';
+
+  exports['default'] = _emberD3ComponentsUtilsScalesD3Scale['default'].extend({
+    init: function init() {
+      this.set('scale', d3.scale.threshold());
+    }
+  });
+});
+define('ember-d3-components/utils/scales/d3-time-scale', ['exports', 'ember', 'ember-d3-components/utils/scales/d3-scale'], function (exports, _ember, _emberD3ComponentsUtilsScalesD3Scale) {
+  'use strict';
+
+  var on = _ember['default'].on;
+  var observer = _ember['default'].observer;
+
+  exports['default'] = _emberD3ComponentsUtilsScalesD3Scale['default'].extend({
+    init: function init() {
+      this.set('scale', d3.time.scale());
+    },
 
     rangeRoundChanged: on('init', observer('rangeRound', function () {
       var rangeRound = this.get('rangeRound');
@@ -80234,17 +80375,8 @@ define('ember-d3/utils/scales/d3-time-scale', ['exports', 'ember'], function (ex
     clampChanged: on('init', observer('clamp', function () {
       var clamp = this.get('clamp');
 
-      if (clamp) {
+      if (clamp !== undefined && clamp !== null) {
         this.get('scale').clamp(clamp);
-        _ember['default'].run.once(this, 'notifyPropertyChange', 'scale');
-      }
-    })),
-
-    niceChanged: on('init', observer('nice', function () {
-      var nice = this.get('nice');
-
-      if (nice) {
-        this.get('scale').nice(nice);
         _ember['default'].run.once(this, 'notifyPropertyChange', 'scale');
       }
     }))
@@ -95638,6 +95770,41 @@ define('ember-inflector/lib/utils/make-helper', ['exports', 'ember'], function (
     return _ember['default'].Handlebars.makeBoundHelper(helperFunction);
   }
 });
+define('ember-load-initializers/index', ['exports', 'ember'], function (exports, _ember) {
+  'use strict';
+
+  exports['default'] = function (app, prefix) {
+    var regex = new RegExp('^' + prefix + '\/((?:instance-)?initializers)\/');
+    var getKeys = Object.keys || _ember['default'].keys;
+
+    getKeys(requirejs._eak_seen).map(function (moduleName) {
+      return {
+        moduleName: moduleName,
+        matches: regex.exec(moduleName)
+      };
+    }).filter(function (dep) {
+      return dep.matches && dep.matches.length === 2;
+    }).forEach(function (dep) {
+      var moduleName = dep.moduleName;
+
+      var module = require(moduleName, null, null, true);
+      if (!module) {
+        throw new Error(moduleName + ' must export an initializer.');
+      }
+
+      var initializerType = _ember['default'].String.camelize(dep.matches[1].substring(0, dep.matches[1].length - 1));
+      var initializer = module['default'];
+      if (!initializer.name) {
+        var initializerName = moduleName.match(/[^\/]+\/?$/)[0];
+        initializer.name = initializerName;
+      }
+
+      if (app[initializerType]) {
+        app[initializerType](initializer);
+      }
+    });
+  };
+});
 define('ember-paper/components/base-focusable', ['exports', 'ember', 'ember-paper/mixins/events-mixin', 'ember-paper/mixins/hasblock-mixin'], function (exports, _ember, _emberPaperMixinsEventsMixin, _emberPaperMixinsHasblockMixin) {
   'use strict';
 
@@ -100500,6 +100667,7 @@ define('ember-wormhole/components/ember-wormhole', ['exports', 'ember'], functio
 
     appendToDestination: function appendToDestination() {
       var destinationElement = this.get('destinationElement');
+      var currentActiveElement = document.activeElement;
       if (!destinationElement) {
         var destinationElementId = this.get('destinationElementId');
         if (destinationElementId) {
@@ -100507,7 +100675,11 @@ define('ember-wormhole/components/ember-wormhole', ['exports', 'ember'], functio
         }
         throw new Error('ember-wormhole failed to render content because the destinationElementId was set to an undefined or falsy value.');
       }
+
       this.appendRange(destinationElement, this._firstNode, this._lastNode);
+      if (document.activeElement !== currentActiveElement) {
+        currentActiveElement.focus();
+      }
     },
 
     appendRange: function appendRange(destinationElement, firstNode, lastNode) {
