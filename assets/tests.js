@@ -58,7 +58,7 @@ define('portfolio/tests/components/linear-scale.jshint', ['exports'], function (
   QUnit.module('JSHint - components');
   QUnit.test('components/linear-scale.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'components/linear-scale.js should pass jshint.');
+    assert.ok(false, 'components/linear-scale.js should pass jshint.\ncomponents/linear-scale.js: line 4, col 24, \'computed\' is defined but never used.\n\n1 error');
   });
 });
 define('portfolio/tests/components/log-scale-sandbox.jshint', ['exports'], function (exports) {
@@ -76,7 +76,7 @@ define('portfolio/tests/components/log-scale.jshint', ['exports'], function (exp
   QUnit.module('JSHint - components');
   QUnit.test('components/log-scale.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'components/log-scale.js should pass jshint.');
+    assert.ok(false, 'components/log-scale.js should pass jshint.\ncomponents/log-scale.js: line 4, col 24, \'computed\' is defined but never used.\n\n1 error');
   });
 });
 define('portfolio/tests/components/ordinal-scale-sandbox.jshint', ['exports'], function (exports) {
@@ -112,7 +112,7 @@ define('portfolio/tests/components/pow-scale.jshint', ['exports'], function (exp
   QUnit.module('JSHint - components');
   QUnit.test('components/pow-scale.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'components/pow-scale.js should pass jshint.');
+    assert.ok(false, 'components/pow-scale.js should pass jshint.\ncomponents/pow-scale.js: line 4, col 24, \'computed\' is defined but never used.\n\n1 error');
   });
 });
 define('portfolio/tests/components/range-input.jshint', ['exports'], function (exports) {
@@ -157,7 +157,16 @@ define('portfolio/tests/components/sqrt-scale.jshint', ['exports'], function (ex
   QUnit.module('JSHint - components');
   QUnit.test('components/sqrt-scale.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'components/sqrt-scale.js should pass jshint.');
+    assert.ok(false, 'components/sqrt-scale.js should pass jshint.\ncomponents/sqrt-scale.js: line 4, col 24, \'computed\' is defined but never used.\n\n1 error');
+  });
+});
+define('portfolio/tests/components/xyplot-sandbox.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - components');
+  QUnit.test('components/xyplot-sandbox.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/xyplot-sandbox.js should pass jshint.');
   });
 });
 define('portfolio/tests/helpers/destroy-app', ['exports', 'ember'], function (exports, _ember) {
@@ -2797,6 +2806,155 @@ define('portfolio/tests/integration/components/sqrt-scale-test.jshint', ['export
     assert.ok(true, 'integration/components/sqrt-scale-test.js should pass jshint.');
   });
 });
+define('portfolio/tests/integration/components/xyplot-sandbox-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForComponent)('xyplot-sandbox', 'Integration | Component | xyplot sandbox', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });"
+
+    this.render(Ember.HTMLBars.template((function () {
+      return {
+        meta: {
+          'fragmentReason': {
+            'name': 'missing-wrapper',
+            'problems': ['wrong-type']
+          },
+          'revision': 'Ember@2.3.0',
+          'loc': {
+            'source': null,
+            'start': {
+              'line': 1,
+              'column': 0
+            },
+            'end': {
+              'line': 1,
+              'column': 18
+            }
+          }
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createComment('');
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+          dom.insertBoundary(fragment, 0);
+          dom.insertBoundary(fragment, null);
+          return morphs;
+        },
+        statements: [['content', 'xyplot-sandbox', ['loc', [null, [1, 0], [1, 18]]]]],
+        locals: [],
+        templates: []
+      };
+    })()));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:"
+    this.render(Ember.HTMLBars.template((function () {
+      var child0 = (function () {
+        return {
+          meta: {
+            'fragmentReason': false,
+            'revision': 'Ember@2.3.0',
+            'loc': {
+              'source': null,
+              'start': {
+                'line': 2,
+                'column': 4
+              },
+              'end': {
+                'line': 4,
+                'column': 4
+              }
+            }
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode('      template block text\n');
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+
+      return {
+        meta: {
+          'fragmentReason': {
+            'name': 'missing-wrapper',
+            'problems': ['wrong-type']
+          },
+          'revision': 'Ember@2.3.0',
+          'loc': {
+            'source': null,
+            'start': {
+              'line': 1,
+              'column': 0
+            },
+            'end': {
+              'line': 5,
+              'column': 2
+            }
+          }
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode('\n');
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment('');
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode('  ');
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          return morphs;
+        },
+        statements: [['block', 'xyplot-sandbox', [], [], 0, null, ['loc', [null, [2, 4], [4, 23]]]]],
+        locals: [],
+        templates: [child0]
+      };
+    })()));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
+define('portfolio/tests/integration/components/xyplot-sandbox-test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - integration/components');
+  QUnit.test('integration/components/xyplot-sandbox-test.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/xyplot-sandbox-test.js should pass jshint.');
+  });
+});
 define('portfolio/tests/resolver.jshint', ['exports'], function (exports) {
   'use strict';
 
@@ -2896,6 +3054,15 @@ define('portfolio/tests/routes/d3/scales.jshint', ['exports'], function (exports
     assert.ok(true, 'routes/d3/scales.js should pass jshint.');
   });
 });
+define('portfolio/tests/routes/d3/xyplot.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - routes/d3');
+  QUnit.test('routes/d3/xyplot.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'routes/d3/xyplot.js should pass jshint.');
+  });
+});
 define('portfolio/tests/routes/d3.jshint', ['exports'], function (exports) {
   'use strict';
 
@@ -2912,6 +3079,15 @@ define('portfolio/tests/routes/split.jshint', ['exports'], function (exports) {
   QUnit.test('routes/split.js should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'routes/split.js should pass jshint.');
+  });
+});
+define('portfolio/tests/routes/xyplot.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - routes');
+  QUnit.test('routes/xyplot.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'routes/xyplot.js should pass jshint.');
   });
 });
 define('portfolio/tests/test-helper', ['exports', 'portfolio/tests/helpers/resolver', 'ember-qunit'], function (exports, _portfolioTestsHelpersResolver, _emberQunit) {
@@ -3114,6 +3290,27 @@ define('portfolio/tests/unit/routes/d3/scales-test.jshint', ['exports'], functio
     assert.ok(true, 'unit/routes/d3/scales-test.js should pass jshint.');
   });
 });
+define('portfolio/tests/unit/routes/d3/xyplot-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleFor)('route:d3/xyplot', 'Unit | Route | d3/xyplot', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var route = this.subject();
+    assert.ok(route);
+  });
+});
+define('portfolio/tests/unit/routes/d3/xyplot-test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - unit/routes/d3');
+  QUnit.test('unit/routes/d3/xyplot-test.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/routes/d3/xyplot-test.js should pass jshint.');
+  });
+});
 define('portfolio/tests/unit/routes/d3-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
 
   (0, _emberQunit.moduleFor)('route:d3', 'Unit | Route | d3', {
@@ -3133,6 +3330,27 @@ define('portfolio/tests/unit/routes/d3-test.jshint', ['exports'], function (expo
   QUnit.test('unit/routes/d3-test.js should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/routes/d3-test.js should pass jshint.');
+  });
+});
+define('portfolio/tests/unit/routes/xyplot-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleFor)('route:xyplot', 'Unit | Route | xyplot', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var route = this.subject();
+    assert.ok(route);
+  });
+});
+define('portfolio/tests/unit/routes/xyplot-test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - unit/routes');
+  QUnit.test('unit/routes/xyplot-test.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/routes/xyplot-test.js should pass jshint.');
   });
 });
 /* jshint ignore:start */

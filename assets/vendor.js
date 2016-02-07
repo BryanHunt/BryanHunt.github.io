@@ -80015,7 +80015,7 @@ define('ember-d3-components/utils/plotters/d3-xy-line-plotter', ['exports', 'emb
       _ember['default'].run.once(this, 'plot');
     })),
 
-    xScaleUpdated: on('init', observer('xScale.scale', function () {
+    xScaleUpdated: on('init', observer('xScale', 'xScale.scale', function () {
       var scale = this.get('xScale.scale');
 
       if (scale) {
@@ -80026,7 +80026,7 @@ define('ember-d3-components/utils/plotters/d3-xy-line-plotter', ['exports', 'emb
       }
     })),
 
-    yScaleUpdated: on('init', observer('yScale.scale', function () {
+    yScaleUpdated: on('init', observer('yScale', 'yScale.scale', function () {
       var scale = this.get('yScale.scale');
 
       if (scale) {
@@ -80040,8 +80040,10 @@ define('ember-d3-components/utils/plotters/d3-xy-line-plotter', ['exports', 'emb
     plot: function plot() {
       var svg = this.get('svg');
       var data = this.get('data');
+      var xScale = this.get('xScale');
+      var yScale = this.get('yScale');
 
-      if (!svg || !data) {
+      if (!svg || !data || !xScale || !yScale) {
         return;
       }
 

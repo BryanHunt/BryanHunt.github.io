@@ -201,13 +201,20 @@ define('portfolio/components/linear-scale', ['exports', 'ember', 'portfolio/util
     domainMax: 100,
     rangeMin: 0,
     rangeMax: 500,
+    scaleProperty: "scale",
 
     init: function init() {
       this._super.apply(this, arguments);
       this.set('scale', _portfolioUtilsScalesD3LinearScale['default'].create());
     },
 
-    scale: computed.alias('parentView.scale'),
+    scaleChanged: on('init', observer('scale', 'scaleProperty', function () {
+      var scaleProperty = this.get('scaleProperty');
+
+      if (scaleProperty) {
+        this.set('parentView.' + scaleProperty, this.get('scale'));
+      }
+    })),
 
     domainChanged: on('init', observer('domainMin', 'domainMax', function () {
       this.set('scale.domain', [this.get('domainMin'), this.get('domainMax')]);
@@ -237,13 +244,20 @@ define('portfolio/components/log-scale', ['exports', 'ember', 'portfolio/utils/s
     domainMax: 100,
     rangeMin: 0,
     rangeMax: 500,
+    scaeProperty: 'scale',
 
     init: function init() {
       this._super.apply(this, arguments);
       this.set('scale', _portfolioUtilsScalesD3LogScale['default'].create());
     },
 
-    scale: computed.alias('parentView.scale'),
+    scaleChanged: on('init', observer('scale', 'scaleProperty', function () {
+      var scaleProperty = this.get('scaleProperty');
+
+      if (scaleProperty) {
+        this.set('parentView.' + scaleProperty, this.get('scale'));
+      }
+    })),
 
     domainChanged: on('init', observer('domainMin', 'domainMax', function () {
       this.set('scale.domain', [this.get('domainMin'), this.get('domainMax')]);
@@ -537,6 +551,7 @@ define('portfolio/components/pow-scale', ['exports', 'ember', 'portfolio/utils/s
     domainMax: 100,
     rangeMin: 0,
     rangeMax: 500,
+    scaleProperthy: 'scale',
 
     init: function init() {
       this._super.apply(this, arguments);
@@ -544,7 +559,13 @@ define('portfolio/components/pow-scale', ['exports', 'ember', 'portfolio/utils/s
       this.set('scale.exponent', 1);
     },
 
-    scale: computed.alias('parentView.scale'),
+    scaleChanged: on('init', observer('scale', 'scaleProperty', function () {
+      var scaleProperty = this.get('scaleProperty');
+
+      if (scaleProperty) {
+        this.set('parentView.' + scaleProperty, this.get('scale'));
+      }
+    })),
 
     domainChanged: on('init', observer('domainMin', 'domainMax', function () {
       this.set('scale.domain', [this.get('domainMin'), this.get('domainMax')]);
@@ -598,13 +619,20 @@ define('portfolio/components/sqrt-scale', ['exports', 'ember', 'portfolio/utils/
     domainMax: 100,
     rangeMin: 0,
     rangeMax: 500,
+    scaleProperty: 'scale',
 
     init: function init() {
       this._super.apply(this, arguments);
       this.set('scale', _portfolioUtilsScalesD3SqrtScale['default'].create());
     },
 
-    scale: computed.alias('parentView.scale'),
+    scaleChanged: on('init', observer('scale', 'scaleProperty', function () {
+      var scaleProperty = this.get('scaleProperty');
+
+      if (scaleProperty) {
+        this.set('parentView.' + scaleProperty, this.get('scale'));
+      }
+    })),
 
     domainChanged: on('init', observer('domainMin', 'domainMax', function () {
       this.set('scale.domain', [this.get('domainMin'), this.get('domainMax')]);
@@ -624,6 +652,59 @@ define('portfolio/components/transition-group', ['exports', 'ember-css-transitio
     enumerable: true,
     get: function get() {
       return _emberCssTransitionsComponentsTransitionGroup['default'];
+    }
+  });
+});
+define('portfolio/components/xyplot-sandbox', ['exports', 'ember', 'portfolio/utils/plotters/d3-xy-line-plotter'], function (exports, _ember, _portfolioUtilsPlottersD3XyLinePlotter) {
+  var Component = _ember['default'].Component;
+  var computed = _ember['default'].computed;
+  var observer = _ember['default'].observer;
+  exports['default'] = Component.extend({
+    xScaleName: "linear-scale",
+    yScaleName: "linear-scale",
+    translateX: 25,
+    translateY: 25,
+    orientation: "bottom",
+    xGridWidth: computed.alias('xScale.range.1'),
+    yGridHeight: computed.alias('yScale.range.1'),
+
+    xTranslate: computed('yScale.range.1', function () {
+      var translateY = parseInt(this.get('yScale.range.1')) + 25;
+      return "translate(45, " + translateY + ")";
+    }),
+
+    yTranslate: computed('yScale.range.1', function () {
+      var translateX = parseInt(this.get('yScale.range.1')) + 25;
+      return "translate(45, " + translateX + ")";
+    }),
+
+    plotter: _portfolioUtilsPlottersD3XyLinePlotter['default'].create({
+      data: [[{ x: 0, y: 10 }, { x: 10, y: 20 }, { x: 20, y: 35 }, { x: 30, y: 45 }, { x: 50, y: 65 }, { x: 70, y: 95 }, { x: 80, y: 97 }, { x: 90, y: 100 }]]
+    }),
+
+    xScaleChanged: observer('xScale', function () {
+      this.set('plotter.xScale', this.get('xScale'));
+    }),
+
+    yScaleChanged: observer('yScale', function () {
+      this.set('plotter.yScale', this.get('yScale'));
+    }),
+
+    scaleDisplayName: function scaleDisplayName(value) {
+      switch (value) {
+        case "linear-scale":
+          return "Linear";
+        case "log-scale":
+          return "Log";
+        case "ordinal-scale":
+          return "Ordinal";
+        case "pow-scale":
+          return "Pow";
+        case "sqrt-scale":
+          return "Sqrt";
+        default:
+          return "None";
+      }
     }
   });
 });
@@ -873,6 +954,7 @@ define('portfolio/router', ['exports', 'ember', 'portfolio/config/environment'],
       });
       this.route('axis');
       this.route('grid');
+      this.route('xyplot');
     });
   });
 
@@ -911,6 +993,9 @@ define('portfolio/routes/d3/scales/sqrt', ['exports', 'ember'], function (export
 define('portfolio/routes/d3/scales', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Route.extend({});
 });
+define('portfolio/routes/d3/xyplot', ['exports', 'ember'], function (exports, _ember) {
+  exports['default'] = _ember['default'].Route.extend({});
+});
 define('portfolio/routes/d3', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Route.extend({});
 });
@@ -945,6 +1030,9 @@ define('portfolio/routes/split', ['exports', 'ember'], function (exports, _ember
         return family;
       }*/
   });
+});
+define('portfolio/routes/xyplot', ['exports', 'ember'], function (exports, _ember) {
+  exports['default'] = _ember['default'].Route.extend({});
 });
 define('portfolio/services/ajax', ['exports', 'ember-ajax/services/ajax'], function (exports, _emberAjaxServicesAjax) {
   Object.defineProperty(exports, 'default', {
@@ -2278,7 +2366,7 @@ define("portfolio/templates/components/axis-sandbox", ["exports"], function (exp
             morphs[0] = dom.createMorphAt(dom.childAt(fragment, [3]), 3, 3);
             return morphs;
           },
-          statements: [["inline", "d3-axis", [], ["class", "x-axis", "orientation", ["subexpr", "@mut", [["get", "orientation", ["loc", [null, [41, 43], [41, 54]]]]], [], []], "scale", ["subexpr", "@mut", [["get", "scale", ["loc", [null, [41, 61], [41, 66]]]]], [], []], "transform", ["subexpr", "@mut", [["get", "axisTransform", ["loc", [null, [41, 77], [41, 90]]]]], [], []], "grid", ["subexpr", "@mut", [["get", "grid", ["loc", [null, [41, 96], [41, 100]]]]], [], []]], ["loc", [null, [41, 6], [41, 102]]]]],
+          statements: [["inline", "d3-axis", [], ["class", "x-axis", "orientation", ["subexpr", "@mut", [["get", "orientation", ["loc", [null, [41, 43], [41, 54]]]]], [], []], "scale", ["subexpr", "@mut", [["get", "scale", ["loc", [null, [41, 61], [41, 66]]]]], [], []], "transform", ["subexpr", "@mut", [["get", "axisTransform", ["loc", [null, [41, 77], [41, 90]]]]], [], []]], ["loc", [null, [41, 6], [41, 92]]]]],
           locals: [],
           templates: []
         };
@@ -9862,6 +9950,654 @@ define("portfolio/templates/components/transition-group", ["exports"], function 
     };
   })());
 });
+define("portfolio/templates/components/xyplot-sandbox", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    var child0 = (function () {
+      var child0 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.3.0",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 3,
+                "column": 2
+              },
+              "end": {
+                "line": 3,
+                "column": 46
+              }
+            },
+            "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("Linear");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child1 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.3.0",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 4,
+                "column": 2
+              },
+              "end": {
+                "line": 4,
+                "column": 40
+              }
+            },
+            "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("Log");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child2 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.3.0",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 5,
+                "column": 2
+              },
+              "end": {
+                "line": 5,
+                "column": 40
+              }
+            },
+            "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("Pow");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child3 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.3.0",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 6,
+                "column": 2
+              },
+              "end": {
+                "line": 6,
+                "column": 42
+              }
+            },
+            "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("Sqrt");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.3.0",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 2,
+              "column": 0
+            },
+            "end": {
+              "line": 7,
+              "column": 0
+            }
+          },
+          "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(4);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          morphs[1] = dom.createMorphAt(fragment, 3, 3, contextualElement);
+          morphs[2] = dom.createMorphAt(fragment, 5, 5, contextualElement);
+          morphs[3] = dom.createMorphAt(fragment, 7, 7, contextualElement);
+          return morphs;
+        },
+        statements: [["block", "paper-option", [], ["value", "linear-scale"], 0, null, ["loc", [null, [3, 2], [3, 63]]]], ["block", "paper-option", [], ["value", "log-scale"], 1, null, ["loc", [null, [4, 2], [4, 57]]]], ["block", "paper-option", [], ["value", "pow-scale"], 2, null, ["loc", [null, [5, 2], [5, 57]]]], ["block", "paper-option", [], ["value", "sqrt-scale"], 3, null, ["loc", [null, [6, 2], [6, 59]]]]],
+        locals: [],
+        templates: [child0, child1, child2, child3]
+      };
+    })();
+    var child1 = (function () {
+      var child0 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.3.0",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 13,
+                "column": 2
+              },
+              "end": {
+                "line": 13,
+                "column": 46
+              }
+            },
+            "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("Linear");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child1 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.3.0",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 14,
+                "column": 2
+              },
+              "end": {
+                "line": 14,
+                "column": 40
+              }
+            },
+            "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("Log");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child2 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.3.0",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 15,
+                "column": 2
+              },
+              "end": {
+                "line": 15,
+                "column": 40
+              }
+            },
+            "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("Pow");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child3 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.3.0",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 16,
+                "column": 2
+              },
+              "end": {
+                "line": 16,
+                "column": 42
+              }
+            },
+            "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("Sqrt");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.3.0",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 12,
+              "column": 0
+            },
+            "end": {
+              "line": 17,
+              "column": 0
+            }
+          },
+          "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(4);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          morphs[1] = dom.createMorphAt(fragment, 3, 3, contextualElement);
+          morphs[2] = dom.createMorphAt(fragment, 5, 5, contextualElement);
+          morphs[3] = dom.createMorphAt(fragment, 7, 7, contextualElement);
+          return morphs;
+        },
+        statements: [["block", "paper-option", [], ["value", "linear-scale"], 0, null, ["loc", [null, [13, 2], [13, 63]]]], ["block", "paper-option", [], ["value", "log-scale"], 1, null, ["loc", [null, [14, 2], [14, 57]]]], ["block", "paper-option", [], ["value", "pow-scale"], 2, null, ["loc", [null, [15, 2], [15, 57]]]], ["block", "paper-option", [], ["value", "sqrt-scale"], 3, null, ["loc", [null, [16, 2], [16, 59]]]]],
+        locals: [],
+        templates: [child0, child1, child2, child3]
+      };
+    })();
+    var child2 = (function () {
+      var child0 = (function () {
+        var child0 = (function () {
+          return {
+            meta: {
+              "fragmentReason": false,
+              "revision": "Ember@2.3.0",
+              "loc": {
+                "source": null,
+                "start": {
+                  "line": 24,
+                  "column": 4
+                },
+                "end": {
+                  "line": 35,
+                  "column": 4
+                }
+              },
+              "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
+            },
+            isEmpty: false,
+            arity: 0,
+            cachedFragment: null,
+            hasRendered: false,
+            buildFragment: function buildFragment(dom) {
+              var el0 = dom.createDocumentFragment();
+              var el1 = dom.createTextNode("      ");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createElement("defs");
+              var el2 = dom.createTextNode("\n        ");
+              dom.appendChild(el1, el2);
+              var el2 = dom.createElement("clippath");
+              dom.setAttribute(el2, "id", "clip-body");
+              var el3 = dom.createTextNode("\n          ");
+              dom.appendChild(el2, el3);
+              var el3 = dom.createElement("rect");
+              dom.setAttribute(el3, "x", "-5");
+              dom.setAttribute(el3, "y", "0");
+              dom.setAttribute(el3, "width", "600");
+              dom.setAttribute(el3, "height", "550");
+              dom.appendChild(el2, el3);
+              var el3 = dom.createTextNode("\n        ");
+              dom.appendChild(el2, el3);
+              dom.appendChild(el1, el2);
+              var el2 = dom.createTextNode("\n      ");
+              dom.appendChild(el1, el2);
+              dom.appendChild(el0, el1);
+              var el1 = dom.createTextNode("\n      ");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createComment("");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createTextNode("\n      ");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createComment("");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createTextNode("\n      ");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createComment("");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createTextNode("\n      ");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createComment("");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createTextNode("\n      ");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createComment("");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createTextNode("\n");
+              dom.appendChild(el0, el1);
+              return el0;
+            },
+            buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+              var morphs = new Array(5);
+              morphs[0] = dom.createMorphAt(fragment, 3, 3, contextualElement);
+              morphs[1] = dom.createMorphAt(fragment, 5, 5, contextualElement);
+              morphs[2] = dom.createMorphAt(fragment, 7, 7, contextualElement);
+              morphs[3] = dom.createMorphAt(fragment, 9, 9, contextualElement);
+              morphs[4] = dom.createMorphAt(fragment, 11, 11, contextualElement);
+              return morphs;
+            },
+            statements: [["inline", "d3-grid", [], ["class", "grid", "orientation", "bottom", "scale", ["subexpr", "@mut", [["get", "xScale", ["loc", [null, [30, 56], [30, 62]]]]], [], []], "width", 550, "height", ["subexpr", "@mut", [["get", "yGridHeight", ["loc", [null, [30, 80], [30, 91]]]]], [], []], "transform", ["subexpr", "@mut", [["get", "yTranslate", ["loc", [null, [30, 102], [30, 112]]]]], [], []]], ["loc", [null, [30, 6], [30, 114]]]], ["inline", "d3-grid", [], ["class", "grid", "orientation", "left", "scale", ["subexpr", "@mut", [["get", "yScale", ["loc", [null, [31, 54], [31, 60]]]]], [], []], "width", ["subexpr", "@mut", [["get", "xGridWidth", ["loc", [null, [31, 67], [31, 77]]]]], [], []], "height", 500, "transform", "translate(45,25)"], ["loc", [null, [31, 6], [31, 119]]]], ["inline", "d3-axis", [], ["class", "axis", "orientation", "bottom", "scale", ["subexpr", "@mut", [["get", "xScale", ["loc", [null, [32, 56], [32, 62]]]]], [], []], "transform", ["subexpr", "@mut", [["get", "xTranslate", ["loc", [null, [32, 73], [32, 83]]]]], [], []]], ["loc", [null, [32, 6], [32, 85]]]], ["inline", "d3-axis", [], ["class", "axis", "orientation", "left", "scale", ["subexpr", "@mut", [["get", "yScale", ["loc", [null, [33, 54], [33, 60]]]]], [], []], "transform", "translate(45,25)"], ["loc", [null, [33, 6], [33, 91]]]], ["inline", "d3-plot", [], ["plotter", ["subexpr", "@mut", [["get", "plotter", ["loc", [null, [34, 24], [34, 31]]]]], [], []], "translateX", 45, "translateY", 25], ["loc", [null, [34, 6], [34, 61]]]]],
+            locals: [],
+            templates: []
+          };
+        })();
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.3.0",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 22,
+                "column": 2
+              },
+              "end": {
+                "line": 36,
+                "column": 2
+              }
+            },
+            "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("    ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createElement("h3");
+            var el2 = dom.createTextNode("Result");
+            dom.appendChild(el1, el2);
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var morphs = new Array(1);
+            morphs[0] = dom.createMorphAt(fragment, 3, 3, contextualElement);
+            dom.insertBoundary(fragment, null);
+            return morphs;
+          },
+          statements: [["block", "d3-svg", [], ["class", "axis", "width", 600, "height", 550], 0, null, ["loc", [null, [24, 4], [35, 15]]]]],
+          locals: [],
+          templates: [child0]
+        };
+      })();
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.3.0",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 21,
+              "column": 0
+            },
+            "end": {
+              "line": 37,
+              "column": 0
+            }
+          },
+          "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+          dom.insertBoundary(fragment, 0);
+          dom.insertBoundary(fragment, null);
+          return morphs;
+        },
+        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [22, 2], [36, 25]]]]],
+        locals: [],
+        templates: [child0]
+      };
+    })();
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["multiple-nodes", "wrong-type"]
+        },
+        "revision": "Ember@2.3.0",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 38,
+            "column": 0
+          }
+        },
+        "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createElement("h3");
+        var el2 = dom.createTextNode("X Axis");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("h3");
+        var el2 = dom.createTextNode("Y Axis");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(5);
+        morphs[0] = dom.createMorphAt(fragment, 2, 2, contextualElement);
+        morphs[1] = dom.createMorphAt(fragment, 4, 4, contextualElement);
+        morphs[2] = dom.createMorphAt(fragment, 8, 8, contextualElement);
+        morphs[3] = dom.createMorphAt(fragment, 10, 10, contextualElement);
+        morphs[4] = dom.createMorphAt(fragment, 12, 12, contextualElement);
+        dom.insertBoundary(fragment, null);
+        return morphs;
+      },
+      statements: [["block", "paper-select", [], ["item-label-callback", ["subexpr", "@mut", [["get", "scaleDisplayName", ["loc", [null, [2, 36], [2, 52]]]]], [], []], "model", ["subexpr", "@mut", [["get", "xScaleName", ["loc", [null, [2, 59], [2, 69]]]]], [], []], "label", "Scale"], 0, null, ["loc", [null, [2, 0], [7, 17]]]], ["inline", "component", [["get", "xScaleName", ["loc", [null, [9, 12], [9, 22]]]]], ["scaleProperty", "xScale"], ["loc", [null, [9, 0], [9, 47]]]], ["block", "paper-select", [], ["item-label-callback", ["subexpr", "@mut", [["get", "scaleDisplayName", ["loc", [null, [12, 36], [12, 52]]]]], [], []], "model", ["subexpr", "@mut", [["get", "yScaleName", ["loc", [null, [12, 59], [12, 69]]]]], [], []], "label", "Scale"], 1, null, ["loc", [null, [12, 0], [17, 17]]]], ["inline", "component", [["get", "yScaleName", ["loc", [null, [19, 12], [19, 22]]]]], ["scaleProperty", "yScale", "domainMin", 100, "domainMax", 0], ["loc", [null, [19, 0], [19, 73]]]], ["block", "paper-card", [], [], 2, null, ["loc", [null, [21, 0], [37, 15]]]]],
+      locals: [],
+      templates: [child0, child1, child2]
+    };
+  })());
+});
 define("portfolio/templates/d3/axis", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
@@ -10117,6 +10853,78 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
           templates: []
         };
       })();
+      var child2 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.3.0",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 16,
+                "column": 10
+              },
+              "end": {
+                "line": 16,
+                "column": 38
+              }
+            },
+            "moduleName": "portfolio/templates/d3/index.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode(" Grid ");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child3 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.3.0",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 17,
+                "column": 10
+              },
+              "end": {
+                "line": 17,
+                "column": 43
+              }
+            },
+            "moduleName": "portfolio/templates/d3/index.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode(" XY Plot ");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
       return {
         meta: {
           "fragmentReason": {
@@ -10131,7 +10939,7 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
               "column": 0
             },
             "end": {
-              "line": 18,
+              "line": 20,
               "column": 0
             }
           },
@@ -10149,7 +10957,7 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
           var el2 = dom.createTextNode("\n    The ");
           dom.appendChild(el1, el2);
           var el2 = dom.createElement("a");
-          dom.setAttribute(el2, "href", "https://github.com/BryanHunt/ember-d3");
+          dom.setAttribute(el2, "href", "https://github.com/BryanHunt/ember-d3-components");
           var el3 = dom.createTextNode("ember-d3-components");
           dom.appendChild(el2, el3);
           dom.appendChild(el1, el2);
@@ -10180,6 +10988,18 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
           var el4 = dom.createComment("");
           dom.appendChild(el3, el4);
           dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n      ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("li");
+          var el4 = dom.createComment("");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n      ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("li");
+          var el4 = dom.createComment("");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
           var el3 = dom.createTextNode("\n    ");
           dom.appendChild(el2, el3);
           dom.appendChild(el1, el2);
@@ -10192,14 +11012,16 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
         },
         buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
           var element0 = dom.childAt(fragment, [5, 1]);
-          var morphs = new Array(2);
+          var morphs = new Array(4);
           morphs[0] = dom.createMorphAt(dom.childAt(element0, [1]), 0, 0);
           morphs[1] = dom.createMorphAt(dom.childAt(element0, [3]), 0, 0);
+          morphs[2] = dom.createMorphAt(dom.childAt(element0, [5]), 0, 0);
+          morphs[3] = dom.createMorphAt(dom.childAt(element0, [7]), 0, 0);
           return morphs;
         },
-        statements: [["block", "link-to", ["d3.scales"], [], 0, null, ["loc", [null, [14, 10], [14, 54]]]], ["block", "link-to", ["d3.axis"], [], 1, null, ["loc", [null, [15, 10], [15, 50]]]]],
+        statements: [["block", "link-to", ["d3.scales"], [], 0, null, ["loc", [null, [14, 10], [14, 54]]]], ["block", "link-to", ["d3.axis"], [], 1, null, ["loc", [null, [15, 10], [15, 50]]]], ["block", "link-to", ["d3.grid"], [], 2, null, ["loc", [null, [16, 10], [16, 50]]]], ["block", "link-to", ["d3.xyplot"], [], 3, null, ["loc", [null, [17, 10], [17, 55]]]]],
         locals: [],
-        templates: [child0, child1]
+        templates: [child0, child1, child2, child3]
       };
     })();
     return {
@@ -10216,7 +11038,7 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 19,
+            "line": 21,
             "column": 0
           }
         },
@@ -10239,7 +11061,7 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
         dom.insertBoundary(fragment, null);
         return morphs;
       },
-      statements: [["block", "paper-content", [], ["classNames", "md-padding"], 0, null, ["loc", [null, [1, 0], [18, 18]]]]],
+      statements: [["block", "paper-content", [], ["classNames", "md-padding"], 0, null, ["loc", [null, [1, 0], [20, 18]]]]],
       locals: [],
       templates: [child0]
     };
@@ -11021,6 +11843,96 @@ define("portfolio/templates/d3/scales", ["exports"], function (exports) {
     };
   })());
 });
+define("portfolio/templates/d3/xyplot", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    var child0 = (function () {
+      return {
+        meta: {
+          "fragmentReason": {
+            "name": "missing-wrapper",
+            "problems": ["wrong-type"]
+          },
+          "revision": "Ember@2.3.0",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 3,
+              "column": 0
+            }
+          },
+          "moduleName": "portfolio/templates/d3/xyplot.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          return morphs;
+        },
+        statements: [["content", "xyplot-sandbox", ["loc", [null, [2, 2], [2, 20]]]]],
+        locals: [],
+        templates: []
+      };
+    })();
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["wrong-type"]
+        },
+        "revision": "Ember@2.3.0",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 4,
+            "column": 0
+          }
+        },
+        "moduleName": "portfolio/templates/d3/xyplot.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        dom.insertBoundary(fragment, 0);
+        dom.insertBoundary(fragment, null);
+        return morphs;
+      },
+      statements: [["block", "paper-content", [], ["classNames", "md-padding"], 0, null, ["loc", [null, [1, 0], [3, 18]]]]],
+      locals: [],
+      templates: [child0]
+    };
+  })());
+});
 define("portfolio/templates/d3", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
@@ -11168,6 +12080,42 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
           templates: []
         };
       })();
+      var child4 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.3.0",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 7,
+                "column": 4
+              },
+              "end": {
+                "line": 7,
+                "column": 60
+              }
+            },
+            "moduleName": "portfolio/templates/d3.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode(" XY Plot ");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
       return {
         meta: {
           "fragmentReason": {
@@ -11181,7 +12129,7 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
               "column": 0
             },
             "end": {
-              "line": 8,
+              "line": 9,
               "column": 0
             }
           },
@@ -11213,6 +12161,10 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
           dom.appendChild(el1, el2);
           var el2 = dom.createComment("");
           dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n    ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
           var el2 = dom.createTextNode("\n  ");
           dom.appendChild(el1, el2);
           dom.appendChild(el0, el1);
@@ -11222,16 +12174,17 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
         },
         buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
           var element0 = dom.childAt(fragment, [1]);
-          var morphs = new Array(4);
+          var morphs = new Array(5);
           morphs[0] = dom.createMorphAt(element0, 1, 1);
           morphs[1] = dom.createMorphAt(element0, 3, 3);
           morphs[2] = dom.createMorphAt(element0, 5, 5);
           morphs[3] = dom.createMorphAt(element0, 7, 7);
+          morphs[4] = dom.createMorphAt(element0, 9, 9);
           return morphs;
         },
-        statements: [["block", "link-to", ["d3"], [], 0, null, ["loc", [null, [3, 4], [3, 52]]]], ["block", "link-to", ["d3.scales"], ["class", "toolbar-button"], 1, null, ["loc", [null, [4, 4], [4, 71]]]], ["block", "link-to", ["d3.axis"], ["class", "toolbar-button"], 2, null, ["loc", [null, [5, 4], [5, 67]]]], ["block", "link-to", ["d3.grid"], ["class", "toolbar-button"], 3, null, ["loc", [null, [6, 4], [6, 67]]]]],
+        statements: [["block", "link-to", ["d3"], [], 0, null, ["loc", [null, [3, 4], [3, 52]]]], ["block", "link-to", ["d3.scales"], ["class", "toolbar-button"], 1, null, ["loc", [null, [4, 4], [4, 71]]]], ["block", "link-to", ["d3.axis"], ["class", "toolbar-button"], 2, null, ["loc", [null, [5, 4], [5, 67]]]], ["block", "link-to", ["d3.grid"], ["class", "toolbar-button"], 3, null, ["loc", [null, [6, 4], [6, 67]]]], ["block", "link-to", ["d3.xyplot"], ["class", "toolbar-button"], 4, null, ["loc", [null, [7, 4], [7, 72]]]]],
         locals: [],
-        templates: [child0, child1, child2, child3]
+        templates: [child0, child1, child2, child3, child4]
       };
     })();
     return {
@@ -11248,7 +12201,7 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 11,
+            "line": 12,
             "column": 0
           }
         },
@@ -11277,7 +12230,7 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
         dom.insertBoundary(fragment, 0);
         return morphs;
       },
-      statements: [["block", "paper-toolbar", [], [], 0, null, ["loc", [null, [1, 0], [8, 18]]]], ["content", "outlet", ["loc", [null, [10, 0], [10, 10]]]]],
+      statements: [["block", "paper-toolbar", [], [], 0, null, ["loc", [null, [1, 0], [9, 18]]]], ["content", "outlet", ["loc", [null, [11, 0], [11, 10]]]]],
       locals: [],
       templates: [child0]
     };
@@ -12015,7 +12968,7 @@ catch(err) {
 
 /* jshint ignore:start */
 if (!runningTests) {
-  require("portfolio/app")["default"].create({"name":"portfolio","version":"0.0.0+e54b949f"});
+  require("portfolio/app")["default"].create({"name":"portfolio","version":"0.0.0+8d0fc139"});
 }
 /* jshint ignore:end */
 //# sourceMappingURL=portfolio.map
