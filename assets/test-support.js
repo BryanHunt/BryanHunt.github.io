@@ -1,16 +1,18 @@
 /* jshint ignore:start */
 
+
+
 /* jshint ignore:end */
 
 ;(function() {
 /*!
  * @overview  Ember - JavaScript Application Framework
- * @copyright Copyright 2011-2015 Tilde Inc. and contributors
+ * @copyright Copyright 2011-2016 Tilde Inc. and contributors
  *            Portions Copyright 2006-2011 Strobe Inc.
  *            Portions Copyright 2008-2011 Apple Inc. All rights reserved.
  * @license   Licensed under MIT license
  *            See https://raw.github.com/emberjs/ember.js/master/LICENSE
- * @version   2.3.0
+ * @version   2.4.1
  */
 
 var enifed, requireModule, require, requirejs, Ember;
@@ -47,7 +49,13 @@ var mainContext = this;
     requirejs = require = requireModule = function(name) {
       return internalRequire(name, null);
     }
+
+    // setup `require` module
     require['default'] = require;
+
+    require.has = function registryHas(moduleName) {
+      return !!registry[moduleName] || !!registry[moduleName + '/index'];
+    };
 
     function missingModule(name, referrerName) {
       if (referrerName) {
@@ -57,7 +65,15 @@ var mainContext = this;
       }
     }
 
-    function internalRequire(name, referrerName) {
+    function internalRequire(_name, referrerName) {
+      var name = _name;
+      var mod = registry[name];
+
+      if (!mod) {
+        name = name + '/index';
+        mod = registry[name];
+      }
+
       var exports = seen[name];
 
       if (exports !== undefined) {
@@ -66,11 +82,10 @@ var mainContext = this;
 
       exports = seen[name] = {};
 
-      if (!registry[name]) {
-        missingModule(name, referrerName);
+      if (!mod) {
+        missingModule(_name, referrerName);
       }
 
-      var mod = registry[name];
       var deps = mod.deps;
       var callback = mod.callback;
       var length = deps.length;
@@ -287,80 +302,7 @@ enifed('ember-debug/handlers', ['exports', 'ember-debug/is-plain-function', 'emb
     }
   }
 });
-enifed('ember-debug/is-plain-function', ['exports'], function (exports) {
-  'use strict';
-
-  exports.default = isPlainFunction;
-
-  function isPlainFunction(test) {
-    return typeof test === 'function' && test.PrototypeMixin === undefined;
-  }
-});
-enifed('ember-debug/warn', ['exports', 'ember-metal/logger', 'ember-metal/debug', 'ember-debug/handlers'], function (exports, _emberMetalLogger, _emberMetalDebug, _emberDebugHandlers) {
-  'use strict';
-
-  var _slice = Array.prototype.slice;
-  exports.registerHandler = registerHandler;
-  exports.default = warn;
-
-  function registerHandler(handler) {
-    _emberDebugHandlers.registerHandler('warn', handler);
-  }
-
-  registerHandler(function logWarning(message, options) {
-    _emberMetalLogger.default.warn('WARNING: ' + message);
-    if ('trace' in _emberMetalLogger.default) {
-      _emberMetalLogger.default.trace();
-    }
-  });
-
-  var missingOptionsDeprecation = 'When calling `Ember.warn` you ' + 'must provide an `options` hash as the third parameter.  ' + '`options` should include an `id` property.';
-  exports.missingOptionsDeprecation = missingOptionsDeprecation;
-  var missingOptionsIdDeprecation = 'When calling `Ember.warn` you must provide `id` in options.';
-
-  exports.missingOptionsIdDeprecation = missingOptionsIdDeprecation;
-  /**
-  @module ember
-  @submodule ember-debug
-  */
-
-  /**
-    Display a warning with the provided message. Ember build tools will
-    remove any calls to `Ember.warn()` when doing a production build.
-  
-    @method warn
-    @param {String} message A warning to display.
-    @param {Boolean} test An optional boolean. If falsy, the warning
-      will be displayed.
-    @param {Object} options An ojbect that can be used to pass a unique
-      `id` for this warning.  The `id` can be used by Ember debugging tools
-      to change the behavior (raise, log, or silence) for that specific warning.
-      The `id` should be namespaced by dots, e.g. "ember-debug.feature-flag-with-features-stripped"
-    @for Ember
-    @public
-  */
-
-  function warn(message, test, options) {
-    if (!options) {
-      _emberMetalDebug.deprecate(missingOptionsDeprecation, false, {
-        id: 'ember-debug.warn-options-missing',
-        until: '3.0.0',
-        url: 'http://emberjs.com/deprecations/v2.x/#toc_ember-debug-function-options'
-      });
-    }
-
-    if (options && !options.id) {
-      _emberMetalDebug.deprecate(missingOptionsIdDeprecation, false, {
-        id: 'ember-debug.warn-id-missing',
-        until: '3.0.0',
-        url: 'http://emberjs.com/deprecations/v2.x/#toc_ember-debug-function-options'
-      });
-    }
-
-    _emberDebugHandlers.invoke.apply(undefined, ['warn'].concat(_slice.call(arguments)));
-  }
-});
-enifed('ember-debug', ['exports', 'ember-metal/core', 'ember-metal/debug', 'ember-metal/features', 'ember-metal/error', 'ember-metal/logger', 'ember-metal/environment', 'ember-debug/deprecate', 'ember-debug/warn', 'ember-debug/is-plain-function', 'ember-debug/handlers'], function (exports, _emberMetalCore, _emberMetalDebug, _emberMetalFeatures, _emberMetalError, _emberMetalLogger, _emberMetalEnvironment, _emberDebugDeprecate, _emberDebugWarn, _emberDebugIsPlainFunction, _emberDebugHandlers) {
+enifed('ember-debug/index', ['exports', 'ember-metal/core', 'ember-metal/debug', 'ember-metal/features', 'ember-metal/error', 'ember-metal/logger', 'ember-metal/environment', 'ember-debug/deprecate', 'ember-debug/warn', 'ember-debug/is-plain-function', 'ember-debug/handlers'], function (exports, _emberMetalCore, _emberMetalDebug, _emberMetalFeatures, _emberMetalError, _emberMetalLogger, _emberMetalEnvironment, _emberDebugDeprecate, _emberDebugWarn, _emberDebugIsPlainFunction, _emberDebugHandlers) {
   'use strict';
 
   exports._warnIfUsingStrippedFeatureFlags = _warnIfUsingStrippedFeatureFlags;
@@ -652,6 +594,79 @@ enifed('ember-debug', ['exports', 'ember-metal/core', 'ember-metal/debug', 'embe
   exports.runningNonEmberDebugJS = runningNonEmberDebugJS;
   if (runningNonEmberDebugJS) {
     _emberMetalDebug.warn('Please use `ember.debug.js` instead of `ember.js` for development and debugging.');
+  }
+});
+enifed('ember-debug/is-plain-function', ['exports'], function (exports) {
+  'use strict';
+
+  exports.default = isPlainFunction;
+
+  function isPlainFunction(test) {
+    return typeof test === 'function' && test.PrototypeMixin === undefined;
+  }
+});
+enifed('ember-debug/warn', ['exports', 'ember-metal/logger', 'ember-metal/debug', 'ember-debug/handlers'], function (exports, _emberMetalLogger, _emberMetalDebug, _emberDebugHandlers) {
+  'use strict';
+
+  var _slice = Array.prototype.slice;
+  exports.registerHandler = registerHandler;
+  exports.default = warn;
+
+  function registerHandler(handler) {
+    _emberDebugHandlers.registerHandler('warn', handler);
+  }
+
+  registerHandler(function logWarning(message, options) {
+    _emberMetalLogger.default.warn('WARNING: ' + message);
+    if ('trace' in _emberMetalLogger.default) {
+      _emberMetalLogger.default.trace();
+    }
+  });
+
+  var missingOptionsDeprecation = 'When calling `Ember.warn` you ' + 'must provide an `options` hash as the third parameter.  ' + '`options` should include an `id` property.';
+  exports.missingOptionsDeprecation = missingOptionsDeprecation;
+  var missingOptionsIdDeprecation = 'When calling `Ember.warn` you must provide `id` in options.';
+
+  exports.missingOptionsIdDeprecation = missingOptionsIdDeprecation;
+  /**
+  @module ember
+  @submodule ember-debug
+  */
+
+  /**
+    Display a warning with the provided message. Ember build tools will
+    remove any calls to `Ember.warn()` when doing a production build.
+  
+    @method warn
+    @param {String} message A warning to display.
+    @param {Boolean} test An optional boolean. If falsy, the warning
+      will be displayed.
+    @param {Object} options An ojbect that can be used to pass a unique
+      `id` for this warning.  The `id` can be used by Ember debugging tools
+      to change the behavior (raise, log, or silence) for that specific warning.
+      The `id` should be namespaced by dots, e.g. "ember-debug.feature-flag-with-features-stripped"
+    @for Ember
+    @public
+  */
+
+  function warn(message, test, options) {
+    if (!options) {
+      _emberMetalDebug.deprecate(missingOptionsDeprecation, false, {
+        id: 'ember-debug.warn-options-missing',
+        until: '3.0.0',
+        url: 'http://emberjs.com/deprecations/v2.x/#toc_ember-debug-function-options'
+      });
+    }
+
+    if (options && !options.id) {
+      _emberMetalDebug.deprecate(missingOptionsIdDeprecation, false, {
+        id: 'ember-debug.warn-id-missing',
+        until: '3.0.0',
+        url: 'http://emberjs.com/deprecations/v2.x/#toc_ember-debug-function-options'
+      });
+    }
+
+    _emberDebugHandlers.invoke.apply(undefined, ['warn'].concat(_slice.call(arguments)));
   }
 });
 enifed('ember-testing/adapters/adapter', ['exports', 'ember-runtime/system/object'], function (exports, _emberRuntimeSystemObject) {
@@ -1201,6 +1216,23 @@ enifed('ember-testing/helpers', ['exports', 'ember-metal/property_get', 'ember-m
   */
   asyncHelper('triggerEvent', triggerEvent);
 });
+enifed('ember-testing/index', ['exports', 'ember-metal/core', 'ember-testing/initializers', 'ember-testing/support', 'ember-testing/setup_for_testing', 'ember-testing/test', 'ember-testing/adapters/adapter', 'ember-testing/adapters/qunit', 'ember-testing/helpers'], function (exports, _emberMetalCore, _emberTestingInitializers, _emberTestingSupport, _emberTestingSetup_for_testing, _emberTestingTest, _emberTestingAdaptersAdapter, _emberTestingAdaptersQunit, _emberTestingHelpers) {
+  'use strict';
+
+  // adds helpers to helpers object in Test
+
+  /**
+    @module ember
+    @submodule ember-testing
+  */
+
+  _emberMetalCore.default.Test = _emberTestingTest.default;
+  _emberMetalCore.default.Test.Adapter = _emberTestingAdaptersAdapter.default;
+  _emberMetalCore.default.Test.QUnitAdapter = _emberTestingAdaptersQunit.default;
+  _emberMetalCore.default.setupForTesting = _emberTestingSetup_for_testing.default;
+});
+// to setup initializer
+// to handle various edge cases
 enifed('ember-testing/initializers', ['exports', 'ember-runtime/system/lazy_load'], function (exports, _emberRuntimeSystemLazy_load) {
   'use strict';
 
@@ -1820,36 +1852,19 @@ enifed('ember-testing/test', ['exports', 'ember-metal/run_loop', 'ember-runtime/
 
   exports.default = Test;
 });
-enifed('ember-testing', ['exports', 'ember-metal/core', 'ember-testing/initializers', 'ember-testing/support', 'ember-testing/setup_for_testing', 'ember-testing/test', 'ember-testing/adapters/adapter', 'ember-testing/adapters/qunit', 'ember-testing/helpers'], function (exports, _emberMetalCore, _emberTestingInitializers, _emberTestingSupport, _emberTestingSetup_for_testing, _emberTestingTest, _emberTestingAdaptersAdapter, _emberTestingAdaptersQunit, _emberTestingHelpers) {
-  'use strict';
-
-  // adds helpers to helpers object in Test
-
-  /**
-    @module ember
-    @submodule ember-testing
-  */
-
-  _emberMetalCore.default.Test = _emberTestingTest.default;
-  _emberMetalCore.default.Test.Adapter = _emberTestingAdaptersAdapter.default;
-  _emberMetalCore.default.Test.QUnitAdapter = _emberTestingAdaptersQunit.default;
-  _emberMetalCore.default.setupForTesting = _emberTestingSetup_for_testing.default;
-});
-// to setup initializer
-// to handle various edge cases
 requireModule("ember-testing");
 
 }());
 
 /*!
- * QUnit 1.21.0
+ * QUnit 1.22.0
  * https://qunitjs.com/
  *
  * Copyright jQuery Foundation and other contributors
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2016-02-01T13:07Z
+ * Date: 2016-02-23T15:57Z
  */
 
 (function( global ) {
@@ -2001,23 +2016,24 @@ function is( type, obj ) {
 }
 
 var getUrlParams = function() {
-	var i, current;
+	var i, param, name, value;
 	var urlParams = {};
 	var location = window.location;
 	var params = location.search.slice( 1 ).split( "&" );
 	var length = params.length;
 
-	if ( params[ 0 ] ) {
-		for ( i = 0; i < length; i++ ) {
-			current = params[ i ].split( "=" );
-			current[ 0 ] = decodeURIComponent( current[ 0 ] );
+	for ( i = 0; i < length; i++ ) {
+		if ( params[ i ] ) {
+			param = params[ i ].split( "=" );
+			name = decodeURIComponent( param[ 0 ] );
 
 			// allow just a key to turn on a flag, e.g., test.html?noglobals
-			current[ 1 ] = current[ 1 ] ? decodeURIComponent( current[ 1 ] ) : true;
-			if ( urlParams[ current[ 0 ] ] ) {
-				urlParams[ current[ 0 ] ] = [].concat( urlParams[ current[ 0 ] ], current[ 1 ] );
+			value = param.length === 1 ||
+				decodeURIComponent( param.slice( 1 ).join( "=" ) ) ;
+			if ( urlParams[ name ] ) {
+				urlParams[ name ] = [].concat( urlParams[ name ], value );
 			} else {
-				urlParams[ current[ 0 ] ] = current[ 1 ];
+				urlParams[ name ] = value;
 			}
 		}
 	}
@@ -2290,7 +2306,7 @@ QUnit.urlParams = urlParams;
 QUnit.isLocal = !( defined.document && window.location.protocol !== "file:" );
 
 // Expose the current QUnit version
-QUnit.version = "1.21.0";
+QUnit.version = "1.22.0";
 
 extend( QUnit, {
 
@@ -2892,21 +2908,23 @@ Test.prototype = {
 		return synchronize( run, priority );
 	},
 
-	push: function( result, actual, expected, message, negative ) {
+	pushResult: function( resultInfo ) {
+
+		// resultInfo = { result, actual, expected, message, negative }
 		var source,
 			details = {
 				module: this.module.name,
 				name: this.testName,
-				result: result,
-				message: message,
-				actual: actual,
-				expected: expected,
+				result: resultInfo.result,
+				message: resultInfo.message,
+				actual: resultInfo.actual,
+				expected: resultInfo.expected,
 				testId: this.testId,
-				negative: negative || false,
+				negative: resultInfo.negative || false,
 				runtime: now() - this.started
 			};
 
-		if ( !result ) {
+		if ( !resultInfo.result ) {
 			source = sourceFromStacktrace();
 
 			if ( source ) {
@@ -2917,8 +2935,8 @@ Test.prototype = {
 		runLoggingCallbacks( "log", details );
 
 		this.assertions.push({
-			result: !!result,
-			message: message
+			result: !!resultInfo.result,
+			message: resultInfo.message
 		});
 	},
 
@@ -3274,7 +3292,21 @@ QUnit.assert = Assert.prototype = {
 	},
 
 	// Exports test.push() to the user API
-	push: function( /* result, actual, expected, message, negative */ ) {
+	// Alias of pushResult.
+	push: function( result, actual, expected, message, negative ) {
+		var currentAssert = this instanceof Assert ? this : QUnit.config.current.assert;
+		return currentAssert.pushResult( {
+			result: result,
+			actual: actual,
+			expected: expected,
+			message: message,
+			negative: negative
+		} );
+	},
+
+	pushResult: function( resultInfo ) {
+
+		// resultInfo = { result, actual, expected, message, negative }
 		var assert = this,
 			currentTest = ( assert instanceof Assert && assert.test ) || QUnit.config.current;
 
@@ -3297,57 +3329,112 @@ QUnit.assert = Assert.prototype = {
 		if ( !( assert instanceof Assert ) ) {
 			assert = currentTest.assert;
 		}
-		return assert.test.push.apply( assert.test, arguments );
+
+		return assert.test.pushResult( resultInfo );
 	},
 
 	ok: function( result, message ) {
 		message = message || ( result ? "okay" : "failed, expected argument to be truthy, was: " +
 			QUnit.dump.parse( result ) );
-		this.push( !!result, result, true, message );
+		this.pushResult( {
+			result: !!result,
+			actual: result,
+			expected: true,
+			message: message
+		} );
 	},
 
 	notOk: function( result, message ) {
 		message = message || ( !result ? "okay" : "failed, expected argument to be falsy, was: " +
 			QUnit.dump.parse( result ) );
-		this.push( !result, result, false, message );
+		this.pushResult( {
+			result: !result,
+			actual: result,
+			expected: false,
+			message: message
+		} );
 	},
 
 	equal: function( actual, expected, message ) {
 		/*jshint eqeqeq:false */
-		this.push( expected == actual, actual, expected, message );
+		this.pushResult( {
+			result: expected == actual,
+			actual: actual,
+			expected: expected,
+			message: message
+		} );
 	},
 
 	notEqual: function( actual, expected, message ) {
 		/*jshint eqeqeq:false */
-		this.push( expected != actual, actual, expected, message, true );
+		this.pushResult( {
+			result: expected != actual,
+			actual: actual,
+			expected: expected,
+			message: message,
+			negative: true
+		} );
 	},
 
 	propEqual: function( actual, expected, message ) {
 		actual = objectValues( actual );
 		expected = objectValues( expected );
-		this.push( QUnit.equiv( actual, expected ), actual, expected, message );
+		this.pushResult( {
+			result: QUnit.equiv( actual, expected ),
+			actual: actual,
+			expected: expected,
+			message: message
+		} );
 	},
 
 	notPropEqual: function( actual, expected, message ) {
 		actual = objectValues( actual );
 		expected = objectValues( expected );
-		this.push( !QUnit.equiv( actual, expected ), actual, expected, message, true );
+		this.pushResult( {
+			result: !QUnit.equiv( actual, expected ),
+			actual: actual,
+			expected: expected,
+			message: message,
+			negative: true
+		} );
 	},
 
 	deepEqual: function( actual, expected, message ) {
-		this.push( QUnit.equiv( actual, expected ), actual, expected, message );
+		this.pushResult( {
+			result: QUnit.equiv( actual, expected ),
+			actual: actual,
+			expected: expected,
+			message: message
+		} );
 	},
 
 	notDeepEqual: function( actual, expected, message ) {
-		this.push( !QUnit.equiv( actual, expected ), actual, expected, message, true );
+		this.pushResult( {
+			result: !QUnit.equiv( actual, expected ),
+			actual: actual,
+			expected: expected,
+			message: message,
+			negative: true
+		} );
 	},
 
 	strictEqual: function( actual, expected, message ) {
-		this.push( expected === actual, actual, expected, message );
+		this.pushResult( {
+			result: expected === actual,
+			actual: actual,
+			expected: expected,
+			message: message
+		} );
 	},
 
 	notStrictEqual: function( actual, expected, message ) {
-		this.push( expected !== actual, actual, expected, message, true );
+		this.pushResult( {
+			result: expected !== actual,
+			actual: actual,
+			expected: expected,
+			message: message,
+			negative: true
+		} );
 	},
 
 	"throws": function( block, expected, message ) {
@@ -3403,7 +3490,12 @@ QUnit.assert = Assert.prototype = {
 			}
 		}
 
-		currentTest.assert.push( ok, actual, expectedOutput, message );
+		currentTest.assert.pushResult( {
+			result: ok,
+			actual: actual,
+			expected: expectedOutput,
+			message: message
+		} );
 	}
 };
 
@@ -3940,26 +4032,26 @@ QUnit.dump = (function() {
 // back compat
 QUnit.jsDump = QUnit.dump;
 
+// Deprecated
+// Extend assert methods to QUnit for Backwards compatibility
+(function() {
+	var i,
+		assertions = Assert.prototype;
+
+	function applyCurrent( current ) {
+		return function() {
+			var assert = new Assert( QUnit.config.current );
+			current.apply( assert, arguments );
+		};
+	}
+
+	for ( i in assertions ) {
+		QUnit[ i ] = applyCurrent( assertions[ i ] );
+	}
+})();
+
 // For browser, export only select globals
 if ( defined.document ) {
-
-	// Deprecated
-	// Extend assert methods to QUnit and Global scope through Backwards compatibility
-	(function() {
-		var i,
-			assertions = Assert.prototype;
-
-		function applyCurrent( current ) {
-			return function() {
-				var assert = new Assert( QUnit.config.current );
-				current.apply( assert, arguments );
-			};
-		}
-
-		for ( i in assertions ) {
-			QUnit[ i ] = applyCurrent( assertions[ i ] );
-		}
-	})();
 
 	(function() {
 		var i, l,
@@ -5553,7 +5645,7 @@ function appendHeader() {
 
 	if ( header ) {
 		header.innerHTML = "<a href='" +
-			setUrl({ filter: undefined, module: undefined, testId: undefined }) +
+			escapeText( setUrl( { filter: undefined, module: undefined, testId: undefined } ) ) +
 			"'>" + header.innerHTML + "</a> ";
 	}
 }
@@ -5596,9 +5688,10 @@ function appendFilteredTest() {
 	if ( !testId || testId.length <= 0 ) {
 		return "";
 	}
-	return "<div id='qunit-filteredTest'>Rerunning selected tests: " + testId.join(", ") +
+	return "<div id='qunit-filteredTest'>Rerunning selected tests: " +
+		escapeText( testId.join(", ") ) +
 		" <a id='qunit-clearFilter' href='" +
-		setUrl({ filter: undefined, module: undefined, testId: undefined }) +
+		escapeText( setUrl( { filter: undefined, module: undefined, testId: undefined } ) ) +
 		"'>" + "Run all tests" + "</a></div>";
 }
 
@@ -5837,7 +5930,8 @@ QUnit.log(function( details ) {
 			message += "<tr class='test-message'><th>Message: </th><td>" +
 				"Diff suppressed as the depth of object is more than current max depth (" +
 				QUnit.config.maxDepth + ").<p>Hint: Use <code>QUnit.dump.maxDepth</code> to " +
-				" run with a higher max depth or <a href='" + setUrl({ maxDepth: -1 }) + "'>" +
+				" run with a higher max depth or <a href='" +
+				escapeText( setUrl( { maxDepth: -1 } ) ) + "'>" +
 				"Rerun</a> without max depth.</p></td></tr>";
 		}
 

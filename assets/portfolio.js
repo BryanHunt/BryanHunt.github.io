@@ -1,5 +1,8 @@
 "use strict";
+
 /* jshint ignore:start */
+
+
 
 /* jshint ignore:end */
 
@@ -63,11 +66,67 @@ define("portfolio/components/axis-sandbox", ["exports", "ember"], function (expo
 define('portfolio/components/base-focusable', ['exports', 'ember-paper/components/base-focusable'], function (exports, _emberPaperComponentsBaseFocusable) {
   exports['default'] = _emberPaperComponentsBaseFocusable['default'];
 });
+define('portfolio/components/d3-arc', ['exports', 'ember-d3-components/components/d3-arc'], function (exports, _emberD3ComponentsComponentsD3Arc) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ComponentsComponentsD3Arc['default'];
+    }
+  });
+});
+define('portfolio/components/d3-area-chart', ['exports', 'ember-d3-charts/components/d3-area-chart'], function (exports, _emberD3ChartsComponentsD3AreaChart) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ChartsComponentsD3AreaChart['default'];
+    }
+  });
+});
+define('portfolio/components/d3-area', ['exports', 'ember-d3-components/components/d3-area'], function (exports, _emberD3ComponentsComponentsD3Area) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ComponentsComponentsD3Area['default'];
+    }
+  });
+});
 define('portfolio/components/d3-axis', ['exports', 'ember-d3-components/components/d3-axis'], function (exports, _emberD3ComponentsComponentsD3Axis) {
   Object.defineProperty(exports, 'default', {
     enumerable: true,
     get: function get() {
       return _emberD3ComponentsComponentsD3Axis['default'];
+    }
+  });
+});
+define('portfolio/components/d3-bar-chart', ['exports', 'ember-d3-charts/components/d3-bar-chart'], function (exports, _emberD3ChartsComponentsD3BarChart) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ChartsComponentsD3BarChart['default'];
+    }
+  });
+});
+define('portfolio/components/d3-bar', ['exports', 'ember-d3-components/components/d3-bar'], function (exports, _emberD3ComponentsComponentsD3Bar) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ComponentsComponentsD3Bar['default'];
+    }
+  });
+});
+define('portfolio/components/d3-bubble-chart', ['exports', 'ember-d3-charts/components/d3-bubble-chart'], function (exports, _emberD3ChartsComponentsD3BubbleChart) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ChartsComponentsD3BubbleChart['default'];
+    }
+  });
+});
+define('portfolio/components/d3-circle', ['exports', 'ember-d3-components/components/d3-circle'], function (exports, _emberD3ComponentsComponentsD3Circle) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ComponentsComponentsD3Circle['default'];
     }
   });
 });
@@ -79,11 +138,51 @@ define('portfolio/components/d3-clip-path', ['exports', 'ember-d3-components/com
     }
   });
 });
+define('portfolio/components/d3-component', ['exports', 'ember-d3-components/components/d3-component'], function (exports, _emberD3ComponentsComponentsD3Component) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ComponentsComponentsD3Component['default'];
+    }
+  });
+});
 define('portfolio/components/d3-grid', ['exports', 'ember-d3-components/components/d3-grid'], function (exports, _emberD3ComponentsComponentsD3Grid) {
   Object.defineProperty(exports, 'default', {
     enumerable: true,
     get: function get() {
       return _emberD3ComponentsComponentsD3Grid['default'];
+    }
+  });
+});
+define('portfolio/components/d3-group', ['exports', 'ember-d3-components/components/d3-group'], function (exports, _emberD3ComponentsComponentsD3Group) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ComponentsComponentsD3Group['default'];
+    }
+  });
+});
+define('portfolio/components/d3-line-chart', ['exports', 'ember-d3-charts/components/d3-line-chart'], function (exports, _emberD3ChartsComponentsD3LineChart) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ChartsComponentsD3LineChart['default'];
+    }
+  });
+});
+define('portfolio/components/d3-line', ['exports', 'ember-d3-components/components/d3-line'], function (exports, _emberD3ComponentsComponentsD3Line) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ComponentsComponentsD3Line['default'];
+    }
+  });
+});
+define('portfolio/components/d3-pie-chart', ['exports', 'ember-d3-charts/components/d3-pie-chart'], function (exports, _emberD3ChartsComponentsD3PieChart) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ChartsComponentsD3PieChart['default'];
     }
   });
 });
@@ -103,11 +202,43 @@ define('portfolio/components/d3-scale', ['exports', 'ember-d3-components/compone
     }
   });
 });
+define('portfolio/components/d3-stacked-area-chart', ['exports', 'ember-d3-charts/components/d3-stacked-area-chart'], function (exports, _emberD3ChartsComponentsD3StackedAreaChart) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ChartsComponentsD3StackedAreaChart['default'];
+    }
+  });
+});
+define('portfolio/components/d3-stacked-bar-chart', ['exports', 'ember-d3-charts/components/d3-stacked-bar-chart'], function (exports, _emberD3ChartsComponentsD3StackedBarChart) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ChartsComponentsD3StackedBarChart['default'];
+    }
+  });
+});
 define('portfolio/components/d3-svg', ['exports', 'ember-d3-components/components/d3-svg'], function (exports, _emberD3ComponentsComponentsD3Svg) {
   Object.defineProperty(exports, 'default', {
     enumerable: true,
     get: function get() {
       return _emberD3ComponentsComponentsD3Svg['default'];
+    }
+  });
+});
+define('portfolio/components/d3-text', ['exports', 'ember-d3-components/components/d3-text'], function (exports, _emberD3ComponentsComponentsD3Text) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ComponentsComponentsD3Text['default'];
+    }
+  });
+});
+define('portfolio/components/d3-xy-chart', ['exports', 'ember-d3-charts/components/d3-xy-chart'], function (exports, _emberD3ChartsComponentsD3XyChart) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ChartsComponentsD3XyChart['default'];
     }
   });
 });
@@ -137,6 +268,10 @@ define('portfolio/components/grid-sandbox', ['exports', 'ember'], function (expo
   exports['default'] = Component.extend({
     scaleName: 'linear-scale',
     orientation: 'bottom',
+
+    gridTransform: computed('translateX', 'translateY', function () {
+      return 'translate(' + this.get('translateX') + ', ' + this.get('translateY') + ')';
+    }),
 
     translateX: computed('orientation', function () {
       var orientation = this.get('orientation');
@@ -183,6 +318,36 @@ define('portfolio/components/grid-sandbox', ['exports', 'ember'], function (expo
         default:
           return "None";
       }
+    }
+  });
+});
+define('portfolio/components/line-chart', ['exports', 'ember', 'ember-d3-components/utils/scales/d3-linear-scale'], function (exports, _ember, _emberD3ComponentsUtilsScalesD3LinearScale) {
+  var Component = _ember['default'].Component;
+  exports['default'] = Component.extend({
+    xScale: _emberD3ComponentsUtilsScalesD3LinearScale['default'].create({ domain: [0, 100], range: [0, 440] }),
+    yScale: _emberD3ComponentsUtilsScalesD3LinearScale['default'].create({ domain: [100, 0], range: [0, 430] }),
+
+    chartOptions: {
+      width: 500,
+      height: 500,
+      title: { x: 250, y: 15, text: "Line Chart", transform: "" },
+      xAxis: { transform: "translate(35,455)", label: { x: 250, y: 495, text: "X Axis", transform: "" } },
+      yAxis: { transform: "translate(35,25)", label: { x: -240, y: 10, text: "Y Axis", transform: "rotate(-90)" } },
+      xGrid: { transform: "translate(35,455)" },
+      yGrid: { transform: "translate(35,25)" },
+      plot: { transform: "translate(35,25)", paddingLeft: 35, paddingRight: 25, paddingTop: 25, paddingBottom: 45, showDots: true }
+    },
+
+    data: [{ x: 0, y: 10 }, { x: 10, y: 20 }, { x: 20, y: 35 }, { x: 30, y: 45 }, { x: 50, y: 65 }, { x: 70, y: 95 }, { x: 80, y: 97 }, { x: 90, y: 100 }],
+
+    init: function init() {
+      this._super.apply(this, arguments);
+      this.set('chartOptions.xAxis.scale', this.get('xScale'));
+      this.set('chartOptions.yAxis.scale', this.get('yScale'));
+      this.set('chartOptions.xGrid.scale', this.get('xScale'));
+      this.set('chartOptions.yGrid.scale', this.get('yScale'));
+      this.set('chartOptions.plot.xScale', this.get('xScale'));
+      this.set('chartOptions.plot.yScale', this.get('yScale'));
     }
   });
 });
@@ -244,7 +409,7 @@ define('portfolio/components/log-scale', ['exports', 'ember', 'portfolio/utils/s
     domainMax: 100,
     rangeMin: 0,
     rangeMax: 500,
-    scaeProperty: 'scale',
+    scaleProperty: 'scale',
 
     init: function init() {
       this._super.apply(this, arguments);
@@ -551,7 +716,7 @@ define('portfolio/components/pow-scale', ['exports', 'ember', 'portfolio/utils/s
     domainMax: 100,
     rangeMin: 0,
     rangeMax: 500,
-    scaleProperthy: 'scale',
+    scaleProperty: 'scale',
 
     init: function init() {
       this._super.apply(this, arguments);
@@ -652,59 +817,6 @@ define('portfolio/components/transition-group', ['exports', 'ember-css-transitio
     enumerable: true,
     get: function get() {
       return _emberCssTransitionsComponentsTransitionGroup['default'];
-    }
-  });
-});
-define('portfolio/components/xyplot-sandbox', ['exports', 'ember', 'portfolio/utils/plotters/d3-xy-line-plotter'], function (exports, _ember, _portfolioUtilsPlottersD3XyLinePlotter) {
-  var Component = _ember['default'].Component;
-  var computed = _ember['default'].computed;
-  var observer = _ember['default'].observer;
-  exports['default'] = Component.extend({
-    xScaleName: "linear-scale",
-    yScaleName: "linear-scale",
-    translateX: 25,
-    translateY: 25,
-    orientation: "bottom",
-    xGridWidth: computed.alias('xScale.range.1'),
-    yGridHeight: computed.alias('yScale.range.1'),
-
-    xTranslate: computed('yScale.range.1', function () {
-      var translateY = parseInt(this.get('yScale.range.1')) + 25;
-      return "translate(45, " + translateY + ")";
-    }),
-
-    yTranslate: computed('yScale.range.1', function () {
-      var translateX = parseInt(this.get('yScale.range.1')) + 25;
-      return "translate(45, " + translateX + ")";
-    }),
-
-    plotter: _portfolioUtilsPlottersD3XyLinePlotter['default'].create({
-      data: [[{ x: 0, y: 10 }, { x: 10, y: 20 }, { x: 20, y: 35 }, { x: 30, y: 45 }, { x: 50, y: 65 }, { x: 70, y: 95 }, { x: 80, y: 97 }, { x: 90, y: 100 }]]
-    }),
-
-    xScaleChanged: observer('xScale', function () {
-      this.set('plotter.xScale', this.get('xScale'));
-    }),
-
-    yScaleChanged: observer('yScale', function () {
-      this.set('plotter.yScale', this.get('yScale'));
-    }),
-
-    scaleDisplayName: function scaleDisplayName(value) {
-      switch (value) {
-        case "linear-scale":
-          return "Linear";
-        case "log-scale":
-          return "Log";
-        case "ordinal-scale":
-          return "Ordinal";
-        case "pow-scale":
-          return "Pow";
-        case "sqrt-scale":
-          return "Sqrt";
-        default:
-          return "None";
-      }
     }
   });
 });
@@ -944,7 +1056,7 @@ define('portfolio/router', ['exports', 'ember', 'portfolio/config/environment'],
   Router.map(function () {
     this.route("split");
     this.route("web");
-    this.route('d3', function () {
+    this.route('d3components', function () {
       this.route('scales', function () {
         this.route('linear');
         this.route('ordinal');
@@ -954,7 +1066,9 @@ define('portfolio/router', ['exports', 'ember', 'portfolio/config/environment'],
       });
       this.route('axis');
       this.route('grid');
-      this.route('xyplot');
+    });
+    this.route('d3charts', function () {
+      this.route('line');
     });
   });
 
@@ -968,71 +1082,6 @@ define('portfolio/routes/application', ['exports', 'ember'], function (exports, 
       }
     }
   });
-});
-define('portfolio/routes/d3/axis', ['exports', 'ember'], function (exports, _ember) {
-  exports['default'] = _ember['default'].Route.extend({});
-});
-define('portfolio/routes/d3/grid', ['exports', 'ember'], function (exports, _ember) {
-  exports['default'] = _ember['default'].Route.extend({});
-});
-define('portfolio/routes/d3/scales/linear', ['exports', 'ember'], function (exports, _ember) {
-  exports['default'] = _ember['default'].Route.extend({});
-});
-define('portfolio/routes/d3/scales/log', ['exports', 'ember'], function (exports, _ember) {
-  exports['default'] = _ember['default'].Route.extend({});
-});
-define('portfolio/routes/d3/scales/ordinal', ['exports', 'ember'], function (exports, _ember) {
-  exports['default'] = _ember['default'].Route.extend({});
-});
-define('portfolio/routes/d3/scales/pow', ['exports', 'ember'], function (exports, _ember) {
-  exports['default'] = _ember['default'].Route.extend({});
-});
-define('portfolio/routes/d3/scales/sqrt', ['exports', 'ember'], function (exports, _ember) {
-  exports['default'] = _ember['default'].Route.extend({});
-});
-define('portfolio/routes/d3/scales', ['exports', 'ember'], function (exports, _ember) {
-  exports['default'] = _ember['default'].Route.extend({});
-});
-define('portfolio/routes/d3/xyplot', ['exports', 'ember'], function (exports, _ember) {
-  exports['default'] = _ember['default'].Route.extend({});
-});
-define('portfolio/routes/d3', ['exports', 'ember'], function (exports, _ember) {
-  exports['default'] = _ember['default'].Route.extend({});
-});
-define('portfolio/routes/split', ['exports', 'ember'], function (exports, _ember) {
-  //import TreeNode from 'ember-idx-tree/node';
-
-  exports['default'] = _ember['default'].Route.extend({
-    /*  model: function() {
-        var family, gaya, josh, lud, moses, suz, verdi;
-        family = TreeNode.create({
-          title: 'Family'
-        });
-        suz = family.createChild({
-          title: 'Susan'
-        });
-        lud = family.createChild({
-          title: 'Luda'
-        });
-        josh = suz.createChild({
-          title: 'Josh'
-        });
-        moses = suz.createChild({
-          title: 'Moses'
-        });
-        verdi = lud.createChild({
-          title: 'Verdi'
-        });
-        gaya = lud.createChild({
-          title: 'Gaya'
-        });
-    
-        return family;
-      }*/
-  });
-});
-define('portfolio/routes/xyplot', ['exports', 'ember'], function (exports, _ember) {
-  exports['default'] = _ember['default'].Route.extend({});
 });
 define('portfolio/services/ajax', ['exports', 'ember-ajax/services/ajax'], function (exports, _emberAjaxServicesAjax) {
   Object.defineProperty(exports, 'default', {
@@ -1317,7 +1366,7 @@ define("portfolio/templates/application", ["exports"], function (exports) {
           return {
             meta: {
               "fragmentReason": false,
-              "revision": "Ember@2.3.0",
+              "revision": "Ember@2.4.1",
               "loc": {
                 "source": null,
                 "start": {
@@ -1375,7 +1424,7 @@ define("portfolio/templates/application", ["exports"], function (exports) {
               return {
                 meta: {
                   "fragmentReason": false,
-                  "revision": "Ember@2.3.0",
+                  "revision": "Ember@2.4.1",
                   "loc": {
                     "source": null,
                     "start": {
@@ -1411,7 +1460,7 @@ define("portfolio/templates/application", ["exports"], function (exports) {
               return {
                 meta: {
                   "fragmentReason": false,
-                  "revision": "Ember@2.3.0",
+                  "revision": "Ember@2.4.1",
                   "loc": {
                     "source": null,
                     "start": {
@@ -1420,7 +1469,7 @@ define("portfolio/templates/application", ["exports"], function (exports) {
                     },
                     "end": {
                       "line": 14,
-                      "column": 75
+                      "column": 85
                     }
                   },
                   "moduleName": "portfolio/templates/application.hbs"
@@ -1447,7 +1496,7 @@ define("portfolio/templates/application", ["exports"], function (exports) {
               return {
                 meta: {
                   "fragmentReason": false,
-                  "revision": "Ember@2.3.0",
+                  "revision": "Ember@2.4.1",
                   "loc": {
                     "source": null,
                     "start": {
@@ -1456,6 +1505,42 @@ define("portfolio/templates/application", ["exports"], function (exports) {
                     },
                     "end": {
                       "line": 15,
+                      "column": 77
+                    }
+                  },
+                  "moduleName": "portfolio/templates/application.hbs"
+                },
+                isEmpty: false,
+                arity: 0,
+                cachedFragment: null,
+                hasRendered: false,
+                buildFragment: function buildFragment(dom) {
+                  var el0 = dom.createDocumentFragment();
+                  var el1 = dom.createTextNode("Ember D3 Charts");
+                  dom.appendChild(el0, el1);
+                  return el0;
+                },
+                buildRenderNodes: function buildRenderNodes() {
+                  return [];
+                },
+                statements: [],
+                locals: [],
+                templates: []
+              };
+            })();
+            var child3 = (function () {
+              return {
+                meta: {
+                  "fragmentReason": false,
+                  "revision": "Ember@2.4.1",
+                  "loc": {
+                    "source": null,
+                    "start": {
+                      "line": 16,
+                      "column": 8
+                    },
+                    "end": {
+                      "line": 16,
                       "column": 69
                     }
                   },
@@ -1482,7 +1567,7 @@ define("portfolio/templates/application", ["exports"], function (exports) {
             return {
               meta: {
                 "fragmentReason": false,
-                "revision": "Ember@2.3.0",
+                "revision": "Ember@2.4.1",
                 "loc": {
                   "source": null,
                   "start": {
@@ -1490,7 +1575,7 @@ define("portfolio/templates/application", ["exports"], function (exports) {
                     "column": 6
                   },
                   "end": {
-                    "line": 16,
+                    "line": 17,
                     "column": 6
                   }
                 },
@@ -1514,26 +1599,31 @@ define("portfolio/templates/application", ["exports"], function (exports) {
                 dom.appendChild(el0, el1);
                 var el1 = dom.createComment("");
                 dom.appendChild(el0, el1);
+                var el1 = dom.createTextNode("\n        ");
+                dom.appendChild(el0, el1);
+                var el1 = dom.createComment("");
+                dom.appendChild(el0, el1);
                 var el1 = dom.createTextNode("\n");
                 dom.appendChild(el0, el1);
                 return el0;
               },
               buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-                var morphs = new Array(3);
+                var morphs = new Array(4);
                 morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
                 morphs[1] = dom.createMorphAt(fragment, 3, 3, contextualElement);
                 morphs[2] = dom.createMorphAt(fragment, 5, 5, contextualElement);
+                morphs[3] = dom.createMorphAt(fragment, 7, 7, contextualElement);
                 return morphs;
               },
-              statements: [["block", "paper-item", [], ["action", "transitionTo", "param", "split"], 0, null, ["loc", [null, [13, 8], [13, 90]]]], ["block", "paper-item", [], ["action", "transitionTo", "param", "d3"], 1, null, ["loc", [null, [14, 8], [14, 90]]]], ["block", "paper-item", [], ["action", "transitionTo", "param", "web"], 2, null, ["loc", [null, [15, 8], [15, 84]]]]],
+              statements: [["block", "paper-item", [], ["action", "transitionTo", "param", "split"], 0, null, ["loc", [null, [13, 8], [13, 90]]]], ["block", "paper-item", [], ["action", "transitionTo", "param", "d3components"], 1, null, ["loc", [null, [14, 8], [14, 100]]]], ["block", "paper-item", [], ["action", "transitionTo", "param", "d3charts"], 2, null, ["loc", [null, [15, 8], [15, 92]]]], ["block", "paper-item", [], ["action", "transitionTo", "param", "web"], 3, null, ["loc", [null, [16, 8], [16, 84]]]]],
               locals: [],
-              templates: [child0, child1, child2]
+              templates: [child0, child1, child2, child3]
             };
           })();
           return {
             meta: {
               "fragmentReason": false,
-              "revision": "Ember@2.3.0",
+              "revision": "Ember@2.4.1",
               "loc": {
                 "source": null,
                 "start": {
@@ -1541,7 +1631,7 @@ define("portfolio/templates/application", ["exports"], function (exports) {
                   "column": 4
                 },
                 "end": {
-                  "line": 17,
+                  "line": 18,
                   "column": 4
                 }
               },
@@ -1564,7 +1654,7 @@ define("portfolio/templates/application", ["exports"], function (exports) {
               dom.insertBoundary(fragment, null);
               return morphs;
             },
-            statements: [["block", "paper-list", [], [], 0, null, ["loc", [null, [12, 6], [16, 21]]]]],
+            statements: [["block", "paper-list", [], [], 0, null, ["loc", [null, [12, 6], [17, 21]]]]],
             locals: [],
             templates: [child0]
           };
@@ -1572,7 +1662,7 @@ define("portfolio/templates/application", ["exports"], function (exports) {
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -1580,7 +1670,7 @@ define("portfolio/templates/application", ["exports"], function (exports) {
                 "column": 2
               },
               "end": {
-                "line": 18,
+                "line": 19,
                 "column": 2
               }
             },
@@ -1608,7 +1698,7 @@ define("portfolio/templates/application", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["block", "paper-toolbar", [], [], 0, null, ["loc", [null, [3, 4], [9, 22]]]], ["block", "paper-content", [], [], 1, null, ["loc", [null, [11, 4], [17, 22]]]]],
+          statements: [["block", "paper-toolbar", [], [], 0, null, ["loc", [null, [3, 4], [9, 22]]]], ["block", "paper-content", [], [], 1, null, ["loc", [null, [11, 4], [18, 22]]]]],
           locals: [],
           templates: [child0, child1]
         };
@@ -1617,15 +1707,15 @@ define("portfolio/templates/application", ["exports"], function (exports) {
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
-                "line": 20,
+                "line": 21,
                 "column": 2
               },
               "end": {
-                "line": 22,
+                "line": 23,
                 "column": 2
               }
             },
@@ -1650,7 +1740,7 @@ define("portfolio/templates/application", ["exports"], function (exports) {
             morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
             return morphs;
           },
-          statements: [["content", "outlet", ["loc", [null, [21, 4], [21, 14]]]]],
+          statements: [["content", "outlet", ["loc", [null, [22, 4], [22, 14]]]]],
           locals: [],
           templates: []
         };
@@ -1661,7 +1751,7 @@ define("portfolio/templates/application", ["exports"], function (exports) {
             "name": "missing-wrapper",
             "problems": ["wrong-type", "multiple-nodes"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -1669,7 +1759,7 @@ define("portfolio/templates/application", ["exports"], function (exports) {
               "column": 0
             },
             "end": {
-              "line": 23,
+              "line": 24,
               "column": 0
             }
           },
@@ -1697,7 +1787,7 @@ define("portfolio/templates/application", ["exports"], function (exports) {
           dom.insertBoundary(fragment, null);
           return morphs;
         },
-        statements: [["block", "paper-sidenav", [], ["classNames", "md-sidenav-left md-whiteframe-z2"], 0, null, ["loc", [null, [2, 2], [18, 20]]]], ["block", "paper-content", [], ["flex-layout", "column", "flex", true], 1, null, ["loc", [null, [20, 2], [22, 20]]]]],
+        statements: [["block", "paper-sidenav", [], ["classNames", "md-sidenav-left md-whiteframe-z2"], 0, null, ["loc", [null, [2, 2], [19, 20]]]], ["block", "paper-content", [], ["flex-layout", "column", "flex", true], 1, null, ["loc", [null, [21, 2], [23, 20]]]]],
         locals: [],
         templates: [child0, child1]
       };
@@ -1708,7 +1798,7 @@ define("portfolio/templates/application", ["exports"], function (exports) {
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -1716,7 +1806,7 @@ define("portfolio/templates/application", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 24,
+            "line": 25,
             "column": 0
           }
         },
@@ -1739,7 +1829,7 @@ define("portfolio/templates/application", ["exports"], function (exports) {
         dom.insertBoundary(fragment, null);
         return morphs;
       },
-      statements: [["block", "paper-nav-container", [], ["classNames", "ember-app"], 0, null, ["loc", [null, [1, 0], [23, 24]]]]],
+      statements: [["block", "paper-nav-container", [], ["classNames", "ember-app"], 0, null, ["loc", [null, [1, 0], [24, 24]]]]],
       locals: [],
       templates: [child0]
     };
@@ -1752,7 +1842,7 @@ define("portfolio/templates/components/axis-sandbox", ["exports"], function (exp
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -1788,7 +1878,7 @@ define("portfolio/templates/components/axis-sandbox", ["exports"], function (exp
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -1824,7 +1914,7 @@ define("portfolio/templates/components/axis-sandbox", ["exports"], function (exp
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -1860,7 +1950,7 @@ define("portfolio/templates/components/axis-sandbox", ["exports"], function (exp
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -1896,7 +1986,7 @@ define("portfolio/templates/components/axis-sandbox", ["exports"], function (exp
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -1934,7 +2024,7 @@ define("portfolio/templates/components/axis-sandbox", ["exports"], function (exp
             "name": "missing-wrapper",
             "problems": ["wrong-type", "multiple-nodes"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -1999,7 +2089,7 @@ define("portfolio/templates/components/axis-sandbox", ["exports"], function (exp
             return {
               meta: {
                 "fragmentReason": false,
-                "revision": "Ember@2.3.0",
+                "revision": "Ember@2.4.1",
                 "loc": {
                   "source": null,
                   "start": {
@@ -2035,7 +2125,7 @@ define("portfolio/templates/components/axis-sandbox", ["exports"], function (exp
             return {
               meta: {
                 "fragmentReason": false,
-                "revision": "Ember@2.3.0",
+                "revision": "Ember@2.4.1",
                 "loc": {
                   "source": null,
                   "start": {
@@ -2071,7 +2161,7 @@ define("portfolio/templates/components/axis-sandbox", ["exports"], function (exp
             return {
               meta: {
                 "fragmentReason": false,
-                "revision": "Ember@2.3.0",
+                "revision": "Ember@2.4.1",
                 "loc": {
                   "source": null,
                   "start": {
@@ -2107,7 +2197,7 @@ define("portfolio/templates/components/axis-sandbox", ["exports"], function (exp
             return {
               meta: {
                 "fragmentReason": false,
-                "revision": "Ember@2.3.0",
+                "revision": "Ember@2.4.1",
                 "loc": {
                   "source": null,
                   "start": {
@@ -2142,7 +2232,7 @@ define("portfolio/templates/components/axis-sandbox", ["exports"], function (exp
           return {
             meta: {
               "fragmentReason": false,
-              "revision": "Ember@2.3.0",
+              "revision": "Ember@2.4.1",
               "loc": {
                 "source": null,
                 "start": {
@@ -2198,7 +2288,7 @@ define("portfolio/templates/components/axis-sandbox", ["exports"], function (exp
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -2255,7 +2345,7 @@ define("portfolio/templates/components/axis-sandbox", ["exports"], function (exp
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -2293,10 +2383,73 @@ define("portfolio/templates/components/axis-sandbox", ["exports"], function (exp
     })();
     var child2 = (function () {
       var child0 = (function () {
+        var child0 = (function () {
+          return {
+            meta: {
+              "fragmentReason": false,
+              "revision": "Ember@2.4.1",
+              "loc": {
+                "source": null,
+                "start": {
+                  "line": 35,
+                  "column": 4
+                },
+                "end": {
+                  "line": 42,
+                  "column": 4
+                }
+              },
+              "moduleName": "portfolio/templates/components/axis-sandbox.hbs"
+            },
+            isEmpty: false,
+            arity: 0,
+            cachedFragment: null,
+            hasRendered: false,
+            buildFragment: function buildFragment(dom) {
+              var el0 = dom.createDocumentFragment();
+              var el1 = dom.createTextNode("      ");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createElement("defs");
+              var el2 = dom.createTextNode("\n        ");
+              dom.appendChild(el1, el2);
+              var el2 = dom.createElement("clippath");
+              dom.setAttribute(el2, "id", "clip-body");
+              var el3 = dom.createTextNode("\n          ");
+              dom.appendChild(el2, el3);
+              var el3 = dom.createElement("rect");
+              dom.setAttribute(el3, "x", "-5");
+              dom.setAttribute(el3, "y", "0");
+              dom.setAttribute(el3, "width", "600");
+              dom.setAttribute(el3, "height", "600");
+              dom.appendChild(el2, el3);
+              var el3 = dom.createTextNode("\n        ");
+              dom.appendChild(el2, el3);
+              dom.appendChild(el1, el2);
+              var el2 = dom.createTextNode("\n      ");
+              dom.appendChild(el1, el2);
+              dom.appendChild(el0, el1);
+              var el1 = dom.createTextNode("\n      ");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createComment("");
+              dom.appendChild(el0, el1);
+              var el1 = dom.createTextNode("\n");
+              dom.appendChild(el0, el1);
+              return el0;
+            },
+            buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+              var morphs = new Array(1);
+              morphs[0] = dom.createMorphAt(fragment, 3, 3, contextualElement);
+              return morphs;
+            },
+            statements: [["inline", "d3-axis", [], ["class", "x-axis", "orientation", ["subexpr", "@mut", [["get", "orientation", ["loc", [null, [41, 43], [41, 54]]]]], [], []], "scale", ["subexpr", "@mut", [["get", "scale", ["loc", [null, [41, 61], [41, 66]]]]], [], []], "transform", ["subexpr", "@mut", [["get", "axisTransform", ["loc", [null, [41, 77], [41, 90]]]]], [], []]], ["loc", [null, [41, 6], [41, 92]]]]],
+            locals: [],
+            templates: []
+          };
+        })();
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -2319,62 +2472,30 @@ define("portfolio/templates/components/axis-sandbox", ["exports"], function (exp
             var el1 = dom.createTextNode("    ");
             dom.appendChild(el0, el1);
             var el1 = dom.createElement("h3");
-            var el2 = dom.createTextNode("Try it");
-            dom.appendChild(el1, el2);
-            dom.appendChild(el0, el1);
-            var el1 = dom.createTextNode("\n    ");
-            dom.appendChild(el0, el1);
-            dom.setNamespace("http://www.w3.org/2000/svg");
-            var el1 = dom.createElement("svg");
-            dom.setAttribute(el1, "class", "axis");
-            dom.setAttribute(el1, "width", "1000");
-            dom.setAttribute(el1, "height", "1000");
-            var el2 = dom.createTextNode("\n      ");
-            dom.appendChild(el1, el2);
-            var el2 = dom.createElement("defs");
-            var el3 = dom.createTextNode("\n        ");
-            dom.appendChild(el2, el3);
-            var el3 = dom.createElement("clippath");
-            dom.setAttribute(el3, "id", "clip-body");
-            var el4 = dom.createTextNode("\n          ");
-            dom.appendChild(el3, el4);
-            var el4 = dom.createElement("rect");
-            dom.setAttribute(el4, "x", "-5");
-            dom.setAttribute(el4, "y", "0");
-            dom.setAttribute(el4, "width", "1000");
-            dom.setAttribute(el4, "height", "1000");
-            dom.appendChild(el3, el4);
-            var el4 = dom.createTextNode("\n        ");
-            dom.appendChild(el3, el4);
-            dom.appendChild(el2, el3);
-            var el3 = dom.createTextNode("\n      ");
-            dom.appendChild(el2, el3);
-            dom.appendChild(el1, el2);
-            var el2 = dom.createTextNode("\n      ");
-            dom.appendChild(el1, el2);
-            var el2 = dom.createComment("");
-            dom.appendChild(el1, el2);
-            var el2 = dom.createTextNode("\n    ");
+            var el2 = dom.createTextNode("Result");
             dom.appendChild(el1, el2);
             dom.appendChild(el0, el1);
             var el1 = dom.createTextNode("\n");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createComment("");
             dom.appendChild(el0, el1);
             return el0;
           },
           buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
             var morphs = new Array(1);
-            morphs[0] = dom.createMorphAt(dom.childAt(fragment, [3]), 3, 3);
+            morphs[0] = dom.createMorphAt(fragment, 3, 3, contextualElement);
+            dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "d3-axis", [], ["class", "x-axis", "orientation", ["subexpr", "@mut", [["get", "orientation", ["loc", [null, [41, 43], [41, 54]]]]], [], []], "scale", ["subexpr", "@mut", [["get", "scale", ["loc", [null, [41, 61], [41, 66]]]]], [], []], "transform", ["subexpr", "@mut", [["get", "axisTransform", ["loc", [null, [41, 77], [41, 90]]]]], [], []]], ["loc", [null, [41, 6], [41, 92]]]]],
+          statements: [["block", "d3-svg", [], ["class", "axis", "width", 600, "height", 600], 0, null, ["loc", [null, [35, 4], [42, 15]]]]],
           locals: [],
-          templates: []
+          templates: [child0]
         };
       })();
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -2416,7 +2537,7 @@ define("portfolio/templates/components/axis-sandbox", ["exports"], function (exp
           "name": "missing-wrapper",
           "problems": ["wrong-type", "multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -2510,7 +2631,7 @@ define("portfolio/templates/components/base-focusable", ["exports"], function (e
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -2558,7 +2679,7 @@ define("portfolio/templates/components/domain-list-input", ["exports"], function
               return {
                 meta: {
                   "fragmentReason": false,
-                  "revision": "Ember@2.3.0",
+                  "revision": "Ember@2.4.1",
                   "loc": {
                     "source": null,
                     "start": {
@@ -2608,7 +2729,7 @@ define("portfolio/templates/components/domain-list-input", ["exports"], function
             return {
               meta: {
                 "fragmentReason": false,
-                "revision": "Ember@2.3.0",
+                "revision": "Ember@2.4.1",
                 "loc": {
                   "source": null,
                   "start": {
@@ -2647,7 +2768,7 @@ define("portfolio/templates/components/domain-list-input", ["exports"], function
           return {
             meta: {
               "fragmentReason": false,
-              "revision": "Ember@2.3.0",
+              "revision": "Ember@2.4.1",
               "loc": {
                 "source": null,
                 "start": {
@@ -2687,7 +2808,7 @@ define("portfolio/templates/components/domain-list-input", ["exports"], function
           return {
             meta: {
               "fragmentReason": false,
-              "revision": "Ember@2.3.0",
+              "revision": "Ember@2.4.1",
               "loc": {
                 "source": null,
                 "start": {
@@ -2722,7 +2843,7 @@ define("portfolio/templates/components/domain-list-input", ["exports"], function
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -2782,7 +2903,7 @@ define("portfolio/templates/components/domain-list-input", ["exports"], function
             "name": "missing-wrapper",
             "problems": ["wrong-type"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -2824,7 +2945,7 @@ define("portfolio/templates/components/domain-list-input", ["exports"], function
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -2868,7 +2989,7 @@ define("portfolio/templates/components/domain-range-input", ["exports"], functio
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -2923,7 +3044,7 @@ define("portfolio/templates/components/domain-range-input", ["exports"], functio
             "name": "missing-wrapper",
             "problems": ["wrong-type"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -2965,7 +3086,7 @@ define("portfolio/templates/components/domain-range-input", ["exports"], functio
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -3009,7 +3130,7 @@ define("portfolio/templates/components/grid-sandbox", ["exports"], function (exp
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -3045,7 +3166,7 @@ define("portfolio/templates/components/grid-sandbox", ["exports"], function (exp
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -3081,7 +3202,7 @@ define("portfolio/templates/components/grid-sandbox", ["exports"], function (exp
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -3117,7 +3238,7 @@ define("portfolio/templates/components/grid-sandbox", ["exports"], function (exp
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -3153,7 +3274,7 @@ define("portfolio/templates/components/grid-sandbox", ["exports"], function (exp
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -3191,7 +3312,7 @@ define("portfolio/templates/components/grid-sandbox", ["exports"], function (exp
             "name": "missing-wrapper",
             "problems": ["wrong-type", "multiple-nodes"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -3256,7 +3377,7 @@ define("portfolio/templates/components/grid-sandbox", ["exports"], function (exp
             return {
               meta: {
                 "fragmentReason": false,
-                "revision": "Ember@2.3.0",
+                "revision": "Ember@2.4.1",
                 "loc": {
                   "source": null,
                   "start": {
@@ -3292,7 +3413,7 @@ define("portfolio/templates/components/grid-sandbox", ["exports"], function (exp
             return {
               meta: {
                 "fragmentReason": false,
-                "revision": "Ember@2.3.0",
+                "revision": "Ember@2.4.1",
                 "loc": {
                   "source": null,
                   "start": {
@@ -3328,7 +3449,7 @@ define("portfolio/templates/components/grid-sandbox", ["exports"], function (exp
             return {
               meta: {
                 "fragmentReason": false,
-                "revision": "Ember@2.3.0",
+                "revision": "Ember@2.4.1",
                 "loc": {
                   "source": null,
                   "start": {
@@ -3364,7 +3485,7 @@ define("portfolio/templates/components/grid-sandbox", ["exports"], function (exp
             return {
               meta: {
                 "fragmentReason": false,
-                "revision": "Ember@2.3.0",
+                "revision": "Ember@2.4.1",
                 "loc": {
                   "source": null,
                   "start": {
@@ -3399,7 +3520,7 @@ define("portfolio/templates/components/grid-sandbox", ["exports"], function (exp
           return {
             meta: {
               "fragmentReason": false,
-              "revision": "Ember@2.3.0",
+              "revision": "Ember@2.4.1",
               "loc": {
                 "source": null,
                 "start": {
@@ -3455,7 +3576,7 @@ define("portfolio/templates/components/grid-sandbox", ["exports"], function (exp
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -3501,7 +3622,7 @@ define("portfolio/templates/components/grid-sandbox", ["exports"], function (exp
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -3542,7 +3663,7 @@ define("portfolio/templates/components/grid-sandbox", ["exports"], function (exp
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -3612,7 +3733,7 @@ define("portfolio/templates/components/grid-sandbox", ["exports"], function (exp
             morphs[0] = dom.createMorphAt(dom.childAt(fragment, [3]), 3, 3);
             return morphs;
           },
-          statements: [["inline", "d3-grid", [], ["class", "grid", "orientation", ["subexpr", "@mut", [["get", "orientation", ["loc", [null, [32, 41], [32, 52]]]]], [], []], "scale", ["subexpr", "@mut", [["get", "scale", ["loc", [null, [32, 59], [32, 64]]]]], [], []], "width", 500, "height", 500, "translateX", ["subexpr", "@mut", [["get", "translateX", ["loc", [null, [32, 97], [32, 107]]]]], [], []], "translateY", ["subexpr", "@mut", [["get", "translateY", ["loc", [null, [32, 119], [32, 129]]]]], [], []]], ["loc", [null, [32, 6], [32, 131]]]]],
+          statements: [["inline", "d3-grid", [], ["class", "grid", "orientation", ["subexpr", "@mut", [["get", "orientation", ["loc", [null, [32, 41], [32, 52]]]]], [], []], "scale", ["subexpr", "@mut", [["get", "scale", ["loc", [null, [32, 59], [32, 64]]]]], [], []], "width", 500, "height", 500, "transform", ["subexpr", "@mut", [["get", "gridTransform", ["loc", [null, [32, 96], [32, 109]]]]], [], []]], ["loc", [null, [32, 6], [32, 111]]]]],
           locals: [],
           templates: []
         };
@@ -3620,7 +3741,7 @@ define("portfolio/templates/components/grid-sandbox", ["exports"], function (exp
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -3662,7 +3783,7 @@ define("portfolio/templates/components/grid-sandbox", ["exports"], function (exp
           "name": "missing-wrapper",
           "problems": ["wrong-type", "multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -3714,6 +3835,52 @@ define("portfolio/templates/components/grid-sandbox", ["exports"], function (exp
     };
   })());
 });
+define("portfolio/templates/components/line-chart", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["wrong-type"]
+        },
+        "revision": "Ember@2.4.1",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 0
+          }
+        },
+        "moduleName": "portfolio/templates/components/line-chart.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [["inline", "d3-line-chart", [], ["options", ["subexpr", "@mut", [["get", "chartOptions", ["loc", [null, [1, 24], [1, 36]]]]], [], []], "data", ["subexpr", "@mut", [["get", "data", ["loc", [null, [1, 42], [1, 46]]]]], [], []]], ["loc", [null, [1, 0], [1, 48]]]]],
+      locals: [],
+      templates: []
+    };
+  })());
+});
 define("portfolio/templates/components/linear-scale-sandbox", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     return {
@@ -3722,7 +3889,7 @@ define("portfolio/templates/components/linear-scale-sandbox", ["exports"], funct
           "name": "missing-wrapper",
           "problems": ["wrong-type", "multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -3773,7 +3940,7 @@ define("portfolio/templates/components/linear-scale", ["exports"], function (exp
           return {
             meta: {
               "fragmentReason": false,
-              "revision": "Ember@2.3.0",
+              "revision": "Ember@2.4.1",
               "loc": {
                 "source": null,
                 "start": {
@@ -3809,7 +3976,7 @@ define("portfolio/templates/components/linear-scale", ["exports"], function (exp
           return {
             meta: {
               "fragmentReason": false,
-              "revision": "Ember@2.3.0",
+              "revision": "Ember@2.4.1",
               "loc": {
                 "source": null,
                 "start": {
@@ -3844,7 +4011,7 @@ define("portfolio/templates/components/linear-scale", ["exports"], function (exp
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -3896,7 +4063,7 @@ define("portfolio/templates/components/linear-scale", ["exports"], function (exp
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -3936,7 +4103,7 @@ define("portfolio/templates/components/linear-scale", ["exports"], function (exp
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -3974,7 +4141,7 @@ define("portfolio/templates/components/linear-scale", ["exports"], function (exp
           "name": "missing-wrapper",
           "problems": ["multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -4074,7 +4241,7 @@ define("portfolio/templates/components/log-scale-sandbox", ["exports"], function
           "name": "missing-wrapper",
           "problems": ["wrong-type", "multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -4125,7 +4292,7 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
           return {
             meta: {
               "fragmentReason": false,
-              "revision": "Ember@2.3.0",
+              "revision": "Ember@2.4.1",
               "loc": {
                 "source": null,
                 "start": {
@@ -4161,7 +4328,7 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
           return {
             meta: {
               "fragmentReason": false,
-              "revision": "Ember@2.3.0",
+              "revision": "Ember@2.4.1",
               "loc": {
                 "source": null,
                 "start": {
@@ -4196,7 +4363,7 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -4248,7 +4415,7 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -4288,7 +4455,7 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -4326,7 +4493,7 @@ define("portfolio/templates/components/log-scale", ["exports"], function (export
           "name": "missing-wrapper",
           "problems": ["multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -4426,7 +4593,7 @@ define("portfolio/templates/components/ordinal-scale-sandbox", ["exports"], func
           "name": "missing-wrapper",
           "problems": ["wrong-type", "multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -4477,7 +4644,7 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
           return {
             meta: {
               "fragmentReason": false,
-              "revision": "Ember@2.3.0",
+              "revision": "Ember@2.4.1",
               "loc": {
                 "source": null,
                 "start": {
@@ -4513,7 +4680,7 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
           return {
             meta: {
               "fragmentReason": false,
-              "revision": "Ember@2.3.0",
+              "revision": "Ember@2.4.1",
               "loc": {
                 "source": null,
                 "start": {
@@ -4548,7 +4715,7 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -4600,7 +4767,7 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -4641,7 +4808,7 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -4676,7 +4843,7 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -4719,7 +4886,7 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -4757,7 +4924,7 @@ define("portfolio/templates/components/ordinal-scale", ["exports"], function (ex
           "name": "missing-wrapper",
           "problems": ["multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -4852,7 +5019,7 @@ define("portfolio/templates/components/paper-autocomplete-highlight", ["exports"
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -4897,7 +5064,7 @@ define("portfolio/templates/components/paper-autocomplete-item", ["exports"], fu
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -4940,7 +5107,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -4984,7 +5151,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
           return {
             meta: {
               "fragmentReason": false,
-              "revision": "Ember@2.3.0",
+              "revision": "Ember@2.4.1",
               "loc": {
                 "source": null,
                 "start": {
@@ -5025,7 +5192,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -5064,7 +5231,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -5111,7 +5278,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -5157,7 +5324,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
               return {
                 meta: {
                   "fragmentReason": false,
-                  "revision": "Ember@2.3.0",
+                  "revision": "Ember@2.4.1",
                   "loc": {
                     "source": null,
                     "start": {
@@ -5200,7 +5367,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
                 return {
                   meta: {
                     "fragmentReason": false,
-                    "revision": "Ember@2.3.0",
+                    "revision": "Ember@2.4.1",
                     "loc": {
                       "source": null,
                       "start": {
@@ -5242,7 +5409,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
                 return {
                   meta: {
                     "fragmentReason": false,
-                    "revision": "Ember@2.3.0",
+                    "revision": "Ember@2.4.1",
                     "loc": {
                       "source": null,
                       "start": {
@@ -5283,7 +5450,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
               return {
                 meta: {
                   "fragmentReason": false,
-                  "revision": "Ember@2.3.0",
+                  "revision": "Ember@2.4.1",
                   "loc": {
                     "source": null,
                     "start": {
@@ -5322,7 +5489,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
             return {
               meta: {
                 "fragmentReason": false,
-                "revision": "Ember@2.3.0",
+                "revision": "Ember@2.4.1",
                 "loc": {
                   "source": null,
                   "start": {
@@ -5361,7 +5528,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
           return {
             meta: {
               "fragmentReason": false,
-              "revision": "Ember@2.3.0",
+              "revision": "Ember@2.4.1",
               "loc": {
                 "source": null,
                 "start": {
@@ -5405,7 +5572,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
               return {
                 meta: {
                   "fragmentReason": false,
-                  "revision": "Ember@2.3.0",
+                  "revision": "Ember@2.4.1",
                   "loc": {
                     "source": null,
                     "start": {
@@ -5450,7 +5617,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
                 return {
                   meta: {
                     "fragmentReason": false,
-                    "revision": "Ember@2.3.0",
+                    "revision": "Ember@2.4.1",
                     "loc": {
                       "source": null,
                       "start": {
@@ -5494,7 +5661,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
                 return {
                   meta: {
                     "fragmentReason": false,
-                    "revision": "Ember@2.3.0",
+                    "revision": "Ember@2.4.1",
                     "loc": {
                       "source": null,
                       "start": {
@@ -5537,7 +5704,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
               return {
                 meta: {
                   "fragmentReason": false,
-                  "revision": "Ember@2.3.0",
+                  "revision": "Ember@2.4.1",
                   "loc": {
                     "source": null,
                     "start": {
@@ -5576,7 +5743,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
             return {
               meta: {
                 "fragmentReason": false,
-                "revision": "Ember@2.3.0",
+                "revision": "Ember@2.4.1",
                 "loc": {
                   "source": null,
                   "start": {
@@ -5615,7 +5782,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
           return {
             meta: {
               "fragmentReason": false,
-              "revision": "Ember@2.3.0",
+              "revision": "Ember@2.4.1",
               "loc": {
                 "source": null,
                 "start": {
@@ -5654,7 +5821,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -5694,7 +5861,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -5735,7 +5902,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -5778,7 +5945,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -5820,7 +5987,7 @@ define("portfolio/templates/components/paper-autocomplete", ["exports"], functio
           "name": "missing-wrapper",
           "problems": ["multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -5895,7 +6062,7 @@ define("portfolio/templates/components/paper-button", ["exports"], function (exp
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -5937,7 +6104,7 @@ define("portfolio/templates/components/paper-button", ["exports"], function (exp
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -5981,7 +6148,7 @@ define("portfolio/templates/components/paper-button", ["exports"], function (exp
             "name": "missing-wrapper",
             "problems": ["wrong-type"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -6022,7 +6189,7 @@ define("portfolio/templates/components/paper-button", ["exports"], function (exp
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -6064,7 +6231,7 @@ define("portfolio/templates/components/paper-button", ["exports"], function (exp
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -6105,7 +6272,7 @@ define("portfolio/templates/components/paper-button", ["exports"], function (exp
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -6158,7 +6325,7 @@ define("portfolio/templates/components/paper-button", ["exports"], function (exp
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -6201,7 +6368,7 @@ define("portfolio/templates/components/paper-checkbox", ["exports"], function (e
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -6256,7 +6423,7 @@ define("portfolio/templates/components/paper-checkbox", ["exports"], function (e
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -6313,7 +6480,7 @@ define("portfolio/templates/components/paper-checkbox", ["exports"], function (e
           "name": "missing-wrapper",
           "problems": ["multiple-nodes", "wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -6369,7 +6536,7 @@ define("portfolio/templates/components/paper-grid-list", ["exports"], function (
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -6412,7 +6579,7 @@ define("portfolio/templates/components/paper-grid-tile-footer", ["exports"], fun
     return {
       meta: {
         "fragmentReason": false,
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -6460,7 +6627,7 @@ define("portfolio/templates/components/paper-grid-tile", ["exports"], function (
     return {
       meta: {
         "fragmentReason": false,
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -6509,7 +6676,7 @@ define("portfolio/templates/components/paper-input", ["exports"], function (expo
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -6555,7 +6722,7 @@ define("portfolio/templates/components/paper-input", ["exports"], function (expo
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -6597,7 +6764,7 @@ define("portfolio/templates/components/paper-input", ["exports"], function (expo
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -6639,7 +6806,7 @@ define("portfolio/templates/components/paper-input", ["exports"], function (expo
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -6681,7 +6848,7 @@ define("portfolio/templates/components/paper-input", ["exports"], function (expo
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -6736,7 +6903,7 @@ define("portfolio/templates/components/paper-input", ["exports"], function (expo
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -6783,7 +6950,7 @@ define("portfolio/templates/components/paper-input", ["exports"], function (expo
           "name": "missing-wrapper",
           "problems": ["wrong-type", "multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -6847,7 +7014,7 @@ define("portfolio/templates/components/paper-item", ["exports"], function (expor
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -6898,7 +7065,7 @@ define("portfolio/templates/components/paper-item", ["exports"], function (expor
             "name": "missing-wrapper",
             "problems": ["wrong-type"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -6938,7 +7105,7 @@ define("portfolio/templates/components/paper-item", ["exports"], function (expor
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -6991,7 +7158,7 @@ define("portfolio/templates/components/paper-item", ["exports"], function (expor
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -7036,7 +7203,7 @@ define("portfolio/templates/components/paper-menu-container", ["exports"], funct
           "name": "missing-wrapper",
           "problems": ["wrong-type", "multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -7086,7 +7253,7 @@ define("portfolio/templates/components/paper-menu-content-pane", ["exports"], fu
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -7132,7 +7299,7 @@ define("portfolio/templates/components/paper-menu-content", ["exports"], functio
             "name": "missing-wrapper",
             "problems": ["wrong-type"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -7174,7 +7341,7 @@ define("portfolio/templates/components/paper-menu-content", ["exports"], functio
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -7218,7 +7385,7 @@ define("portfolio/templates/components/paper-menu-content", ["exports"], functio
           "name": "missing-wrapper",
           "problems": ["wrong-type", "multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -7265,7 +7432,7 @@ define("portfolio/templates/components/paper-menu-item", ["exports"], function (
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -7309,7 +7476,7 @@ define("portfolio/templates/components/paper-menu-item", ["exports"], function (
             "name": "missing-wrapper",
             "problems": ["wrong-type"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -7349,7 +7516,7 @@ define("portfolio/templates/components/paper-menu-item", ["exports"], function (
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -7393,7 +7560,7 @@ define("portfolio/templates/components/paper-menu-item", ["exports"], function (
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -7437,7 +7604,7 @@ define("portfolio/templates/components/paper-menu", ["exports"], function (expor
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -7478,7 +7645,7 @@ define("portfolio/templates/components/paper-menu", ["exports"], function (expor
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -7520,7 +7687,7 @@ define("portfolio/templates/components/paper-menu", ["exports"], function (expor
           "name": "missing-wrapper",
           "problems": ["wrong-type", "multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -7570,7 +7737,7 @@ define("portfolio/templates/components/paper-nav-container", ["exports"], functi
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -7615,7 +7782,7 @@ define("portfolio/templates/components/paper-optgroup", ["exports"], function (e
           "name": "missing-wrapper",
           "problems": ["multiple-nodes", "wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -7665,7 +7832,7 @@ define("portfolio/templates/components/paper-option", ["exports"], function (exp
         "fragmentReason": {
           "name": "triple-curlies"
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -7710,7 +7877,7 @@ define("portfolio/templates/components/paper-progress-circular", ["exports"], fu
         "fragmentReason": {
           "name": "triple-curlies"
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -7796,7 +7963,7 @@ define("portfolio/templates/components/paper-progress-linear", ["exports"], func
         "fragmentReason": {
           "name": "triple-curlies"
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -7861,7 +8028,7 @@ define("portfolio/templates/components/paper-radio", ["exports"], function (expo
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -7910,7 +8077,7 @@ define("portfolio/templates/components/paper-radio", ["exports"], function (expo
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -7961,7 +8128,7 @@ define("portfolio/templates/components/paper-radio", ["exports"], function (expo
           "name": "missing-wrapper",
           "problems": ["multiple-nodes", "wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -8020,7 +8187,7 @@ define("portfolio/templates/components/paper-select-container", ["exports"], fun
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -8064,7 +8231,7 @@ define("portfolio/templates/components/paper-select-container", ["exports"], fun
           "name": "missing-wrapper",
           "problems": ["wrong-type", "multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -8116,7 +8283,7 @@ define("portfolio/templates/components/paper-select-core", ["exports"], function
               return {
                 meta: {
                   "fragmentReason": false,
-                  "revision": "Ember@2.3.0",
+                  "revision": "Ember@2.4.1",
                   "loc": {
                     "source": null,
                     "start": {
@@ -8160,7 +8327,7 @@ define("portfolio/templates/components/paper-select-core", ["exports"], function
               return {
                 meta: {
                   "fragmentReason": false,
-                  "revision": "Ember@2.3.0",
+                  "revision": "Ember@2.4.1",
                   "loc": {
                     "source": null,
                     "start": {
@@ -8201,7 +8368,7 @@ define("portfolio/templates/components/paper-select-core", ["exports"], function
             return {
               meta: {
                 "fragmentReason": false,
-                "revision": "Ember@2.3.0",
+                "revision": "Ember@2.4.1",
                 "loc": {
                   "source": null,
                   "start": {
@@ -8240,7 +8407,7 @@ define("portfolio/templates/components/paper-select-core", ["exports"], function
           return {
             meta: {
               "fragmentReason": false,
-              "revision": "Ember@2.3.0",
+              "revision": "Ember@2.4.1",
               "loc": {
                 "source": null,
                 "start": {
@@ -8279,7 +8446,7 @@ define("portfolio/templates/components/paper-select-core", ["exports"], function
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -8318,7 +8485,7 @@ define("portfolio/templates/components/paper-select-core", ["exports"], function
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -8360,7 +8527,7 @@ define("portfolio/templates/components/paper-select-core", ["exports"], function
           "name": "missing-wrapper",
           "problems": ["wrong-type", "multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -8410,7 +8577,7 @@ define("portfolio/templates/components/paper-select-value", ["exports"], functio
           "name": "missing-wrapper",
           "problems": ["multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -8459,7 +8626,7 @@ define("portfolio/templates/components/paper-select", ["exports"], function (exp
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -8506,7 +8673,7 @@ define("portfolio/templates/components/paper-select", ["exports"], function (exp
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -8548,7 +8715,7 @@ define("portfolio/templates/components/paper-select", ["exports"], function (exp
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -8592,7 +8759,7 @@ define("portfolio/templates/components/paper-select", ["exports"], function (exp
           "name": "missing-wrapper",
           "problems": ["wrong-type", "multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -8647,7 +8814,7 @@ define("portfolio/templates/components/paper-sidenav-toggle", ["exports"], funct
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -8691,7 +8858,7 @@ define("portfolio/templates/components/paper-sidenav", ["exports"], function (ex
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -8732,7 +8899,7 @@ define("portfolio/templates/components/paper-sidenav", ["exports"], function (ex
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -8774,7 +8941,7 @@ define("portfolio/templates/components/paper-sidenav", ["exports"], function (ex
           "name": "missing-wrapper",
           "problems": ["wrong-type", "multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -8823,7 +8990,7 @@ define("portfolio/templates/components/paper-slider", ["exports"], function (exp
         "fragmentReason": {
           "name": "triple-curlies"
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -8938,7 +9105,7 @@ define("portfolio/templates/components/paper-subheader", ["exports"], function (
         "fragmentReason": {
           "name": "triple-curlies"
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -8993,7 +9160,7 @@ define("portfolio/templates/components/paper-switch", ["exports"], function (exp
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -9042,7 +9209,7 @@ define("portfolio/templates/components/paper-switch", ["exports"], function (exp
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -9093,7 +9260,7 @@ define("portfolio/templates/components/paper-switch", ["exports"], function (exp
           "name": "missing-wrapper",
           "problems": ["multiple-nodes", "wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -9168,7 +9335,7 @@ define("portfolio/templates/components/pow-scale-sandbox", ["exports"], function
           "name": "missing-wrapper",
           "problems": ["wrong-type", "multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -9218,7 +9385,7 @@ define("portfolio/templates/components/pow-scale", ["exports"], function (export
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -9265,7 +9432,7 @@ define("portfolio/templates/components/pow-scale", ["exports"], function (export
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -9305,7 +9472,7 @@ define("portfolio/templates/components/pow-scale", ["exports"], function (export
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -9343,7 +9510,7 @@ define("portfolio/templates/components/pow-scale", ["exports"], function (export
           "name": "missing-wrapper",
           "problems": ["multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -9445,7 +9612,7 @@ define("portfolio/templates/components/range-input", ["exports"], function (expo
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -9500,7 +9667,7 @@ define("portfolio/templates/components/range-input", ["exports"], function (expo
             "name": "missing-wrapper",
             "problems": ["wrong-type"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -9542,7 +9709,7 @@ define("portfolio/templates/components/range-input", ["exports"], function (expo
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -9586,7 +9753,7 @@ define("portfolio/templates/components/scale-input", ["exports"], function (expo
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -9641,7 +9808,7 @@ define("portfolio/templates/components/scale-input", ["exports"], function (expo
             "name": "missing-wrapper",
             "problems": ["wrong-type"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -9683,7 +9850,7 @@ define("portfolio/templates/components/scale-input", ["exports"], function (expo
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -9728,7 +9895,7 @@ define("portfolio/templates/components/sqrt-scale-sandbox", ["exports"], functio
           "name": "missing-wrapper",
           "problems": ["wrong-type", "multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -9777,7 +9944,7 @@ define("portfolio/templates/components/sqrt-scale", ["exports"], function (expor
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -9815,7 +9982,7 @@ define("portfolio/templates/components/sqrt-scale", ["exports"], function (expor
           "name": "missing-wrapper",
           "problems": ["multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -9912,7 +10079,7 @@ define("portfolio/templates/components/transition-group", ["exports"], function 
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -9950,26 +10117,26 @@ define("portfolio/templates/components/transition-group", ["exports"], function 
     };
   })());
 });
-define("portfolio/templates/components/xyplot-sandbox", ["exports"], function (exports) {
+define("portfolio/templates/d3charts/index", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
       var child0 = (function () {
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
-                "line": 3,
-                "column": 2
+                "line": 14,
+                "column": 10
               },
               "end": {
-                "line": 3,
-                "column": 46
+                "line": 14,
+                "column": 50
               }
             },
-            "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
+            "moduleName": "portfolio/templates/d3charts/index.hbs"
           },
           isEmpty: false,
           arity: 0,
@@ -9977,115 +10144,7 @@ define("portfolio/templates/components/xyplot-sandbox", ["exports"], function (e
           hasRendered: false,
           buildFragment: function buildFragment(dom) {
             var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("Linear");
-            dom.appendChild(el0, el1);
-            return el0;
-          },
-          buildRenderNodes: function buildRenderNodes() {
-            return [];
-          },
-          statements: [],
-          locals: [],
-          templates: []
-        };
-      })();
-      var child1 = (function () {
-        return {
-          meta: {
-            "fragmentReason": false,
-            "revision": "Ember@2.3.0",
-            "loc": {
-              "source": null,
-              "start": {
-                "line": 4,
-                "column": 2
-              },
-              "end": {
-                "line": 4,
-                "column": 40
-              }
-            },
-            "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
-          },
-          isEmpty: false,
-          arity: 0,
-          cachedFragment: null,
-          hasRendered: false,
-          buildFragment: function buildFragment(dom) {
-            var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("Log");
-            dom.appendChild(el0, el1);
-            return el0;
-          },
-          buildRenderNodes: function buildRenderNodes() {
-            return [];
-          },
-          statements: [],
-          locals: [],
-          templates: []
-        };
-      })();
-      var child2 = (function () {
-        return {
-          meta: {
-            "fragmentReason": false,
-            "revision": "Ember@2.3.0",
-            "loc": {
-              "source": null,
-              "start": {
-                "line": 5,
-                "column": 2
-              },
-              "end": {
-                "line": 5,
-                "column": 40
-              }
-            },
-            "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
-          },
-          isEmpty: false,
-          arity: 0,
-          cachedFragment: null,
-          hasRendered: false,
-          buildFragment: function buildFragment(dom) {
-            var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("Pow");
-            dom.appendChild(el0, el1);
-            return el0;
-          },
-          buildRenderNodes: function buildRenderNodes() {
-            return [];
-          },
-          statements: [],
-          locals: [],
-          templates: []
-        };
-      })();
-      var child3 = (function () {
-        return {
-          meta: {
-            "fragmentReason": false,
-            "revision": "Ember@2.3.0",
-            "loc": {
-              "source": null,
-              "start": {
-                "line": 6,
-                "column": 2
-              },
-              "end": {
-                "line": 6,
-                "column": 42
-              }
-            },
-            "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
-          },
-          isEmpty: false,
-          arity: 0,
-          cachedFragment: null,
-          hasRendered: false,
-          buildFragment: function buildFragment(dom) {
-            var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("Sqrt");
+            var el1 = dom.createTextNode(" Line Chart ");
             dom.appendChild(el0, el1);
             return el0;
           },
@@ -10099,213 +10158,15 @@ define("portfolio/templates/components/xyplot-sandbox", ["exports"], function (e
       })();
       return {
         meta: {
-          "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "fragmentReason": {
+            "name": "missing-wrapper",
+            "problems": ["multiple-nodes"]
+          },
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
-              "line": 2,
-              "column": 0
-            },
-            "end": {
-              "line": 7,
-              "column": 0
-            }
-          },
-          "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
-        },
-        isEmpty: false,
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("  ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createComment("");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n  ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createComment("");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n  ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createComment("");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n  ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createComment("");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var morphs = new Array(4);
-          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
-          morphs[1] = dom.createMorphAt(fragment, 3, 3, contextualElement);
-          morphs[2] = dom.createMorphAt(fragment, 5, 5, contextualElement);
-          morphs[3] = dom.createMorphAt(fragment, 7, 7, contextualElement);
-          return morphs;
-        },
-        statements: [["block", "paper-option", [], ["value", "linear-scale"], 0, null, ["loc", [null, [3, 2], [3, 63]]]], ["block", "paper-option", [], ["value", "log-scale"], 1, null, ["loc", [null, [4, 2], [4, 57]]]], ["block", "paper-option", [], ["value", "pow-scale"], 2, null, ["loc", [null, [5, 2], [5, 57]]]], ["block", "paper-option", [], ["value", "sqrt-scale"], 3, null, ["loc", [null, [6, 2], [6, 59]]]]],
-        locals: [],
-        templates: [child0, child1, child2, child3]
-      };
-    })();
-    var child1 = (function () {
-      var child0 = (function () {
-        return {
-          meta: {
-            "fragmentReason": false,
-            "revision": "Ember@2.3.0",
-            "loc": {
-              "source": null,
-              "start": {
-                "line": 13,
-                "column": 2
-              },
-              "end": {
-                "line": 13,
-                "column": 46
-              }
-            },
-            "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
-          },
-          isEmpty: false,
-          arity: 0,
-          cachedFragment: null,
-          hasRendered: false,
-          buildFragment: function buildFragment(dom) {
-            var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("Linear");
-            dom.appendChild(el0, el1);
-            return el0;
-          },
-          buildRenderNodes: function buildRenderNodes() {
-            return [];
-          },
-          statements: [],
-          locals: [],
-          templates: []
-        };
-      })();
-      var child1 = (function () {
-        return {
-          meta: {
-            "fragmentReason": false,
-            "revision": "Ember@2.3.0",
-            "loc": {
-              "source": null,
-              "start": {
-                "line": 14,
-                "column": 2
-              },
-              "end": {
-                "line": 14,
-                "column": 40
-              }
-            },
-            "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
-          },
-          isEmpty: false,
-          arity: 0,
-          cachedFragment: null,
-          hasRendered: false,
-          buildFragment: function buildFragment(dom) {
-            var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("Log");
-            dom.appendChild(el0, el1);
-            return el0;
-          },
-          buildRenderNodes: function buildRenderNodes() {
-            return [];
-          },
-          statements: [],
-          locals: [],
-          templates: []
-        };
-      })();
-      var child2 = (function () {
-        return {
-          meta: {
-            "fragmentReason": false,
-            "revision": "Ember@2.3.0",
-            "loc": {
-              "source": null,
-              "start": {
-                "line": 15,
-                "column": 2
-              },
-              "end": {
-                "line": 15,
-                "column": 40
-              }
-            },
-            "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
-          },
-          isEmpty: false,
-          arity: 0,
-          cachedFragment: null,
-          hasRendered: false,
-          buildFragment: function buildFragment(dom) {
-            var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("Pow");
-            dom.appendChild(el0, el1);
-            return el0;
-          },
-          buildRenderNodes: function buildRenderNodes() {
-            return [];
-          },
-          statements: [],
-          locals: [],
-          templates: []
-        };
-      })();
-      var child3 = (function () {
-        return {
-          meta: {
-            "fragmentReason": false,
-            "revision": "Ember@2.3.0",
-            "loc": {
-              "source": null,
-              "start": {
-                "line": 16,
-                "column": 2
-              },
-              "end": {
-                "line": 16,
-                "column": 42
-              }
-            },
-            "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
-          },
-          isEmpty: false,
-          arity: 0,
-          cachedFragment: null,
-          hasRendered: false,
-          buildFragment: function buildFragment(dom) {
-            var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("Sqrt");
-            dom.appendChild(el0, el1);
-            return el0;
-          },
-          buildRenderNodes: function buildRenderNodes() {
-            return [];
-          },
-          statements: [],
-          locals: [],
-          templates: []
-        };
-      })();
-      return {
-        meta: {
-          "fragmentReason": false,
-          "revision": "Ember@2.3.0",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 12,
+              "line": 1,
               "column": 0
             },
             "end": {
@@ -10313,7 +10174,7 @@ define("portfolio/templates/components/xyplot-sandbox", ["exports"], function (e
               "column": 0
             }
           },
-          "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
+          "moduleName": "portfolio/templates/d3charts/index.hbs"
         },
         isEmpty: false,
         arity: 0,
@@ -10323,203 +10184,51 @@ define("portfolio/templates/components/xyplot-sandbox", ["exports"], function (e
           var el0 = dom.createDocumentFragment();
           var el1 = dom.createTextNode("  ");
           dom.appendChild(el0, el1);
-          var el1 = dom.createComment("");
+          var el1 = dom.createElement("p");
+          var el2 = dom.createTextNode("\n    The ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("a");
+          dom.setAttribute(el2, "href", "https://github.com/BryanHunt/ember-d3-charts");
+          var el3 = dom.createTextNode("ember-d3-charts");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n    addon provides EmberJS components for charting data with d3.js.\n  ");
+          dom.appendChild(el1, el2);
           dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n  ");
+          var el1 = dom.createTextNode("\n\n  ");
           dom.appendChild(el0, el1);
-          var el1 = dom.createComment("");
+          var el1 = dom.createElement("p");
+          var el2 = dom.createTextNode("\n    This is a work in progress and I hope to add more content soon.\n  ");
+          dom.appendChild(el1, el2);
           dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n  ");
+          var el1 = dom.createTextNode("\n\n  ");
           dom.appendChild(el0, el1);
-          var el1 = dom.createComment("");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n  ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createComment("");
+          var el1 = dom.createElement("p");
+          var el2 = dom.createTextNode("\n    Things to try:\n    ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("ul");
+          var el3 = dom.createTextNode("\n      ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("li");
+          var el4 = dom.createComment("");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n    ");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n  ");
+          dom.appendChild(el1, el2);
           dom.appendChild(el0, el1);
           var el1 = dom.createTextNode("\n");
           dom.appendChild(el0, el1);
           return el0;
         },
         buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var morphs = new Array(4);
-          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
-          morphs[1] = dom.createMorphAt(fragment, 3, 3, contextualElement);
-          morphs[2] = dom.createMorphAt(fragment, 5, 5, contextualElement);
-          morphs[3] = dom.createMorphAt(fragment, 7, 7, contextualElement);
-          return morphs;
-        },
-        statements: [["block", "paper-option", [], ["value", "linear-scale"], 0, null, ["loc", [null, [13, 2], [13, 63]]]], ["block", "paper-option", [], ["value", "log-scale"], 1, null, ["loc", [null, [14, 2], [14, 57]]]], ["block", "paper-option", [], ["value", "pow-scale"], 2, null, ["loc", [null, [15, 2], [15, 57]]]], ["block", "paper-option", [], ["value", "sqrt-scale"], 3, null, ["loc", [null, [16, 2], [16, 59]]]]],
-        locals: [],
-        templates: [child0, child1, child2, child3]
-      };
-    })();
-    var child2 = (function () {
-      var child0 = (function () {
-        var child0 = (function () {
-          return {
-            meta: {
-              "fragmentReason": false,
-              "revision": "Ember@2.3.0",
-              "loc": {
-                "source": null,
-                "start": {
-                  "line": 24,
-                  "column": 4
-                },
-                "end": {
-                  "line": 35,
-                  "column": 4
-                }
-              },
-              "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
-            },
-            isEmpty: false,
-            arity: 0,
-            cachedFragment: null,
-            hasRendered: false,
-            buildFragment: function buildFragment(dom) {
-              var el0 = dom.createDocumentFragment();
-              var el1 = dom.createTextNode("      ");
-              dom.appendChild(el0, el1);
-              var el1 = dom.createElement("defs");
-              var el2 = dom.createTextNode("\n        ");
-              dom.appendChild(el1, el2);
-              var el2 = dom.createElement("clippath");
-              dom.setAttribute(el2, "id", "clip-body");
-              var el3 = dom.createTextNode("\n          ");
-              dom.appendChild(el2, el3);
-              var el3 = dom.createElement("rect");
-              dom.setAttribute(el3, "x", "-5");
-              dom.setAttribute(el3, "y", "0");
-              dom.setAttribute(el3, "width", "600");
-              dom.setAttribute(el3, "height", "550");
-              dom.appendChild(el2, el3);
-              var el3 = dom.createTextNode("\n        ");
-              dom.appendChild(el2, el3);
-              dom.appendChild(el1, el2);
-              var el2 = dom.createTextNode("\n      ");
-              dom.appendChild(el1, el2);
-              dom.appendChild(el0, el1);
-              var el1 = dom.createTextNode("\n      ");
-              dom.appendChild(el0, el1);
-              var el1 = dom.createComment("");
-              dom.appendChild(el0, el1);
-              var el1 = dom.createTextNode("\n      ");
-              dom.appendChild(el0, el1);
-              var el1 = dom.createComment("");
-              dom.appendChild(el0, el1);
-              var el1 = dom.createTextNode("\n      ");
-              dom.appendChild(el0, el1);
-              var el1 = dom.createComment("");
-              dom.appendChild(el0, el1);
-              var el1 = dom.createTextNode("\n      ");
-              dom.appendChild(el0, el1);
-              var el1 = dom.createComment("");
-              dom.appendChild(el0, el1);
-              var el1 = dom.createTextNode("\n      ");
-              dom.appendChild(el0, el1);
-              var el1 = dom.createComment("");
-              dom.appendChild(el0, el1);
-              var el1 = dom.createTextNode("\n");
-              dom.appendChild(el0, el1);
-              return el0;
-            },
-            buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-              var morphs = new Array(5);
-              morphs[0] = dom.createMorphAt(fragment, 3, 3, contextualElement);
-              morphs[1] = dom.createMorphAt(fragment, 5, 5, contextualElement);
-              morphs[2] = dom.createMorphAt(fragment, 7, 7, contextualElement);
-              morphs[3] = dom.createMorphAt(fragment, 9, 9, contextualElement);
-              morphs[4] = dom.createMorphAt(fragment, 11, 11, contextualElement);
-              return morphs;
-            },
-            statements: [["inline", "d3-grid", [], ["class", "grid", "orientation", "bottom", "scale", ["subexpr", "@mut", [["get", "xScale", ["loc", [null, [30, 56], [30, 62]]]]], [], []], "width", 550, "height", ["subexpr", "@mut", [["get", "yGridHeight", ["loc", [null, [30, 80], [30, 91]]]]], [], []], "transform", ["subexpr", "@mut", [["get", "yTranslate", ["loc", [null, [30, 102], [30, 112]]]]], [], []]], ["loc", [null, [30, 6], [30, 114]]]], ["inline", "d3-grid", [], ["class", "grid", "orientation", "left", "scale", ["subexpr", "@mut", [["get", "yScale", ["loc", [null, [31, 54], [31, 60]]]]], [], []], "width", ["subexpr", "@mut", [["get", "xGridWidth", ["loc", [null, [31, 67], [31, 77]]]]], [], []], "height", 500, "transform", "translate(45,25)"], ["loc", [null, [31, 6], [31, 119]]]], ["inline", "d3-axis", [], ["class", "axis", "orientation", "bottom", "scale", ["subexpr", "@mut", [["get", "xScale", ["loc", [null, [32, 56], [32, 62]]]]], [], []], "transform", ["subexpr", "@mut", [["get", "xTranslate", ["loc", [null, [32, 73], [32, 83]]]]], [], []]], ["loc", [null, [32, 6], [32, 85]]]], ["inline", "d3-axis", [], ["class", "axis", "orientation", "left", "scale", ["subexpr", "@mut", [["get", "yScale", ["loc", [null, [33, 54], [33, 60]]]]], [], []], "transform", "translate(45,25)"], ["loc", [null, [33, 6], [33, 91]]]], ["inline", "d3-plot", [], ["plotter", ["subexpr", "@mut", [["get", "plotter", ["loc", [null, [34, 24], [34, 31]]]]], [], []], "translateX", 45, "translateY", 25], ["loc", [null, [34, 6], [34, 61]]]]],
-            locals: [],
-            templates: []
-          };
-        })();
-        return {
-          meta: {
-            "fragmentReason": false,
-            "revision": "Ember@2.3.0",
-            "loc": {
-              "source": null,
-              "start": {
-                "line": 22,
-                "column": 2
-              },
-              "end": {
-                "line": 36,
-                "column": 2
-              }
-            },
-            "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
-          },
-          isEmpty: false,
-          arity: 0,
-          cachedFragment: null,
-          hasRendered: false,
-          buildFragment: function buildFragment(dom) {
-            var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("    ");
-            dom.appendChild(el0, el1);
-            var el1 = dom.createElement("h3");
-            var el2 = dom.createTextNode("Result");
-            dom.appendChild(el1, el2);
-            dom.appendChild(el0, el1);
-            var el1 = dom.createTextNode("\n");
-            dom.appendChild(el0, el1);
-            var el1 = dom.createComment("");
-            dom.appendChild(el0, el1);
-            return el0;
-          },
-          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-            var morphs = new Array(1);
-            morphs[0] = dom.createMorphAt(fragment, 3, 3, contextualElement);
-            dom.insertBoundary(fragment, null);
-            return morphs;
-          },
-          statements: [["block", "d3-svg", [], ["class", "axis", "width", 600, "height", 550], 0, null, ["loc", [null, [24, 4], [35, 15]]]]],
-          locals: [],
-          templates: [child0]
-        };
-      })();
-      return {
-        meta: {
-          "fragmentReason": false,
-          "revision": "Ember@2.3.0",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 21,
-              "column": 0
-            },
-            "end": {
-              "line": 37,
-              "column": 0
-            }
-          },
-          "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
-        },
-        isEmpty: false,
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createComment("");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
           var morphs = new Array(1);
-          morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
-          dom.insertBoundary(fragment, 0);
-          dom.insertBoundary(fragment, null);
+          morphs[0] = dom.createMorphAt(dom.childAt(fragment, [5, 1, 1]), 0, 0);
           return morphs;
         },
-        statements: [["block", "paper-card-content", [], [], 0, null, ["loc", [null, [22, 2], [36, 25]]]]],
+        statements: [["block", "link-to", ["d3charts.line"], [], 0, null, ["loc", [null, [14, 10], [14, 62]]]]],
         locals: [],
         templates: [child0]
       };
@@ -10528,9 +10237,9 @@ define("portfolio/templates/components/xyplot-sandbox", ["exports"], function (e
       meta: {
         "fragmentReason": {
           "name": "missing-wrapper",
-          "problems": ["multiple-nodes", "wrong-type"]
+          "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -10538,11 +10247,11 @@ define("portfolio/templates/components/xyplot-sandbox", ["exports"], function (e
             "column": 0
           },
           "end": {
-            "line": 38,
+            "line": 18,
             "column": 0
           }
         },
-        "moduleName": "portfolio/templates/components/xyplot-sandbox.hbs"
+        "moduleName": "portfolio/templates/d3charts/index.hbs"
       },
       isEmpty: false,
       arity: 0,
@@ -10550,55 +10259,250 @@ define("portfolio/templates/components/xyplot-sandbox", ["exports"], function (e
       hasRendered: false,
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
-        var el1 = dom.createElement("h3");
-        var el2 = dom.createTextNode("X Axis");
-        dom.appendChild(el1, el2);
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createElement("h3");
-        var el2 = dom.createTextNode("Y Axis");
-        dom.appendChild(el1, el2);
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n\n");
-        dom.appendChild(el0, el1);
         var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var morphs = new Array(5);
-        morphs[0] = dom.createMorphAt(fragment, 2, 2, contextualElement);
-        morphs[1] = dom.createMorphAt(fragment, 4, 4, contextualElement);
-        morphs[2] = dom.createMorphAt(fragment, 8, 8, contextualElement);
-        morphs[3] = dom.createMorphAt(fragment, 10, 10, contextualElement);
-        morphs[4] = dom.createMorphAt(fragment, 12, 12, contextualElement);
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        dom.insertBoundary(fragment, 0);
         dom.insertBoundary(fragment, null);
         return morphs;
       },
-      statements: [["block", "paper-select", [], ["item-label-callback", ["subexpr", "@mut", [["get", "scaleDisplayName", ["loc", [null, [2, 36], [2, 52]]]]], [], []], "model", ["subexpr", "@mut", [["get", "xScaleName", ["loc", [null, [2, 59], [2, 69]]]]], [], []], "label", "Scale"], 0, null, ["loc", [null, [2, 0], [7, 17]]]], ["inline", "component", [["get", "xScaleName", ["loc", [null, [9, 12], [9, 22]]]]], ["scaleProperty", "xScale"], ["loc", [null, [9, 0], [9, 47]]]], ["block", "paper-select", [], ["item-label-callback", ["subexpr", "@mut", [["get", "scaleDisplayName", ["loc", [null, [12, 36], [12, 52]]]]], [], []], "model", ["subexpr", "@mut", [["get", "yScaleName", ["loc", [null, [12, 59], [12, 69]]]]], [], []], "label", "Scale"], 1, null, ["loc", [null, [12, 0], [17, 17]]]], ["inline", "component", [["get", "yScaleName", ["loc", [null, [19, 12], [19, 22]]]]], ["scaleProperty", "yScale", "domainMin", 100, "domainMax", 0], ["loc", [null, [19, 0], [19, 73]]]], ["block", "paper-card", [], [], 2, null, ["loc", [null, [21, 0], [37, 15]]]]],
+      statements: [["block", "paper-content", [], ["classNames", "md-padding"], 0, null, ["loc", [null, [1, 0], [17, 18]]]]],
       locals: [],
-      templates: [child0, child1, child2]
+      templates: [child0]
     };
   })());
 });
-define("portfolio/templates/d3/axis", ["exports"], function (exports) {
+define("portfolio/templates/d3charts/line", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["wrong-type"]
+        },
+        "revision": "Ember@2.4.1",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 0
+          }
+        },
+        "moduleName": "portfolio/templates/d3charts/line.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [["content", "line-chart", ["loc", [null, [1, 0], [1, 14]]]]],
+      locals: [],
+      templates: []
+    };
+  })());
+});
+define("portfolio/templates/d3charts", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    var child0 = (function () {
+      var child0 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.1",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 3,
+                "column": 4
+              },
+              "end": {
+                "line": 3,
+                "column": 42
+              }
+            },
+            "moduleName": "portfolio/templates/d3charts.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("Ember D3 Charts");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child1 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.1",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 4,
+                "column": 4
+              },
+              "end": {
+                "line": 4,
+                "column": 61
+              }
+            },
+            "moduleName": "portfolio/templates/d3charts.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode(" Line ");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      return {
+        meta: {
+          "fragmentReason": {
+            "name": "triple-curlies"
+          },
+          "revision": "Ember@2.4.1",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 6,
+              "column": 0
+            }
+          },
+          "moduleName": "portfolio/templates/d3charts.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("div");
+          dom.setAttribute(el1, "class", "md-toolbar-tools");
+          var el2 = dom.createTextNode("\n    ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n    ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n  ");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var element0 = dom.childAt(fragment, [1]);
+          var morphs = new Array(2);
+          morphs[0] = dom.createMorphAt(element0, 1, 1);
+          morphs[1] = dom.createMorphAt(element0, 3, 3);
+          return morphs;
+        },
+        statements: [["block", "link-to", ["d3charts"], [], 0, null, ["loc", [null, [3, 4], [3, 54]]]], ["block", "link-to", ["d3charts.line"], ["class", "toolbar-button"], 1, null, ["loc", [null, [4, 4], [4, 73]]]]],
+        locals: [],
+        templates: [child0, child1]
+      };
+    })();
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["wrong-type", "multiple-nodes"]
+        },
+        "revision": "Ember@2.4.1",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 9,
+            "column": 0
+          }
+        },
+        "moduleName": "portfolio/templates/d3charts.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(2);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        morphs[1] = dom.createMorphAt(fragment, 2, 2, contextualElement);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [["block", "paper-toolbar", [], [], 0, null, ["loc", [null, [1, 0], [6, 18]]]], ["content", "outlet", ["loc", [null, [8, 0], [8, 10]]]]],
+      locals: [],
+      templates: [child0]
+    };
+  })());
+});
+define("portfolio/templates/d3components/axis", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
       return {
@@ -10607,7 +10511,7 @@ define("portfolio/templates/d3/axis", ["exports"], function (exports) {
             "name": "missing-wrapper",
             "problems": ["wrong-type"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -10619,7 +10523,7 @@ define("portfolio/templates/d3/axis", ["exports"], function (exports) {
               "column": 0
             }
           },
-          "moduleName": "portfolio/templates/d3/axis.hbs"
+          "moduleName": "portfolio/templates/d3components/axis.hbs"
         },
         isEmpty: false,
         arity: 0,
@@ -10651,7 +10555,7 @@ define("portfolio/templates/d3/axis", ["exports"], function (exports) {
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -10663,7 +10567,7 @@ define("portfolio/templates/d3/axis", ["exports"], function (exports) {
             "column": 0
           }
         },
-        "moduleName": "portfolio/templates/d3/axis.hbs"
+        "moduleName": "portfolio/templates/d3components/axis.hbs"
       },
       isEmpty: false,
       arity: 0,
@@ -10688,7 +10592,7 @@ define("portfolio/templates/d3/axis", ["exports"], function (exports) {
     };
   })());
 });
-define("portfolio/templates/d3/grid", ["exports"], function (exports) {
+define("portfolio/templates/d3components/grid", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
       return {
@@ -10697,7 +10601,7 @@ define("portfolio/templates/d3/grid", ["exports"], function (exports) {
             "name": "missing-wrapper",
             "problems": ["wrong-type"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -10709,7 +10613,7 @@ define("portfolio/templates/d3/grid", ["exports"], function (exports) {
               "column": 0
             }
           },
-          "moduleName": "portfolio/templates/d3/grid.hbs"
+          "moduleName": "portfolio/templates/d3components/grid.hbs"
         },
         isEmpty: false,
         arity: 0,
@@ -10741,7 +10645,7 @@ define("portfolio/templates/d3/grid", ["exports"], function (exports) {
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -10753,7 +10657,7 @@ define("portfolio/templates/d3/grid", ["exports"], function (exports) {
             "column": 0
           }
         },
-        "moduleName": "portfolio/templates/d3/grid.hbs"
+        "moduleName": "portfolio/templates/d3components/grid.hbs"
       },
       isEmpty: false,
       arity: 0,
@@ -10778,14 +10682,14 @@ define("portfolio/templates/d3/grid", ["exports"], function (exports) {
     };
   })());
 });
-define("portfolio/templates/d3/index", ["exports"], function (exports) {
+define("portfolio/templates/d3components/index", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
       var child0 = (function () {
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -10794,10 +10698,10 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
               },
               "end": {
                 "line": 14,
-                "column": 42
+                "column": 52
               }
             },
-            "moduleName": "portfolio/templates/d3/index.hbs"
+            "moduleName": "portfolio/templates/d3components/index.hbs"
           },
           isEmpty: false,
           arity: 0,
@@ -10821,7 +10725,7 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -10830,10 +10734,10 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
               },
               "end": {
                 "line": 15,
-                "column": 38
+                "column": 48
               }
             },
-            "moduleName": "portfolio/templates/d3/index.hbs"
+            "moduleName": "portfolio/templates/d3components/index.hbs"
           },
           isEmpty: false,
           arity: 0,
@@ -10857,7 +10761,7 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -10866,10 +10770,10 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
               },
               "end": {
                 "line": 16,
-                "column": 38
+                "column": 48
               }
             },
-            "moduleName": "portfolio/templates/d3/index.hbs"
+            "moduleName": "portfolio/templates/d3components/index.hbs"
           },
           isEmpty: false,
           arity: 0,
@@ -10889,49 +10793,13 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
           templates: []
         };
       })();
-      var child3 = (function () {
-        return {
-          meta: {
-            "fragmentReason": false,
-            "revision": "Ember@2.3.0",
-            "loc": {
-              "source": null,
-              "start": {
-                "line": 17,
-                "column": 10
-              },
-              "end": {
-                "line": 17,
-                "column": 43
-              }
-            },
-            "moduleName": "portfolio/templates/d3/index.hbs"
-          },
-          isEmpty: false,
-          arity: 0,
-          cachedFragment: null,
-          hasRendered: false,
-          buildFragment: function buildFragment(dom) {
-            var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode(" XY Plot ");
-            dom.appendChild(el0, el1);
-            return el0;
-          },
-          buildRenderNodes: function buildRenderNodes() {
-            return [];
-          },
-          statements: [],
-          locals: [],
-          templates: []
-        };
-      })();
       return {
         meta: {
           "fragmentReason": {
             "name": "missing-wrapper",
             "problems": ["multiple-nodes"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -10939,11 +10807,11 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
               "column": 0
             },
             "end": {
-              "line": 20,
+              "line": 19,
               "column": 0
             }
           },
-          "moduleName": "portfolio/templates/d3/index.hbs"
+          "moduleName": "portfolio/templates/d3components/index.hbs"
         },
         isEmpty: false,
         arity: 0,
@@ -10994,12 +10862,6 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
           var el4 = dom.createComment("");
           dom.appendChild(el3, el4);
           dom.appendChild(el2, el3);
-          var el3 = dom.createTextNode("\n      ");
-          dom.appendChild(el2, el3);
-          var el3 = dom.createElement("li");
-          var el4 = dom.createComment("");
-          dom.appendChild(el3, el4);
-          dom.appendChild(el2, el3);
           var el3 = dom.createTextNode("\n    ");
           dom.appendChild(el2, el3);
           dom.appendChild(el1, el2);
@@ -11012,16 +10874,15 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
         },
         buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
           var element0 = dom.childAt(fragment, [5, 1]);
-          var morphs = new Array(4);
+          var morphs = new Array(3);
           morphs[0] = dom.createMorphAt(dom.childAt(element0, [1]), 0, 0);
           morphs[1] = dom.createMorphAt(dom.childAt(element0, [3]), 0, 0);
           morphs[2] = dom.createMorphAt(dom.childAt(element0, [5]), 0, 0);
-          morphs[3] = dom.createMorphAt(dom.childAt(element0, [7]), 0, 0);
           return morphs;
         },
-        statements: [["block", "link-to", ["d3.scales"], [], 0, null, ["loc", [null, [14, 10], [14, 54]]]], ["block", "link-to", ["d3.axis"], [], 1, null, ["loc", [null, [15, 10], [15, 50]]]], ["block", "link-to", ["d3.grid"], [], 2, null, ["loc", [null, [16, 10], [16, 50]]]], ["block", "link-to", ["d3.xyplot"], [], 3, null, ["loc", [null, [17, 10], [17, 55]]]]],
+        statements: [["block", "link-to", ["d3components.scales"], [], 0, null, ["loc", [null, [14, 10], [14, 64]]]], ["block", "link-to", ["d3components.axis"], [], 1, null, ["loc", [null, [15, 10], [15, 60]]]], ["block", "link-to", ["d3components.grid"], [], 2, null, ["loc", [null, [16, 10], [16, 60]]]]],
         locals: [],
-        templates: [child0, child1, child2, child3]
+        templates: [child0, child1, child2]
       };
     })();
     return {
@@ -11030,7 +10891,7 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -11038,11 +10899,11 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 21,
+            "line": 20,
             "column": 0
           }
         },
-        "moduleName": "portfolio/templates/d3/index.hbs"
+        "moduleName": "portfolio/templates/d3components/index.hbs"
       },
       isEmpty: false,
       arity: 0,
@@ -11061,13 +10922,13 @@ define("portfolio/templates/d3/index", ["exports"], function (exports) {
         dom.insertBoundary(fragment, null);
         return morphs;
       },
-      statements: [["block", "paper-content", [], ["classNames", "md-padding"], 0, null, ["loc", [null, [1, 0], [20, 18]]]]],
+      statements: [["block", "paper-content", [], ["classNames", "md-padding"], 0, null, ["loc", [null, [1, 0], [19, 18]]]]],
       locals: [],
       templates: [child0]
     };
   })());
 });
-define("portfolio/templates/d3/scales/linear", ["exports"], function (exports) {
+define("portfolio/templates/d3components/scales/linear", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
       return {
@@ -11076,7 +10937,7 @@ define("portfolio/templates/d3/scales/linear", ["exports"], function (exports) {
             "name": "missing-wrapper",
             "problems": ["multiple-nodes", "wrong-type"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -11088,7 +10949,7 @@ define("portfolio/templates/d3/scales/linear", ["exports"], function (exports) {
               "column": 0
             }
           },
-          "moduleName": "portfolio/templates/d3/scales/linear.hbs"
+          "moduleName": "portfolio/templates/d3components/scales/linear.hbs"
         },
         isEmpty: false,
         arity: 0,
@@ -11126,7 +10987,7 @@ define("portfolio/templates/d3/scales/linear", ["exports"], function (exports) {
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -11138,7 +10999,7 @@ define("portfolio/templates/d3/scales/linear", ["exports"], function (exports) {
             "column": 0
           }
         },
-        "moduleName": "portfolio/templates/d3/scales/linear.hbs"
+        "moduleName": "portfolio/templates/d3components/scales/linear.hbs"
       },
       isEmpty: false,
       arity: 0,
@@ -11163,7 +11024,7 @@ define("portfolio/templates/d3/scales/linear", ["exports"], function (exports) {
     };
   })());
 });
-define("portfolio/templates/d3/scales/log", ["exports"], function (exports) {
+define("portfolio/templates/d3components/scales/log", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
       return {
@@ -11172,7 +11033,7 @@ define("portfolio/templates/d3/scales/log", ["exports"], function (exports) {
             "name": "missing-wrapper",
             "problems": ["multiple-nodes", "wrong-type"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -11184,7 +11045,7 @@ define("portfolio/templates/d3/scales/log", ["exports"], function (exports) {
               "column": 0
             }
           },
-          "moduleName": "portfolio/templates/d3/scales/log.hbs"
+          "moduleName": "portfolio/templates/d3components/scales/log.hbs"
         },
         isEmpty: false,
         arity: 0,
@@ -11222,7 +11083,7 @@ define("portfolio/templates/d3/scales/log", ["exports"], function (exports) {
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -11234,7 +11095,7 @@ define("portfolio/templates/d3/scales/log", ["exports"], function (exports) {
             "column": 0
           }
         },
-        "moduleName": "portfolio/templates/d3/scales/log.hbs"
+        "moduleName": "portfolio/templates/d3components/scales/log.hbs"
       },
       isEmpty: false,
       arity: 0,
@@ -11259,7 +11120,7 @@ define("portfolio/templates/d3/scales/log", ["exports"], function (exports) {
     };
   })());
 });
-define("portfolio/templates/d3/scales/ordinal", ["exports"], function (exports) {
+define("portfolio/templates/d3components/scales/ordinal", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
       return {
@@ -11268,7 +11129,7 @@ define("portfolio/templates/d3/scales/ordinal", ["exports"], function (exports) 
             "name": "missing-wrapper",
             "problems": ["multiple-nodes", "wrong-type"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -11280,7 +11141,7 @@ define("portfolio/templates/d3/scales/ordinal", ["exports"], function (exports) 
               "column": 0
             }
           },
-          "moduleName": "portfolio/templates/d3/scales/ordinal.hbs"
+          "moduleName": "portfolio/templates/d3components/scales/ordinal.hbs"
         },
         isEmpty: false,
         arity: 0,
@@ -11318,7 +11179,7 @@ define("portfolio/templates/d3/scales/ordinal", ["exports"], function (exports) 
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -11330,7 +11191,7 @@ define("portfolio/templates/d3/scales/ordinal", ["exports"], function (exports) 
             "column": 0
           }
         },
-        "moduleName": "portfolio/templates/d3/scales/ordinal.hbs"
+        "moduleName": "portfolio/templates/d3components/scales/ordinal.hbs"
       },
       isEmpty: false,
       arity: 0,
@@ -11355,7 +11216,7 @@ define("portfolio/templates/d3/scales/ordinal", ["exports"], function (exports) 
     };
   })());
 });
-define("portfolio/templates/d3/scales/pow", ["exports"], function (exports) {
+define("portfolio/templates/d3components/scales/pow", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
       return {
@@ -11364,7 +11225,7 @@ define("portfolio/templates/d3/scales/pow", ["exports"], function (exports) {
             "name": "missing-wrapper",
             "problems": ["multiple-nodes", "wrong-type"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -11376,7 +11237,7 @@ define("portfolio/templates/d3/scales/pow", ["exports"], function (exports) {
               "column": 0
             }
           },
-          "moduleName": "portfolio/templates/d3/scales/pow.hbs"
+          "moduleName": "portfolio/templates/d3components/scales/pow.hbs"
         },
         isEmpty: false,
         arity: 0,
@@ -11414,7 +11275,7 @@ define("portfolio/templates/d3/scales/pow", ["exports"], function (exports) {
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -11426,7 +11287,7 @@ define("portfolio/templates/d3/scales/pow", ["exports"], function (exports) {
             "column": 0
           }
         },
-        "moduleName": "portfolio/templates/d3/scales/pow.hbs"
+        "moduleName": "portfolio/templates/d3components/scales/pow.hbs"
       },
       isEmpty: false,
       arity: 0,
@@ -11451,7 +11312,7 @@ define("portfolio/templates/d3/scales/pow", ["exports"], function (exports) {
     };
   })());
 });
-define("portfolio/templates/d3/scales/sqrt", ["exports"], function (exports) {
+define("portfolio/templates/d3components/scales/sqrt", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
       return {
@@ -11460,7 +11321,7 @@ define("portfolio/templates/d3/scales/sqrt", ["exports"], function (exports) {
             "name": "missing-wrapper",
             "problems": ["multiple-nodes", "wrong-type"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -11472,7 +11333,7 @@ define("portfolio/templates/d3/scales/sqrt", ["exports"], function (exports) {
               "column": 0
             }
           },
-          "moduleName": "portfolio/templates/d3/scales/sqrt.hbs"
+          "moduleName": "portfolio/templates/d3components/scales/sqrt.hbs"
         },
         isEmpty: false,
         arity: 0,
@@ -11510,7 +11371,7 @@ define("portfolio/templates/d3/scales/sqrt", ["exports"], function (exports) {
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -11522,7 +11383,7 @@ define("portfolio/templates/d3/scales/sqrt", ["exports"], function (exports) {
             "column": 0
           }
         },
-        "moduleName": "portfolio/templates/d3/scales/sqrt.hbs"
+        "moduleName": "portfolio/templates/d3components/scales/sqrt.hbs"
       },
       isEmpty: false,
       arity: 0,
@@ -11547,14 +11408,14 @@ define("portfolio/templates/d3/scales/sqrt", ["exports"], function (exports) {
     };
   })());
 });
-define("portfolio/templates/d3/scales", ["exports"], function (exports) {
+define("portfolio/templates/d3components/scales", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
       var child0 = (function () {
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -11563,10 +11424,10 @@ define("portfolio/templates/d3/scales", ["exports"], function (exports) {
               },
               "end": {
                 "line": 2,
-                "column": 45
+                "column": 55
               }
             },
-            "moduleName": "portfolio/templates/d3/scales.hbs"
+            "moduleName": "portfolio/templates/d3components/scales.hbs"
           },
           isEmpty: false,
           arity: 0,
@@ -11590,7 +11451,7 @@ define("portfolio/templates/d3/scales", ["exports"], function (exports) {
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -11599,10 +11460,10 @@ define("portfolio/templates/d3/scales", ["exports"], function (exports) {
               },
               "end": {
                 "line": 3,
-                "column": 39
+                "column": 49
               }
             },
-            "moduleName": "portfolio/templates/d3/scales.hbs"
+            "moduleName": "portfolio/templates/d3components/scales.hbs"
           },
           isEmpty: false,
           arity: 0,
@@ -11626,7 +11487,7 @@ define("portfolio/templates/d3/scales", ["exports"], function (exports) {
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -11635,10 +11496,10 @@ define("portfolio/templates/d3/scales", ["exports"], function (exports) {
               },
               "end": {
                 "line": 4,
-                "column": 39
+                "column": 49
               }
             },
-            "moduleName": "portfolio/templates/d3/scales.hbs"
+            "moduleName": "portfolio/templates/d3components/scales.hbs"
           },
           isEmpty: false,
           arity: 0,
@@ -11662,7 +11523,7 @@ define("portfolio/templates/d3/scales", ["exports"], function (exports) {
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -11671,10 +11532,10 @@ define("portfolio/templates/d3/scales", ["exports"], function (exports) {
               },
               "end": {
                 "line": 5,
-                "column": 41
+                "column": 51
               }
             },
-            "moduleName": "portfolio/templates/d3/scales.hbs"
+            "moduleName": "portfolio/templates/d3components/scales.hbs"
           },
           isEmpty: false,
           arity: 0,
@@ -11698,7 +11559,7 @@ define("portfolio/templates/d3/scales", ["exports"], function (exports) {
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -11707,10 +11568,10 @@ define("portfolio/templates/d3/scales", ["exports"], function (exports) {
               },
               "end": {
                 "line": 6,
-                "column": 47
+                "column": 57
               }
             },
-            "moduleName": "portfolio/templates/d3/scales.hbs"
+            "moduleName": "portfolio/templates/d3components/scales.hbs"
           },
           isEmpty: false,
           arity: 0,
@@ -11736,7 +11597,7 @@ define("portfolio/templates/d3/scales", ["exports"], function (exports) {
             "name": "missing-wrapper",
             "problems": ["wrong-type", "multiple-nodes"]
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -11748,7 +11609,7 @@ define("portfolio/templates/d3/scales", ["exports"], function (exports) {
               "column": 0
             }
           },
-          "moduleName": "portfolio/templates/d3/scales.hbs"
+          "moduleName": "portfolio/templates/d3components/scales.hbs"
         },
         isEmpty: false,
         arity: 0,
@@ -11789,7 +11650,7 @@ define("portfolio/templates/d3/scales", ["exports"], function (exports) {
           morphs[4] = dom.createMorphAt(fragment, 9, 9, contextualElement);
           return morphs;
         },
-        statements: [["block", "link-to", ["d3.scales.linear"], [], 0, null, ["loc", [null, [2, 2], [2, 57]]]], ["block", "link-to", ["d3.scales.log"], [], 1, null, ["loc", [null, [3, 2], [3, 51]]]], ["block", "link-to", ["d3.scales.pow"], [], 2, null, ["loc", [null, [4, 2], [4, 51]]]], ["block", "link-to", ["d3.scales.sqrt"], [], 3, null, ["loc", [null, [5, 2], [5, 53]]]], ["block", "link-to", ["d3.scales.ordinal"], [], 4, null, ["loc", [null, [6, 2], [6, 59]]]]],
+        statements: [["block", "link-to", ["d3components.scales.linear"], [], 0, null, ["loc", [null, [2, 2], [2, 67]]]], ["block", "link-to", ["d3components.scales.log"], [], 1, null, ["loc", [null, [3, 2], [3, 61]]]], ["block", "link-to", ["d3components.scales.pow"], [], 2, null, ["loc", [null, [4, 2], [4, 61]]]], ["block", "link-to", ["d3components.scales.sqrt"], [], 3, null, ["loc", [null, [5, 2], [5, 63]]]], ["block", "link-to", ["d3components.scales.ordinal"], [], 4, null, ["loc", [null, [6, 2], [6, 69]]]]],
         locals: [],
         templates: [child0, child1, child2, child3, child4]
       };
@@ -11800,7 +11661,7 @@ define("portfolio/templates/d3/scales", ["exports"], function (exports) {
           "name": "missing-wrapper",
           "problems": ["wrong-type", "multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -11812,7 +11673,7 @@ define("portfolio/templates/d3/scales", ["exports"], function (exports) {
             "column": 0
           }
         },
-        "moduleName": "portfolio/templates/d3/scales.hbs"
+        "moduleName": "portfolio/templates/d3components/scales.hbs"
       },
       isEmpty: false,
       arity: 0,
@@ -11843,104 +11704,14 @@ define("portfolio/templates/d3/scales", ["exports"], function (exports) {
     };
   })());
 });
-define("portfolio/templates/d3/xyplot", ["exports"], function (exports) {
-  exports["default"] = Ember.HTMLBars.template((function () {
-    var child0 = (function () {
-      return {
-        meta: {
-          "fragmentReason": {
-            "name": "missing-wrapper",
-            "problems": ["wrong-type"]
-          },
-          "revision": "Ember@2.3.0",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 1,
-              "column": 0
-            },
-            "end": {
-              "line": 3,
-              "column": 0
-            }
-          },
-          "moduleName": "portfolio/templates/d3/xyplot.hbs"
-        },
-        isEmpty: false,
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("  ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createComment("");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var morphs = new Array(1);
-          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
-          return morphs;
-        },
-        statements: [["content", "xyplot-sandbox", ["loc", [null, [2, 2], [2, 20]]]]],
-        locals: [],
-        templates: []
-      };
-    })();
-    return {
-      meta: {
-        "fragmentReason": {
-          "name": "missing-wrapper",
-          "problems": ["wrong-type"]
-        },
-        "revision": "Ember@2.3.0",
-        "loc": {
-          "source": null,
-          "start": {
-            "line": 1,
-            "column": 0
-          },
-          "end": {
-            "line": 4,
-            "column": 0
-          }
-        },
-        "moduleName": "portfolio/templates/d3/xyplot.hbs"
-      },
-      isEmpty: false,
-      arity: 0,
-      cachedFragment: null,
-      hasRendered: false,
-      buildFragment: function buildFragment(dom) {
-        var el0 = dom.createDocumentFragment();
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
-        return el0;
-      },
-      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var morphs = new Array(1);
-        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
-        dom.insertBoundary(fragment, 0);
-        dom.insertBoundary(fragment, null);
-        return morphs;
-      },
-      statements: [["block", "paper-content", [], ["classNames", "md-padding"], 0, null, ["loc", [null, [1, 0], [3, 18]]]]],
-      locals: [],
-      templates: [child0]
-    };
-  })());
-});
-define("portfolio/templates/d3", ["exports"], function (exports) {
+define("portfolio/templates/d3components", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
       var child0 = (function () {
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -11949,10 +11720,10 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
               },
               "end": {
                 "line": 3,
-                "column": 40
+                "column": 50
               }
             },
-            "moduleName": "portfolio/templates/d3.hbs"
+            "moduleName": "portfolio/templates/d3components.hbs"
           },
           isEmpty: false,
           arity: 0,
@@ -11976,7 +11747,7 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -11985,10 +11756,10 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
               },
               "end": {
                 "line": 4,
-                "column": 59
+                "column": 69
               }
             },
-            "moduleName": "portfolio/templates/d3.hbs"
+            "moduleName": "portfolio/templates/d3components.hbs"
           },
           isEmpty: false,
           arity: 0,
@@ -12012,7 +11783,7 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -12021,10 +11792,10 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
               },
               "end": {
                 "line": 5,
-                "column": 55
+                "column": 65
               }
             },
-            "moduleName": "portfolio/templates/d3.hbs"
+            "moduleName": "portfolio/templates/d3components.hbs"
           },
           isEmpty: false,
           arity: 0,
@@ -12048,7 +11819,7 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -12057,10 +11828,10 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
               },
               "end": {
                 "line": 6,
-                "column": 55
+                "column": 65
               }
             },
-            "moduleName": "portfolio/templates/d3.hbs"
+            "moduleName": "portfolio/templates/d3components.hbs"
           },
           isEmpty: false,
           arity: 0,
@@ -12080,48 +11851,12 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
           templates: []
         };
       })();
-      var child4 = (function () {
-        return {
-          meta: {
-            "fragmentReason": false,
-            "revision": "Ember@2.3.0",
-            "loc": {
-              "source": null,
-              "start": {
-                "line": 7,
-                "column": 4
-              },
-              "end": {
-                "line": 7,
-                "column": 60
-              }
-            },
-            "moduleName": "portfolio/templates/d3.hbs"
-          },
-          isEmpty: false,
-          arity: 0,
-          cachedFragment: null,
-          hasRendered: false,
-          buildFragment: function buildFragment(dom) {
-            var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode(" XY Plot ");
-            dom.appendChild(el0, el1);
-            return el0;
-          },
-          buildRenderNodes: function buildRenderNodes() {
-            return [];
-          },
-          statements: [],
-          locals: [],
-          templates: []
-        };
-      })();
       return {
         meta: {
           "fragmentReason": {
             "name": "triple-curlies"
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -12129,11 +11864,11 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
               "column": 0
             },
             "end": {
-              "line": 9,
+              "line": 8,
               "column": 0
             }
           },
-          "moduleName": "portfolio/templates/d3.hbs"
+          "moduleName": "portfolio/templates/d3components.hbs"
         },
         isEmpty: false,
         arity: 0,
@@ -12161,10 +11896,6 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
           dom.appendChild(el1, el2);
           var el2 = dom.createComment("");
           dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("\n    ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createComment("");
-          dom.appendChild(el1, el2);
           var el2 = dom.createTextNode("\n  ");
           dom.appendChild(el1, el2);
           dom.appendChild(el0, el1);
@@ -12174,17 +11905,16 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
         },
         buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
           var element0 = dom.childAt(fragment, [1]);
-          var morphs = new Array(5);
+          var morphs = new Array(4);
           morphs[0] = dom.createMorphAt(element0, 1, 1);
           morphs[1] = dom.createMorphAt(element0, 3, 3);
           morphs[2] = dom.createMorphAt(element0, 5, 5);
           morphs[3] = dom.createMorphAt(element0, 7, 7);
-          morphs[4] = dom.createMorphAt(element0, 9, 9);
           return morphs;
         },
-        statements: [["block", "link-to", ["d3"], [], 0, null, ["loc", [null, [3, 4], [3, 52]]]], ["block", "link-to", ["d3.scales"], ["class", "toolbar-button"], 1, null, ["loc", [null, [4, 4], [4, 71]]]], ["block", "link-to", ["d3.axis"], ["class", "toolbar-button"], 2, null, ["loc", [null, [5, 4], [5, 67]]]], ["block", "link-to", ["d3.grid"], ["class", "toolbar-button"], 3, null, ["loc", [null, [6, 4], [6, 67]]]], ["block", "link-to", ["d3.xyplot"], ["class", "toolbar-button"], 4, null, ["loc", [null, [7, 4], [7, 72]]]]],
+        statements: [["block", "link-to", ["d3components"], [], 0, null, ["loc", [null, [3, 4], [3, 62]]]], ["block", "link-to", ["d3components.scales"], ["class", "toolbar-button"], 1, null, ["loc", [null, [4, 4], [4, 81]]]], ["block", "link-to", ["d3components.axis"], ["class", "toolbar-button"], 2, null, ["loc", [null, [5, 4], [5, 77]]]], ["block", "link-to", ["d3components.grid"], ["class", "toolbar-button"], 3, null, ["loc", [null, [6, 4], [6, 77]]]]],
         locals: [],
-        templates: [child0, child1, child2, child3, child4]
+        templates: [child0, child1, child2, child3]
       };
     })();
     return {
@@ -12193,7 +11923,7 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
           "name": "missing-wrapper",
           "problems": ["wrong-type", "multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -12201,11 +11931,11 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 12,
+            "line": 11,
             "column": 0
           }
         },
-        "moduleName": "portfolio/templates/d3.hbs"
+        "moduleName": "portfolio/templates/d3components.hbs"
       },
       isEmpty: false,
       arity: 0,
@@ -12230,7 +11960,7 @@ define("portfolio/templates/d3", ["exports"], function (exports) {
         dom.insertBoundary(fragment, 0);
         return morphs;
       },
-      statements: [["block", "paper-toolbar", [], [], 0, null, ["loc", [null, [1, 0], [9, 18]]]], ["content", "outlet", ["loc", [null, [11, 0], [11, 10]]]]],
+      statements: [["block", "paper-toolbar", [], [], 0, null, ["loc", [null, [1, 0], [8, 18]]]], ["content", "outlet", ["loc", [null, [10, 0], [10, 10]]]]],
       locals: [],
       templates: [child0]
     };
@@ -12244,7 +11974,7 @@ define("portfolio/templates/index", ["exports"], function (exports) {
           "fragmentReason": {
             "name": "triple-curlies"
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -12295,7 +12025,7 @@ define("portfolio/templates/index", ["exports"], function (exports) {
           "name": "missing-wrapper",
           "problems": ["wrong-type"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -12340,7 +12070,7 @@ define("portfolio/templates/split", ["exports"], function (exports) {
           "fragmentReason": {
             "name": "triple-curlies"
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -12386,7 +12116,7 @@ define("portfolio/templates/split", ["exports"], function (exports) {
             return {
               meta: {
                 "fragmentReason": false,
-                "revision": "Ember@2.3.0",
+                "revision": "Ember@2.4.1",
                 "loc": {
                   "source": null,
                   "start": {
@@ -12437,7 +12167,7 @@ define("portfolio/templates/split", ["exports"], function (exports) {
           return {
             meta: {
               "fragmentReason": false,
-              "revision": "Ember@2.3.0",
+              "revision": "Ember@2.4.1",
               "loc": {
                 "source": null,
                 "start": {
@@ -12476,7 +12206,7 @@ define("portfolio/templates/split", ["exports"], function (exports) {
         return {
           meta: {
             "fragmentReason": false,
-            "revision": "Ember@2.3.0",
+            "revision": "Ember@2.4.1",
             "loc": {
               "source": null,
               "start": {
@@ -12526,7 +12256,7 @@ define("portfolio/templates/split", ["exports"], function (exports) {
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -12623,7 +12353,7 @@ define("portfolio/templates/split", ["exports"], function (exports) {
           "name": "missing-wrapper",
           "problems": ["wrong-type", "multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -12673,7 +12403,7 @@ define("portfolio/templates/web", ["exports"], function (exports) {
           "fragmentReason": {
             "name": "triple-curlies"
           },
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -12716,7 +12446,7 @@ define("portfolio/templates/web", ["exports"], function (exports) {
       return {
         meta: {
           "fragmentReason": false,
-          "revision": "Ember@2.3.0",
+          "revision": "Ember@2.4.1",
           "loc": {
             "source": null,
             "start": {
@@ -12785,7 +12515,7 @@ define("portfolio/templates/web", ["exports"], function (exports) {
           "name": "missing-wrapper",
           "problems": ["wrong-type", "multiple-nodes"]
         },
-        "revision": "Ember@2.3.0",
+        "revision": "Ember@2.4.1",
         "loc": {
           "source": null,
           "start": {
@@ -12827,6 +12557,14 @@ define("portfolio/templates/web", ["exports"], function (exports) {
     };
   })());
 });
+define('portfolio/utils/d3-data-accessor', ['exports', 'ember-d3-components/utils/d3-data-accessor'], function (exports, _emberD3ComponentsUtilsD3DataAccessor) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ComponentsUtilsD3DataAccessor['default'];
+    }
+  });
+});
 define('portfolio/utils/d3-scale', ['exports', 'ember-d3-components/utils/d3-scale'], function (exports, _emberD3ComponentsUtilsD3Scale) {
   Object.defineProperty(exports, 'default', {
     enumerable: true,
@@ -12835,11 +12573,27 @@ define('portfolio/utils/d3-scale', ['exports', 'ember-d3-components/utils/d3-sca
     }
   });
 });
+define('portfolio/utils/d3-stack-layout', ['exports', 'ember-d3-components/utils/d3-stack-layout'], function (exports, _emberD3ComponentsUtilsD3StackLayout) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ComponentsUtilsD3StackLayout['default'];
+    }
+  });
+});
 define('portfolio/utils/grid-layout', ['exports', 'ember-paper/utils/grid-layout'], function (exports, _emberPaperUtilsGridLayout) {
   Object.defineProperty(exports, 'default', {
     enumerable: true,
     get: function get() {
       return _emberPaperUtilsGridLayout['default'];
+    }
+  });
+});
+define('portfolio/utils/layouts/d3-pie-layout', ['exports', 'ember-d3-components/utils/layouts/d3-pie-layout'], function (exports, _emberD3ComponentsUtilsLayoutsD3PieLayout) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ComponentsUtilsLayoutsD3PieLayout['default'];
     }
   });
 });
@@ -12856,6 +12610,14 @@ define('portfolio/utils/plotters/d3-composite-plotter', ['exports', 'ember-d3-co
     enumerable: true,
     get: function get() {
       return _emberD3ComponentsUtilsPlottersD3CompositePlotter['default'];
+    }
+  });
+});
+define('portfolio/utils/plotters/d3-xy-circle-plotter', ['exports', 'ember-d3-components/utils/plotters/d3-xy-circle-plotter'], function (exports, _emberD3ComponentsUtilsPlottersD3XyCirclePlotter) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberD3ComponentsUtilsPlottersD3XyCirclePlotter['default'];
     }
   });
 });
@@ -12941,6 +12703,8 @@ define('portfolio/utils/scales/d3-time-scale', ['exports', 'ember-d3-components/
 });
 /* jshint ignore:start */
 
+
+
 /* jshint ignore:end */
 
 /* jshint ignore:start */
@@ -12967,8 +12731,10 @@ catch(err) {
 /* jshint ignore:end */
 
 /* jshint ignore:start */
+
 if (!runningTests) {
-  require("portfolio/app")["default"].create({"name":"portfolio","version":"0.0.0+8d0fc139"});
+  require("portfolio/app")["default"].create({"name":"portfolio","version":"0.0.0+e9340683"});
 }
+
 /* jshint ignore:end */
 //# sourceMappingURL=portfolio.map
