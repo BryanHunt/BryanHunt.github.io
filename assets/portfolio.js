@@ -32,6 +32,38 @@ define('portfolio/components/app-version', ['exports', 'ember-cli-app-version/co
     name: name
   });
 });
+define('portfolio/components/area-chart', ['exports', 'ember', 'ember-d3-components/utils/scales/d3-linear-scale'], function (exports, _ember, _emberD3ComponentsUtilsScalesD3LinearScale) {
+  var Component = _ember['default'].Component;
+  exports['default'] = Component.extend({
+    xScale: _emberD3ComponentsUtilsScalesD3LinearScale['default'].create({ domain: [0, 100], range: [0, 440] }),
+    y0Scale: _emberD3ComponentsUtilsScalesD3LinearScale['default'].create({ domain: [100, 0], range: [430, 430] }),
+    yScale: _emberD3ComponentsUtilsScalesD3LinearScale['default'].create({ domain: [100, 0], range: [0, 430] }),
+
+    chartOptions: {
+      width: 500,
+      height: 500,
+      title: { x: 250, y: 15, text: "Area Chart", transform: "" },
+      xAxis: { transform: "translate(35,455)", label: { x: 250, y: 495, text: "X Axis", transform: "" } },
+      yAxis: { transform: "translate(35,25)", label: { x: -240, y: 10, text: "Y Axis", transform: "rotate(-90)" } },
+      xGrid: { transform: "translate(35,455)" },
+      yGrid: { transform: "translate(35,25)" },
+      plot: { transform: "translate(35,25)", paddingLeft: 35, paddingRight: 25, paddingTop: 25, paddingBottom: 45, drawLine: true }
+    },
+
+    data: [{ x: 0, y: 10 }, { x: 10, y: 20 }, { x: 20, y: 35 }, { x: 30, y: 45 }, { x: 50, y: 65 }, { x: 70, y: 95 }, { x: 80, y: 97 }, { x: 90, y: 100 }],
+
+    init: function init() {
+      this._super.apply(this, arguments);
+      this.set('chartOptions.xAxis.scale', this.get('xScale'));
+      this.set('chartOptions.yAxis.scale', this.get('yScale'));
+      this.set('chartOptions.xGrid.scale', this.get('xScale'));
+      this.set('chartOptions.yGrid.scale', this.get('yScale'));
+      this.set('chartOptions.plot.xScale', this.get('xScale'));
+      this.set('chartOptions.plot.y0Scale', this.get('y0Scale'));
+      this.set('chartOptions.plot.yScale', this.get('yScale'));
+    }
+  });
+});
 define("portfolio/components/axis-sandbox", ["exports", "ember"], function (exports, _ember) {
   var Component = _ember["default"].Component;
   var computed = _ember["default"].computed;
@@ -63,8 +95,82 @@ define("portfolio/components/axis-sandbox", ["exports", "ember"], function (expo
     })
   });
 });
+define('portfolio/components/bar-chart', ['exports', 'ember', 'ember-d3-components/utils/scales/d3-linear-scale', 'portfolio/utils/scales/d3-ordinal-scale'], function (exports, _ember, _emberD3ComponentsUtilsScalesD3LinearScale, _portfolioUtilsScalesD3OrdinalScale) {
+  var Component = _ember['default'].Component;
+  exports['default'] = Component.extend({
+    xScale: _portfolioUtilsScalesD3OrdinalScale['default'].create({ domain: ["Apples", "Oranges", "Bananas"], rangeBands: [0, 450], padding: 0.2 }),
+    y0Scale: _emberD3ComponentsUtilsScalesD3LinearScale['default'].create({ domain: [100, 0], range: [430, 430] }),
+    yScale: _emberD3ComponentsUtilsScalesD3LinearScale['default'].create({ domain: [100, 0], range: [0, 430] }),
+
+    chartOptions: {
+      width: 500,
+      height: 500,
+      title: { x: 250, y: 15, text: "Bar Chart", transform: "" },
+      xAxis: { transform: "translate(35,455)", label: { x: 250, y: 495, text: "X Axis", transform: "" } },
+      yAxis: { transform: "translate(35,25)", label: { x: -240, y: 10, text: "Y Axis", transform: "rotate(-90)" } },
+      yGrid: { transform: "translate(35,25)" },
+      plot: { transform: "translate(35,25)", paddingLeft: 35, paddingRight: 25, paddingTop: 25, paddingBottom: 45,
+        barWidthTransform: function barWidthTransform(dataPoint, scale) {
+          return scale.rangeBand();
+        }
+      }
+    },
+
+    data: [{ x: "Apples", y: 10 }, { x: "Oranges", y: 20 }, { x: "Bananas", y: 35 }],
+
+    init: function init() {
+      this._super.apply(this, arguments);
+      this.set('chartOptions.xAxis.scale', this.get('xScale'));
+      this.set('chartOptions.yAxis.scale', this.get('yScale'));
+      this.set('chartOptions.yGrid.scale', this.get('yScale'));
+      this.set('chartOptions.plot.xScale', this.get('xScale'));
+      this.set('chartOptions.plot.y0Scale', this.get('y0Scale'));
+      this.set('chartOptions.plot.yScale', this.get('yScale'));
+    }
+  });
+});
 define('portfolio/components/base-focusable', ['exports', 'ember-paper/components/base-focusable'], function (exports, _emberPaperComponentsBaseFocusable) {
   exports['default'] = _emberPaperComponentsBaseFocusable['default'];
+});
+define('portfolio/components/bubble-chart', ['exports', 'ember', 'ember-d3-components/utils/scales/d3-linear-scale'], function (exports, _ember, _emberD3ComponentsUtilsScalesD3LinearScale) {
+  var Component = _ember['default'].Component;
+  exports['default'] = Component.extend({
+    xScale: _emberD3ComponentsUtilsScalesD3LinearScale['default'].create({ domain: [0, 100], range: [0, 440] }),
+    yScale: _emberD3ComponentsUtilsScalesD3LinearScale['default'].create({ domain: [100, 0], range: [0, 430] }),
+    rScale: _emberD3ComponentsUtilsScalesD3LinearScale['default'].create({ domain: [0, 10], range: [10, 40] }),
+
+    chartOptions: {
+      width: 500,
+      height: 500,
+      title: { x: 250, y: 15, text: "Bubble Chart", transform: "" },
+      xAxis: { transform: "translate(35,455)", label: { x: 250, y: 495, text: "X Axis", transform: "" } },
+      yAxis: { transform: "translate(35,25)", label: { x: -240, y: 10, text: "Y Axis", transform: "rotate(-90)" } },
+      xGrid: { transform: "translate(35,455)" },
+      yGrid: { transform: "translate(35,25)" },
+      plot: { transform: "translate(35,25)", paddingLeft: 35, paddingRight: 25, paddingTop: 25, paddingBottom: 45 }
+    },
+
+    data: [{ x: 0, y: 10, r: 5 }, { x: 10, y: 20, r: 7 }, { x: 20, y: 65, r: 2 }, { x: 30, y: 35, r: 0 }, { x: 50, y: 25, r: 5 }, { x: 70, y: 55, r: 6 }, { x: 80, y: 17, r: 9 }, { x: 90, y: 40, r: 4 }],
+
+    init: function init() {
+      this._super.apply(this, arguments);
+      this.set('chartOptions.xAxis.scale', this.get('xScale'));
+      this.set('chartOptions.yAxis.scale', this.get('yScale'));
+      this.set('chartOptions.xGrid.scale', this.get('xScale'));
+      this.set('chartOptions.yGrid.scale', this.get('yScale'));
+      this.set('chartOptions.plot.xScale', this.get('xScale'));
+      this.set('chartOptions.plot.yScale', this.get('yScale'));
+      this.set('chartOptions.plot.rScale', this.get('rScale'));
+
+      var colors = d3.scale.category10();
+      this.set('chartOptions.plot.fill', function (d, j) {
+        return colors(j);
+      });
+      this.set('chartOptions.plot.stroke', function (d, j) {
+        return colors(j);
+      });
+    }
+  });
 });
 define('portfolio/components/d3-arc', ['exports', 'ember-d3-components/components/d3-arc'], function (exports, _emberD3ComponentsComponentsD3Arc) {
   Object.defineProperty(exports, 'default', {
@@ -701,6 +807,29 @@ define('portfolio/components/paper-switch', ['exports', 'ember-paper/components/
 define('portfolio/components/paper-toolbar', ['exports', 'ember-paper/components/paper-toolbar'], function (exports, _emberPaperComponentsPaperToolbar) {
   exports['default'] = _emberPaperComponentsPaperToolbar['default'];
 });
+define("portfolio/components/pie-chart", ["exports", "ember"], function (exports, _ember) {
+  var Component = _ember["default"].Component;
+  exports["default"] = Component.extend({
+    chartOptions: {
+      width: 500,
+      height: 500,
+      title: { x: 250, y: 15, text: "Pie Chart", transform: "" },
+      plot: { transform: "translate(250,130)" }
+    },
+
+    data: [{ x: 0, y: 10 }, { x: 10, y: 20 }, { x: 20, y: 35 }, { x: 30, y: 45 }, { x: 50, y: 65 }, { x: 70, y: 95 }, { x: 80, y: 97 }, { x: 90, y: 100 }],
+
+    init: function init() {
+      this._super.apply(this, arguments);
+      var colors = d3.scale.category10();
+
+      this.set('chartOptions.plot.fill', function (d, j) {
+        return colors(j);
+      });
+      this.set('chartOptions.plot.layout', this.get('layout'));
+    }
+  });
+});
 define('portfolio/components/pow-scale-sandbox', ['exports', 'portfolio/components/scale-sandbox'], function (exports, _portfolioComponentsScaleSandbox) {
   exports['default'] = _portfolioComponentsScaleSandbox['default'].extend({
     input: 50
@@ -810,6 +939,88 @@ define('portfolio/components/sqrt-scale', ['exports', 'ember', 'portfolio/utils/
         this.set('scale.range', [this.get('rangeMin'), this.get('rangeMax')]);
       }
     }))
+  });
+});
+define('portfolio/components/stacked-area-chart', ['exports', 'ember', 'ember-d3-components/utils/scales/d3-linear-scale'], function (exports, _ember, _emberD3ComponentsUtilsScalesD3LinearScale) {
+  var Component = _ember['default'].Component;
+  exports['default'] = Component.extend({
+    xScale: _emberD3ComponentsUtilsScalesD3LinearScale['default'].create({ domain: [0, 100], range: [0, 440] }),
+    y0Scale: _emberD3ComponentsUtilsScalesD3LinearScale['default'].create({ domain: [100, 0], range: [0, 430] }),
+    yScale: _emberD3ComponentsUtilsScalesD3LinearScale['default'].create({ domain: [100, 0], range: [0, 430] }),
+
+    chartOptions: {
+      width: 500,
+      height: 500,
+      title: { x: 250, y: 15, text: "Stacked Area Chart", transform: "" },
+      xAxis: { transform: "translate(35,455)", label: { x: 250, y: 495, text: "X Axis", transform: "" } },
+      yAxis: { transform: "translate(35,25)", label: { x: -240, y: 10, text: "Y Axis", transform: "rotate(-90)" } },
+      xGrid: { transform: "translate(35,455)" },
+      yGrid: { transform: "translate(35,25)" },
+      plot: { transform: "translate(35,25)", paddingLeft: 35, paddingRight: 25, paddingTop: 25, paddingBottom: 45, drawLine: true }
+    },
+
+    data: [[{ x: 0, y: 10 }, { x: 10, y: 20 }, { x: 20, y: 35 }, { x: 30, y: 45 }, { x: 50, y: 40 }, { x: 70, y: 45 }, { x: 80, y: 27 }, { x: 90, y: 30 }, { x: 100, y: 33 }], [{ x: 0, y: 5 }, { x: 10, y: 10 }, { x: 20, y: 25 }, { x: 30, y: 5 }, { x: 50, y: 30 }, { x: 70, y: 25 }, { x: 80, y: 27 }, { x: 90, y: 30 }, { x: 100, y: 13 }]],
+
+    init: function init() {
+      this._super.apply(this, arguments);
+      this.set('chartOptions.xAxis.scale', this.get('xScale'));
+      this.set('chartOptions.yAxis.scale', this.get('yScale'));
+      this.set('chartOptions.xGrid.scale', this.get('xScale'));
+      this.set('chartOptions.yGrid.scale', this.get('yScale'));
+      this.set('chartOptions.plot.xScale', this.get('xScale'));
+      this.set('chartOptions.plot.y0Scale', this.get('y0Scale'));
+      this.set('chartOptions.plot.yScale', this.get('yScale'));
+
+      var colors = d3.scale.category10();
+      this.set('chartOptions.plot.fill', function (d, j) {
+        return colors(j);
+      });
+      this.set('chartOptions.plot.stroke', function (d, j) {
+        return colors(j);
+      });
+    }
+  });
+});
+define('portfolio/components/stacked-bar-chart', ['exports', 'ember', 'ember-d3-components/utils/scales/d3-linear-scale', 'portfolio/utils/scales/d3-ordinal-scale'], function (exports, _ember, _emberD3ComponentsUtilsScalesD3LinearScale, _portfolioUtilsScalesD3OrdinalScale) {
+  var Component = _ember['default'].Component;
+
+  var colors = d3.scale.category10();
+
+  exports['default'] = Component.extend({
+    xScale: _portfolioUtilsScalesD3OrdinalScale['default'].create({ domain: ["Apples", "Oranges", "Bananas"], rangeBands: [0, 450], padding: 0.2 }),
+    y0Scale: _emberD3ComponentsUtilsScalesD3LinearScale['default'].create({ domain: [100, 0], range: [0, 430] }),
+    yScale: _emberD3ComponentsUtilsScalesD3LinearScale['default'].create({ domain: [100, 0], range: [0, 430] }),
+
+    chartOptions: {
+      width: 500,
+      height: 500,
+      title: { x: 250, y: 15, text: "Stacked Bar Chart", transform: "" },
+      xAxis: { transform: "translate(35,455)", label: { x: 250, y: 495, text: "X Axis", transform: "" } },
+      yAxis: { transform: "translate(35,25)", label: { x: -240, y: 10, text: "Y Axis", transform: "rotate(-90)" } },
+      xGrid: { transform: "translate(35,455)" },
+      yGrid: { transform: "translate(35,25)" },
+      plot: { transform: "translate(35,25)", paddingLeft: 35, paddingRight: 25, paddingTop: 25, paddingBottom: 45,
+        barWidthTransform: function barWidthTransform(dataPoint, scale) {
+          return scale.rangeBand();
+        } }
+    },
+
+    data: [[{ x: 'Apples', y: 10, c: colors(1) }, { x: 'Oranges', y: 20, c: colors(1) }, { x: 'Bananas', y: 35, c: colors(1) }], [{ x: 'Apples', y: 5, c: colors(3) }, { x: 'Oranges', y: 10, c: colors(3) }, { x: 'Bananas', y: 25, c: colors(3) }]],
+
+    init: function init() {
+      this._super.apply(this, arguments);
+      this.set('chartOptions.xAxis.scale', this.get('xScale'));
+      this.set('chartOptions.yAxis.scale', this.get('yScale'));
+      this.set('chartOptions.xGrid.scale', this.get('xScale'));
+      this.set('chartOptions.yGrid.scale', this.get('yScale'));
+      this.set('chartOptions.plot.xScale', this.get('xScale'));
+      this.set('chartOptions.plot.y0Scale', this.get('y0Scale'));
+      this.set('chartOptions.plot.yScale', this.get('yScale'));
+
+      this.set('chartOptions.plot.fill', function (d, j) {
+        return d.c;
+      });
+    }
   });
 });
 define('portfolio/components/transition-group', ['exports', 'ember-css-transitions/components/transition-group'], function (exports, _emberCssTransitionsComponentsTransitionGroup) {
@@ -1069,6 +1280,12 @@ define('portfolio/router', ['exports', 'ember', 'portfolio/config/environment'],
     });
     this.route('d3charts', function () {
       this.route('line');
+      this.route('bubble');
+      this.route('bar');
+      this.route('area');
+      this.route('stackedbar');
+      this.route('stackedarea');
+      this.route('pie');
     });
   });
 
@@ -1832,6 +2049,52 @@ define("portfolio/templates/application", ["exports"], function (exports) {
       statements: [["block", "paper-nav-container", [], ["classNames", "ember-app"], 0, null, ["loc", [null, [1, 0], [24, 24]]]]],
       locals: [],
       templates: [child0]
+    };
+  })());
+});
+define("portfolio/templates/components/area-chart", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["wrong-type"]
+        },
+        "revision": "Ember@2.4.1",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 0
+          }
+        },
+        "moduleName": "portfolio/templates/components/area-chart.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [["inline", "d3-area-chart", [], ["options", ["subexpr", "@mut", [["get", "chartOptions", ["loc", [null, [1, 24], [1, 36]]]]], [], []], "data", ["subexpr", "@mut", [["get", "data", ["loc", [null, [1, 42], [1, 46]]]]], [], []]], ["loc", [null, [1, 0], [1, 48]]]]],
+      locals: [],
+      templates: []
     };
   })());
 });
@@ -2623,6 +2886,52 @@ define("portfolio/templates/components/axis-sandbox", ["exports"], function (exp
     };
   })());
 });
+define("portfolio/templates/components/bar-chart", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["wrong-type"]
+        },
+        "revision": "Ember@2.4.1",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 0
+          }
+        },
+        "moduleName": "portfolio/templates/components/bar-chart.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [["inline", "d3-bar-chart", [], ["options", ["subexpr", "@mut", [["get", "chartOptions", ["loc", [null, [1, 23], [1, 35]]]]], [], []], "data", ["subexpr", "@mut", [["get", "data", ["loc", [null, [1, 41], [1, 45]]]]], [], []]], ["loc", [null, [1, 0], [1, 47]]]]],
+      locals: [],
+      templates: []
+    };
+  })());
+});
 define("portfolio/templates/components/base-focusable", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     return {
@@ -2664,6 +2973,52 @@ define("portfolio/templates/components/base-focusable", ["exports"], function (e
         return morphs;
       },
       statements: [["content", "yield", ["loc", [null, [1, 0], [1, 9]]]]],
+      locals: [],
+      templates: []
+    };
+  })());
+});
+define("portfolio/templates/components/bubble-chart", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["wrong-type"]
+        },
+        "revision": "Ember@2.4.1",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 0
+          }
+        },
+        "moduleName": "portfolio/templates/components/bubble-chart.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [["inline", "d3-bubble-chart", [], ["options", ["subexpr", "@mut", [["get", "chartOptions", ["loc", [null, [1, 26], [1, 38]]]]], [], []], "data", ["subexpr", "@mut", [["get", "data", ["loc", [null, [1, 44], [1, 48]]]]], [], []]], ["loc", [null, [1, 0], [1, 50]]]]],
       locals: [],
       templates: []
     };
@@ -9327,6 +9682,52 @@ define("portfolio/templates/components/paper-switch", ["exports"], function (exp
     };
   })());
 });
+define("portfolio/templates/components/pie-chart", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["wrong-type"]
+        },
+        "revision": "Ember@2.4.1",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 0
+          }
+        },
+        "moduleName": "portfolio/templates/components/pie-chart.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [["inline", "d3-pie-chart", [], ["options", ["subexpr", "@mut", [["get", "chartOptions", ["loc", [null, [1, 23], [1, 35]]]]], [], []], "data", ["subexpr", "@mut", [["get", "data", ["loc", [null, [1, 41], [1, 45]]]]], [], []]], ["loc", [null, [1, 0], [1, 47]]]]],
+      locals: [],
+      templates: []
+    };
+  })());
+});
 define("portfolio/templates/components/pow-scale-sandbox", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     return {
@@ -10071,6 +10472,98 @@ define("portfolio/templates/components/sqrt-scale", ["exports"], function (expor
     };
   })());
 });
+define("portfolio/templates/components/stacked-area-chart", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["wrong-type"]
+        },
+        "revision": "Ember@2.4.1",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 0
+          }
+        },
+        "moduleName": "portfolio/templates/components/stacked-area-chart.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [["inline", "d3-stacked-area-chart", [], ["options", ["subexpr", "@mut", [["get", "chartOptions", ["loc", [null, [1, 32], [1, 44]]]]], [], []], "data", ["subexpr", "@mut", [["get", "data", ["loc", [null, [1, 50], [1, 54]]]]], [], []]], ["loc", [null, [1, 0], [1, 56]]]]],
+      locals: [],
+      templates: []
+    };
+  })());
+});
+define("portfolio/templates/components/stacked-bar-chart", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["wrong-type"]
+        },
+        "revision": "Ember@2.4.1",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 0
+          }
+        },
+        "moduleName": "portfolio/templates/components/stacked-bar-chart.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [["inline", "d3-stacked-bar-chart", [], ["options", ["subexpr", "@mut", [["get", "chartOptions", ["loc", [null, [1, 31], [1, 43]]]]], [], []], "data", ["subexpr", "@mut", [["get", "data", ["loc", [null, [1, 49], [1, 53]]]]], [], []]], ["loc", [null, [1, 0], [1, 55]]]]],
+      locals: [],
+      templates: []
+    };
+  })());
+});
 define("portfolio/templates/components/transition-group", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     return {
@@ -10117,6 +10610,144 @@ define("portfolio/templates/components/transition-group", ["exports"], function 
     };
   })());
 });
+define("portfolio/templates/d3charts/area", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["wrong-type"]
+        },
+        "revision": "Ember@2.4.1",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 0
+          }
+        },
+        "moduleName": "portfolio/templates/d3charts/area.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [["content", "area-chart", ["loc", [null, [1, 0], [1, 14]]]]],
+      locals: [],
+      templates: []
+    };
+  })());
+});
+define("portfolio/templates/d3charts/bar", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["wrong-type"]
+        },
+        "revision": "Ember@2.4.1",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 0
+          }
+        },
+        "moduleName": "portfolio/templates/d3charts/bar.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [["content", "bar-chart", ["loc", [null, [1, 0], [1, 13]]]]],
+      locals: [],
+      templates: []
+    };
+  })());
+});
+define("portfolio/templates/d3charts/bubble", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["wrong-type"]
+        },
+        "revision": "Ember@2.4.1",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 0
+          }
+        },
+        "moduleName": "portfolio/templates/d3charts/bubble.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [["content", "bubble-chart", ["loc", [null, [1, 0], [1, 16]]]]],
+      locals: [],
+      templates: []
+    };
+  })());
+});
 define("portfolio/templates/d3charts/index", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
@@ -10156,6 +10787,222 @@ define("portfolio/templates/d3charts/index", ["exports"], function (exports) {
           templates: []
         };
       })();
+      var child1 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.1",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 15,
+                "column": 10
+              },
+              "end": {
+                "line": 15,
+                "column": 54
+              }
+            },
+            "moduleName": "portfolio/templates/d3charts/index.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode(" Bubble Chart ");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child2 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.1",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 16,
+                "column": 10
+              },
+              "end": {
+                "line": 16,
+                "column": 48
+              }
+            },
+            "moduleName": "portfolio/templates/d3charts/index.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode(" Bar Chart ");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child3 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.1",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 17,
+                "column": 10
+              },
+              "end": {
+                "line": 17,
+                "column": 50
+              }
+            },
+            "moduleName": "portfolio/templates/d3charts/index.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode(" Area Chart ");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child4 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.1",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 18,
+                "column": 10
+              },
+              "end": {
+                "line": 18,
+                "column": 63
+              }
+            },
+            "moduleName": "portfolio/templates/d3charts/index.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode(" Stacked Bar Chart ");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child5 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.1",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 19,
+                "column": 10
+              },
+              "end": {
+                "line": 19,
+                "column": 65
+              }
+            },
+            "moduleName": "portfolio/templates/d3charts/index.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode(" Stacked Area Chart ");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child6 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.1",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 20,
+                "column": 10
+              },
+              "end": {
+                "line": 20,
+                "column": 48
+              }
+            },
+            "moduleName": "portfolio/templates/d3charts/index.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode(" Pie Chart ");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
       return {
         meta: {
           "fragmentReason": {
@@ -10170,7 +11017,7 @@ define("portfolio/templates/d3charts/index", ["exports"], function (exports) {
               "column": 0
             },
             "end": {
-              "line": 17,
+              "line": 23,
               "column": 0
             }
           },
@@ -10213,6 +11060,42 @@ define("portfolio/templates/d3charts/index", ["exports"], function (exports) {
           var el4 = dom.createComment("");
           dom.appendChild(el3, el4);
           dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n      ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("li");
+          var el4 = dom.createComment("");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n      ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("li");
+          var el4 = dom.createComment("");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n      ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("li");
+          var el4 = dom.createComment("");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n      ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("li");
+          var el4 = dom.createComment("");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n      ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("li");
+          var el4 = dom.createComment("");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n      ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("li");
+          var el4 = dom.createComment("");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
           var el3 = dom.createTextNode("\n    ");
           dom.appendChild(el2, el3);
           dom.appendChild(el1, el2);
@@ -10224,13 +11107,20 @@ define("portfolio/templates/d3charts/index", ["exports"], function (exports) {
           return el0;
         },
         buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var morphs = new Array(1);
-          morphs[0] = dom.createMorphAt(dom.childAt(fragment, [5, 1, 1]), 0, 0);
+          var element0 = dom.childAt(fragment, [5, 1]);
+          var morphs = new Array(7);
+          morphs[0] = dom.createMorphAt(dom.childAt(element0, [1]), 0, 0);
+          morphs[1] = dom.createMorphAt(dom.childAt(element0, [3]), 0, 0);
+          morphs[2] = dom.createMorphAt(dom.childAt(element0, [5]), 0, 0);
+          morphs[3] = dom.createMorphAt(dom.childAt(element0, [7]), 0, 0);
+          morphs[4] = dom.createMorphAt(dom.childAt(element0, [9]), 0, 0);
+          morphs[5] = dom.createMorphAt(dom.childAt(element0, [11]), 0, 0);
+          morphs[6] = dom.createMorphAt(dom.childAt(element0, [13]), 0, 0);
           return morphs;
         },
-        statements: [["block", "link-to", ["d3charts.line"], [], 0, null, ["loc", [null, [14, 10], [14, 62]]]]],
+        statements: [["block", "link-to", ["d3charts.line"], [], 0, null, ["loc", [null, [14, 10], [14, 62]]]], ["block", "link-to", ["d3charts.bubble"], [], 1, null, ["loc", [null, [15, 10], [15, 66]]]], ["block", "link-to", ["d3charts.bar"], [], 2, null, ["loc", [null, [16, 10], [16, 60]]]], ["block", "link-to", ["d3charts.area"], [], 3, null, ["loc", [null, [17, 10], [17, 62]]]], ["block", "link-to", ["d3charts.stackedbar"], [], 4, null, ["loc", [null, [18, 10], [18, 75]]]], ["block", "link-to", ["d3charts.stackedarea"], [], 5, null, ["loc", [null, [19, 10], [19, 77]]]], ["block", "link-to", ["d3charts.pie"], [], 6, null, ["loc", [null, [20, 10], [20, 60]]]]],
         locals: [],
-        templates: [child0]
+        templates: [child0, child1, child2, child3, child4, child5, child6]
       };
     })();
     return {
@@ -10247,7 +11137,7 @@ define("portfolio/templates/d3charts/index", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 18,
+            "line": 24,
             "column": 0
           }
         },
@@ -10270,7 +11160,7 @@ define("portfolio/templates/d3charts/index", ["exports"], function (exports) {
         dom.insertBoundary(fragment, null);
         return morphs;
       },
-      statements: [["block", "paper-content", [], ["classNames", "md-padding"], 0, null, ["loc", [null, [1, 0], [17, 18]]]]],
+      statements: [["block", "paper-content", [], ["classNames", "md-padding"], 0, null, ["loc", [null, [1, 0], [23, 18]]]]],
       locals: [],
       templates: [child0]
     };
@@ -10317,6 +11207,144 @@ define("portfolio/templates/d3charts/line", ["exports"], function (exports) {
         return morphs;
       },
       statements: [["content", "line-chart", ["loc", [null, [1, 0], [1, 14]]]]],
+      locals: [],
+      templates: []
+    };
+  })());
+});
+define("portfolio/templates/d3charts/pie", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["wrong-type"]
+        },
+        "revision": "Ember@2.4.1",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 0
+          }
+        },
+        "moduleName": "portfolio/templates/d3charts/pie.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [["content", "pie-chart", ["loc", [null, [1, 0], [1, 13]]]]],
+      locals: [],
+      templates: []
+    };
+  })());
+});
+define("portfolio/templates/d3charts/stackedarea", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["wrong-type"]
+        },
+        "revision": "Ember@2.4.1",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 0
+          }
+        },
+        "moduleName": "portfolio/templates/d3charts/stackedarea.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [["content", "stacked-area-chart", ["loc", [null, [1, 0], [1, 22]]]]],
+      locals: [],
+      templates: []
+    };
+  })());
+});
+define("portfolio/templates/d3charts/stackedbar", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["wrong-type"]
+        },
+        "revision": "Ember@2.4.1",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 0
+          }
+        },
+        "moduleName": "portfolio/templates/d3charts/stackedbar.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [["content", "stacked-bar-chart", ["loc", [null, [1, 0], [1, 21]]]]],
       locals: [],
       templates: []
     };
@@ -10397,6 +11425,222 @@ define("portfolio/templates/d3charts", ["exports"], function (exports) {
           templates: []
         };
       })();
+      var child2 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.1",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 5,
+                "column": 4
+              },
+              "end": {
+                "line": 5,
+                "column": 65
+              }
+            },
+            "moduleName": "portfolio/templates/d3charts.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode(" Bubble ");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child3 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.1",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 6,
+                "column": 4
+              },
+              "end": {
+                "line": 6,
+                "column": 59
+              }
+            },
+            "moduleName": "portfolio/templates/d3charts.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode(" Bar ");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child4 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.1",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 7,
+                "column": 4
+              },
+              "end": {
+                "line": 7,
+                "column": 61
+              }
+            },
+            "moduleName": "portfolio/templates/d3charts.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode(" Area ");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child5 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.1",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 8,
+                "column": 4
+              },
+              "end": {
+                "line": 8,
+                "column": 74
+              }
+            },
+            "moduleName": "portfolio/templates/d3charts.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode(" Stacked Bar ");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child6 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.1",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 9,
+                "column": 4
+              },
+              "end": {
+                "line": 9,
+                "column": 76
+              }
+            },
+            "moduleName": "portfolio/templates/d3charts.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode(" Stacked Area ");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child7 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.1",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 10,
+                "column": 4
+              },
+              "end": {
+                "line": 10,
+                "column": 59
+              }
+            },
+            "moduleName": "portfolio/templates/d3charts.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode(" Pie ");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
       return {
         meta: {
           "fragmentReason": {
@@ -10410,7 +11654,7 @@ define("portfolio/templates/d3charts", ["exports"], function (exports) {
               "column": 0
             },
             "end": {
-              "line": 6,
+              "line": 12,
               "column": 0
             }
           },
@@ -10434,6 +11678,30 @@ define("portfolio/templates/d3charts", ["exports"], function (exports) {
           dom.appendChild(el1, el2);
           var el2 = dom.createComment("");
           dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n    ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n    ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n    ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n    ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n    ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n    ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
           var el2 = dom.createTextNode("\n  ");
           dom.appendChild(el1, el2);
           dom.appendChild(el0, el1);
@@ -10443,14 +11711,20 @@ define("portfolio/templates/d3charts", ["exports"], function (exports) {
         },
         buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
           var element0 = dom.childAt(fragment, [1]);
-          var morphs = new Array(2);
+          var morphs = new Array(8);
           morphs[0] = dom.createMorphAt(element0, 1, 1);
           morphs[1] = dom.createMorphAt(element0, 3, 3);
+          morphs[2] = dom.createMorphAt(element0, 5, 5);
+          morphs[3] = dom.createMorphAt(element0, 7, 7);
+          morphs[4] = dom.createMorphAt(element0, 9, 9);
+          morphs[5] = dom.createMorphAt(element0, 11, 11);
+          morphs[6] = dom.createMorphAt(element0, 13, 13);
+          morphs[7] = dom.createMorphAt(element0, 15, 15);
           return morphs;
         },
-        statements: [["block", "link-to", ["d3charts"], [], 0, null, ["loc", [null, [3, 4], [3, 54]]]], ["block", "link-to", ["d3charts.line"], ["class", "toolbar-button"], 1, null, ["loc", [null, [4, 4], [4, 73]]]]],
+        statements: [["block", "link-to", ["d3charts"], [], 0, null, ["loc", [null, [3, 4], [3, 54]]]], ["block", "link-to", ["d3charts.line"], ["class", "toolbar-button"], 1, null, ["loc", [null, [4, 4], [4, 73]]]], ["block", "link-to", ["d3charts.bubble"], ["class", "toolbar-button"], 2, null, ["loc", [null, [5, 4], [5, 77]]]], ["block", "link-to", ["d3charts.bar"], ["class", "toolbar-button"], 3, null, ["loc", [null, [6, 4], [6, 71]]]], ["block", "link-to", ["d3charts.area"], ["class", "toolbar-button"], 4, null, ["loc", [null, [7, 4], [7, 73]]]], ["block", "link-to", ["d3charts.stackedbar"], ["class", "toolbar-button"], 5, null, ["loc", [null, [8, 4], [8, 86]]]], ["block", "link-to", ["d3charts.stackedarea"], ["class", "toolbar-button"], 6, null, ["loc", [null, [9, 4], [9, 88]]]], ["block", "link-to", ["d3charts.pie"], ["class", "toolbar-button"], 7, null, ["loc", [null, [10, 4], [10, 71]]]]],
         locals: [],
-        templates: [child0, child1]
+        templates: [child0, child1, child2, child3, child4, child5, child6, child7]
       };
     })();
     return {
@@ -10467,7 +11741,7 @@ define("portfolio/templates/d3charts", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 9,
+            "line": 15,
             "column": 0
           }
         },
@@ -10496,7 +11770,7 @@ define("portfolio/templates/d3charts", ["exports"], function (exports) {
         dom.insertBoundary(fragment, 0);
         return morphs;
       },
-      statements: [["block", "paper-toolbar", [], [], 0, null, ["loc", [null, [1, 0], [6, 18]]]], ["content", "outlet", ["loc", [null, [8, 0], [8, 10]]]]],
+      statements: [["block", "paper-toolbar", [], [], 0, null, ["loc", [null, [1, 0], [12, 18]]]], ["content", "outlet", ["loc", [null, [14, 0], [14, 10]]]]],
       locals: [],
       templates: [child0]
     };
@@ -12733,7 +14007,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("portfolio/app")["default"].create({"name":"portfolio","version":"0.0.0+e9340683"});
+  require("portfolio/app")["default"].create({"name":"portfolio","version":"0.0.0+1305befe"});
 }
 
 /* jshint ignore:end */
