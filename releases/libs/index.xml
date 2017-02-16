@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1483634048000" name="Libs" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1487259203000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.auth0.jwt"/>
@@ -472,6 +472,268 @@
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="0.10.1.1_1"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="f771b4bbb6b04022e77cf0c0578276d8d3558848f45cbaf8d577bfe70ef847c5"/>
+      <attribute name="url" value="org.apache.servicemix.bundles.kafka-clients/org.apache.servicemix.bundles.kafka-clients-0.10.1.jar"/>
+      <attribute name="size" type="Long" value="806538"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.clients.consumer"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.apache.kafka.common,org.apache.kafka.common.config,org.apache.kafka.clients,org.apache.kafka.common.serialization,org.apache.kafka.common.record,org.apache.kafka.common.utils,org.apache.kafka.clients.consumer.internals,org.slf4j,org.apache.kafka.common.requests,org.apache.kafka.common.metrics,org.apache.kafka.common.internals,org.apache.kafka.common.network,org.apache.kafka.common.errors"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.requests"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.apache.kafka.common.protocol,org.apache.kafka.common.protocol.types,org.apache.kafka.common,org.apache.kafka.common.utils,org.apache.kafka.common.network"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.errors"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.apache.kafka.common"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.security"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.apache.kafka.common,org.slf4j,javax.security.auth.login"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.clients"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.apache.kafka.common.requests,org.apache.kafka.common.protocol.types,org.slf4j,org.apache.kafka.common.config,org.apache.kafka.common.utils,org.apache.kafka.common.protocol,org.apache.kafka.common.network,org.apache.kafka.common,org.apache.kafka.common.errors,org.apache.kafka.common.internals"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.security.authenticator"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="javax.security.sasl,javax.security.auth.callback,org.apache.kafka.common.security.auth,org.slf4j,javax.security.auth,javax.security.auth.login,org.apache.kafka.common.security.kerberos,org.apache.kafka.common.network,org.apache.kafka.common.protocol,org.apache.kafka.common.protocol.types,org.apache.kafka.common.requests,org.apache.kafka.common.errors,org.apache.kafka.clients,org.apache.kafka.common,org.ietf.jgss"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.annotation"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.security.auth"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="javax.security.auth.callback,javax.security.auth,org.apache.kafka.common.network,org.apache.kafka.common,javax.security.auth.login,org.apache.kafka.common.annotation"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.protocol"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.slf4j,org.apache.kafka.common.errors,org.apache.kafka.common.protocol.types"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.internals"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.apache.kafka.common"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.network"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.apache.kafka.common.security.auth,org.apache.kafka.common,org.apache.kafka.common.protocol,org.apache.kafka.common.utils,org.slf4j,org.apache.kafka.common.security.ssl,org.apache.kafka.common.security,org.apache.kafka.common.security.authenticator,org.apache.kafka.common.security.kerberos,javax.security.auth,javax.net.ssl,org.apache.kafka.common.metrics,org.apache.kafka.common.metrics.stats"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.serialization"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.apache.kafka.common.utils,org.apache.kafka.common.errors"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.security.ssl"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.apache.kafka.common.config.types,org.apache.kafka.common,javax.net.ssl,org.apache.kafka.common.network"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.protocol.types"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.apache.kafka.common,org.apache.kafka.common.utils"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.config"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.apache.kafka.common,org.slf4j,org.apache.kafka.common.utils,org.apache.kafka.common.config.types,javax.net.ssl"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.clients.consumer.internals"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.slf4j,org.apache.kafka.common.errors,org.apache.kafka.clients,org.apache.kafka.common.metrics,org.apache.kafka.common,org.apache.kafka.common.metrics.stats,org.apache.kafka.common.protocol.types,org.apache.kafka.common.requests,org.apache.kafka.common.utils,org.apache.kafka.common.protocol,org.apache.kafka.clients.consumer,org.apache.kafka.common.serialization,org.apache.kafka.common.record,org.apache.kafka.common.internals"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.clients.producer"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.apache.kafka.common,org.apache.kafka.clients.producer.internals,org.slf4j,org.apache.kafka.common.config,org.apache.kafka.common.errors,org.apache.kafka.clients,org.apache.kafka.common.metrics,org.apache.kafka.common.utils,org.apache.kafka.common.serialization,org.apache.kafka.common.internals,org.apache.kafka.common.network,org.apache.kafka.common.record"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.metrics.stats"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.apache.kafka.common.metrics,org.apache.kafka.common"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.cache"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.apache.kafka.common.utils"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.metrics"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.apache.kafka.common,org.slf4j,javax.management,org.apache.kafka.common.utils"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.security.kerberos"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.slf4j,org.apache.kafka.common.utils,javax.security.auth.login,javax.security.auth.kerberos,org.apache.kafka.common,org.apache.kafka.common.security,org.apache.kafka.common.security.authenticator,javax.security.auth"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.security.plain"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="javax.security.auth.callback,javax.security.auth,javax.security.auth.spi,javax.security.auth.login,javax.security.sasl,org.apache.kafka.common.security,org.apache.kafka.common.network"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.utils"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.slf4j,javax.management,org.apache.kafka.common"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.config.types"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.clients.producer.internals"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.apache.kafka.common,org.apache.kafka.common.metrics,org.apache.kafka.common.errors,org.apache.kafka.common.metrics.stats,org.apache.kafka.common.utils,org.apache.kafka.clients.producer,org.slf4j,org.apache.kafka.common.record,org.apache.kafka.clients,org.apache.kafka.common.protocol.types,org.apache.kafka.common.requests,org.apache.kafka.common.protocol"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.apache.kafka.common.record"/>
+      <attribute name="version" type="Version" value="0.10.1.1"/>
+      <attribute name="bundle-symbolic-name" value="org.apache.servicemix.bundles.kafka-clients"/>
+      <attribute name="bundle-version" type="Version" value="0.10.1.1_1"/>
+      <directive name="uses" value="org.apache.kafka.common,org.apache.kafka.common.utils,net.jpountz.lz4,net.jpountz.xxhash,net.jpountz.util"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.management)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.net.ssl)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.security.auth)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.security.auth.callback)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.security.auth.kerberos)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.security.auth.login)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.security.auth.spi)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.security.sasl)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=net.jpountz.lz4)(version&gt;=1.2.0)(!(version&gt;=1.3.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=net.jpountz.util)(version&gt;=1.2.0)(!(version&gt;=1.3.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=net.jpountz.xxhash)(version&gt;=1.2.0)(!(version&gt;=1.3.0)))"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.ietf.jgss)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.slf4j)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.xerial.snappy)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=sun.misc)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=sun.nio.ch)"/>
       <directive name="resolution" value="optional"/>
     </requirement>
   </resource>
