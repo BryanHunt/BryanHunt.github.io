@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1487259203000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1488143909000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.auth0.jwt"/>
@@ -1345,6 +1345,194 @@
   </resource>
   <resource>
     <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="pi4j-core"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="f4c8ced74c47e951dc120fb24d5a64cb4891ad6002f85908b0c8eb8c2362c763"/>
+      <attribute name="url" value="pi4j-core/pi4j-core-1.1.0.jar"/>
+      <attribute name="size" type="Long" value="537230"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.concurrent"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.util"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+      <directive name="uses" value="com.pi4j.io.gpio,com.pi4j.io.serial"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.jni"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.wiringpi"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.system"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.system.impl"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+      <directive name="uses" value="com.pi4j.system"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.temperature"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.io.serial"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+      <directive name="uses" value="com.pi4j.concurrent,com.pi4j.io.gpio.exception,com.pi4j.system"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.io.serial.impl"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+      <directive name="uses" value="com.pi4j.io.serial"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.io.serial.tasks"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+      <directive name="uses" value="com.pi4j.io.serial"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.io.gpio"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+      <directive name="uses" value="com.pi4j.concurrent,com.pi4j.io.gpio.event,com.pi4j.io.gpio.trigger,com.pi4j.jni,com.pi4j.system,com.pi4j.wiringpi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.io.gpio.event"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+      <directive name="uses" value="com.pi4j.io.gpio"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.io.gpio.exception"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+      <directive name="uses" value="com.pi4j.io.gpio"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.io.gpio.impl"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+      <directive name="uses" value="com.pi4j.io.gpio,com.pi4j.io.gpio.event,com.pi4j.io.gpio.trigger"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.io.gpio.tasks.impl"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+      <directive name="uses" value="com.pi4j.io.gpio,com.pi4j.io.gpio.event"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.io.gpio.trigger"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+      <directive name="uses" value="com.pi4j.io.gpio,com.pi4j.io.gpio.event"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.io.i2c"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.io.i2c.impl"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+      <directive name="uses" value="com.pi4j.io.i2c"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.io.spi"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.io.spi.impl"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+      <directive name="uses" value="com.pi4j.io.spi"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.io.w1"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.io.wdt"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.io.wdt.impl"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-core"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+      <directive name="uses" value="com.pi4j.io.wdt"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.pi4j.io.i2c)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.pi4j.io.i2c.impl)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.pi4j.system.impl)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.net.ssl)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.7))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="pi4j-service"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" type="Version" value="1.0.0"/>
@@ -1413,6 +1601,88 @@
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.6.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.7))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(&amp;(osgi.extender=osgi.blueprint)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="effective" value="active"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="pi4j-service"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="6b6b70205bc60fb00a826f17e11e19049c56a91bdc5822d6070e1aaa5da5dbd7"/>
+      <attribute name="url" value="pi4j-service/pi4j-service-1.1.0.jar"/>
+      <attribute name="size" type="Long" value="19063"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="pi4j-service"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="pi4j-service"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.service.osgi"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-service"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+      <directive name="uses" value="org.osgi.framework"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.system.service"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-service"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+      <directive name="uses" value="com.pi4j.system"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.pi4j.io.gpio.service"/>
+      <attribute name="version" type="Version" value="1.1.0"/>
+      <attribute name="bundle-symbolic-name" value="pi4j-service"/>
+      <attribute name="bundle-version" type="Version" value="1.1.0"/>
+      <directive name="uses" value="com.pi4j.io.gpio"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="com.pi4j.io.gpio.service.GpioService"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="com.pi4j.system.service.NetworkInformationService"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" value="com.pi4j.system.service.SystemInformationService"/>
+      <directive name="effective" value="active"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.pi4j.io.gpio)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.pi4j.io.gpio.impl)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.pi4j.io.gpio.service)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.pi4j.system)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.pi4j.system.service)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.6.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.blueprint)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
     </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.7))"/>
