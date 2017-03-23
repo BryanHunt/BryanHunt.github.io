@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1489000745000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1490281819000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.auth0.jwt"/>
@@ -482,9 +482,9 @@
       <attribute name="version" type="Version" value="4.8.0"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="a7d1e2b0f3d4ed02e929eb94f207017be3a1768a1e93895038c70253c2cf4927"/>
+      <attribute name="osgi.content" value="7680c357b25b3956d0b42b23f66a3f0cc36be85d4cecfb9d96f65d16380064ac"/>
       <attribute name="url" value="net.logstash.logback.logstash-logback-encoder/net.logstash.logback.logstash-logback-encoder-4.8.0.jar"/>
-      <attribute name="size" type="Long" value="453088"/>
+      <attribute name="size" type="Long" value="457856"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.package">
