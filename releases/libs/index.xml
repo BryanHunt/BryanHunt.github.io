@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1490281819000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1493391387000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.auth0.jwt"/>
@@ -542,6 +542,63 @@
     <requirement namespace="osgi.wiring.host">
       <directive name="filter" value="(&amp;(osgi.wiring.host=ch.qos.logback.classic)(bundle-version&gt;=0.0.0))"/>
     </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="net.sourceforge.jtds"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="1.2.4.1"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="5c1aaa419ad8f7fb9e1ee7047e8069a0f19aa14db404ff00b005be920197c383"/>
+      <attribute name="url" value="net.sourceforge.jtds/net.sourceforge.jtds-1.2.4.jar"/>
+      <attribute name="size" type="Long" value="306593"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="net.sourceforge.jtds"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="net.sourceforge.jtds"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="net.sourceforge.jtds.jdbc"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.jtds"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="net.sourceforge.jtds.jdbc.cache"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.jtds"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="net.sourceforge.jtds.jdbcx"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.jtds"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="net.sourceforge.jtds.jdbcx.proxy"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.jtds"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="net.sourceforge.jtds.ssl"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.jtds"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4.1"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="net.sourceforge.jtds.util"/>
+      <attribute name="version" type="Version" value="1.2.4"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.jtds"/>
+      <attribute name="bundle-version" type="Version" value="1.2.4.1"/>
+    </capability>
   </resource>
   <resource>
     <capability namespace="osgi.identity">
